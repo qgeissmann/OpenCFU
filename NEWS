@@ -1,0 +1,60 @@
+2013-08-27: 3.8.11
+    Cleanup makefile and code
+
+2013-08-13: 3.8.10
+        Fix eroneous detailled output
+
+2013-08-04: 3.8.9
+	BUILD:
+		fix some configure issues and warnings.
+2013-07-26: 3.8.8
+    GUI:
+        Typos
+        Fix bug when overwritting files with files already presents
+        Add transparency layer to colour wheel
+        Now uses two different classifiers
+2013-07-15: 3.8.7
+	GUI:
+		Implementation of Masks and ROIs
+    PROCESSING:
+        FIX the bug that gave wrong result on platorms such as ARM (e.g. raspberry pi).
+    COMMAND LINE INTERFACE:
+		Results are printed in stdout
+
+2013-06-19: 3.8.6
+    GUI:
+        Writing of tooltips to help users :D
+        A few critical bugs have been found and fixed -> more stability
+    CLI:
+        add threshold mode/type as an argument
+
+2013-06-13: 3.8.5
+
+    THIS IS A BETA VERSION. DO NOT USE FOR PRODUCTION PURPOSES.
+    Many important changes have taken place since version 3.3 (the originally published version).
+    The modifications are summarised bellow.
+
+    PROCESSING:
+        The feature classifier is not a human defined arbitrary decision tree (as described in the paper) any more.
+        Instead, OpenCFU now uses a trained Random Forest[Breiman, 2001] as particle filter (~15 morphological features are used).
+        It is therefore more efficient, but also more flexible because it is easy to re-train the classifier with a different sample set.
+    CODE:
+        Although it is still C++, the code has been rewritten from scratch with a much more object oriented programming approach in mind.
+        The code should then be more modular and easier to maintain in the future. The software should also be more stable.
+        In addition, OpenCFU now uses autoconf/automake (./configure && make) wich should make the code more portable.
+        Finally, OpenCFU is now on a git repository(on sourceforge). This also helps to maintain and reuse the program.
+
+    GRAPHICAL USER INTERFACE:
+        The user interface has undergone deep modifications. The main changes are:
+            1) A new area dedicated to see the result as a table/list
+            2) A image displayer that is scalable and can be progressively zoomed in (using mouse scroll)
+            3) The ability to right click on colonies to exclude/include them
+            4) The interface tells the user when the processing is taking place (progress bar)
+            5) Possibility to drag and drop images to load them
+            6) The interface should be more aesthetically pleasing and work small screens
+
+        The use of webcam, masks/ROI and a few other features have not been reimplemented yet. This will come back in the future.
+
+    COMMAND LINE INTERFACE:
+        OpenCFU can now be properly used from terminal (see the manual using `opencfu -h') and the program can event be compiled without Glib/Gtkmm support (i.e. without a GUI).
+        This is useful to run the program on a workstation or a server and to quickly compare/test the result on image sets.

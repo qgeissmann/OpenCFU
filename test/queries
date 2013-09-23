@@ -1,0 +1,3 @@
+A.png -t 10 -m auto -l 16 -r 2 -R 10
+C.jpg -t 9 -l 19 -r 3 -R 21 
+H.png -d inv -l 30 -r 1 -R 41 

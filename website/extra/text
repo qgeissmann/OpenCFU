@@ -1,0 +1,49 @@
+Automatic enumeration of cell colonies with OpenCFU
+
+Quentin Geissmann
+qgeissmann@gmail.com
+
+
+A digital version of this poster is available online. 
+http://opencfu.sourceforge.net/extra/20130910-Poster.svg
+
+
+Backround:
+Assessing the number of cell in solution is essential in many fields of cell biology.
+This is very often done manually by the experiementers.
+Manual counting is time counsuming and subjective.
+Software tools are not adopted by the community.
+
+
+In many microbiology and cellular biology experiments, getting an accurate estimate of the number of viable cells in solution is critical.
+A very common approach involves spreading a known volume of a cell suspension on an solid media and enumerate the number of colonies after growth.
+The counting is often performed manually. This task is time consuming and raises concerns about reproducibility.
+During the last decade, a few authors have targeted this question and developed solutions, but none seem to have been adopted.
+
+[FIG1: Borring counting]
+
+Aims:
+Design an efficient algorithm to identify cell colonies on images.
+Develop a free and open-source software implementing this method in a user friendly interface.
+
+Methods:
+
+[FIG2: pipeline]
+[FIG3: Random forest]
+
+The algorithm is implemented in C++ using OpenCV API. [OpenCV logo]
+In addition to a command line interface, a modern GUI was designed using the Gtkmm API. [Gtk+ logo]
+
+
+RESULTS:
+
+Accurate
+Fast
+Robust
+Usable
+
+
+
+
+
+

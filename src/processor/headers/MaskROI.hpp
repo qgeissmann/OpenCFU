@@ -1,0 +1,86 @@
+#ifndef MASKROI_H
+#define MASKROI_H
+
+#include "defines.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
+
+class MaskROI
+{
+    public:
+        MaskROI(int pretype):type(pretype){
+        }
+
+        MaskROI(const std::string& path){
+            cv::imread(path,CV_LOAD_IMAGE_GRAYSCALE).copyTo(m_original_mat);
+//            m_original_mat = m_mat;
+//            m_original_mat = m_mat;
+            type = MASK_TYPE_FILE;
+        }
+        MaskROI(cv::Mat img){
+//            img.copyTo(m_mat);
+            img.copyTo(m_original_mat);
+            type = MASK_TYPE_FILE;
+//            m_original_mat = m_mat;
+        }
+        MaskROI(cv::Mat img,int typepp){
+
+            if(typepp != MASK_TYPE_NONE)
+//                img.copyTo(m_mat);
+                img.copyTo(m_original_mat);
+                img.copyTo(m_mat);
+            type = typepp;
+            DEV_INFOS("making a new maskroi. type = "<< type);
+//            if(m_mat.empty())
+//                        DEV_INFOS("empty mat");
+//            m_original_mat = m_mat;
+        }
+
+        MaskROI():type(MASK_TYPE_NONE){};
+        void setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f>,int > >& points,int width,int height);
+        void none(){
+            type = MASK_TYPE_NONE;
+//            m_mat = cv::Mat();
+            m_original_mat = cv::Mat();
+            DEV_INFOS("Nonifying a the mask. type = "<< type);
+//             if(m_mat.empty())
+//                        DEV_INFOS("empty mat");
+//            m_original_mat = m_mat;
+            }
+
+        const bool isValid()const {
+// = m_mat;
+            if(type == MASK_TYPE_NONE || type == MASK_TYPE_AUTO)
+                return true;
+            else if(type == MASK_TYPE_FILE && !m_original_mat.empty())
+                return true;
+            else if(type == MASK_TYPE_DRAW && !m_original_mat.empty())
+                return true;
+
+            else
+                return false;
+        }
+        void copyTo(MaskROI& cpy)const {
+            cpy = MaskROI(m_original_mat,type);
+            if(type != MASK_TYPE_AUTO)
+                cpy.update(m_mat);
+        }
+        const cv::Mat& getMat()const{
+                DEV_INFOS("??");
+                return m_mat;
+
+            }
+
+        int type;
+        void update(const cv::Mat parent_image);
+    protected:
+        std::vector<float> circleFrom3(const std::vector<cv::Point2f>& points);
+        void makeAutoMask(const cv::Mat& parent);
+    private:
+
+        cv::Mat m_mat;
+        cv::Mat m_original_mat;
+};
+
+#endif // MASKROI_H

@@ -1,0 +1,72 @@
+			<div class="content_item">
+				
+			<h1>OpenCFU for developers</h1> 
+			
+				<p>This section contains technical informations to help other programers and advanced users to compile and modify OpenCFU.
+				Do not hesitate to send some feed back or request some support by <a href="mailto:opencfu@gmail.com">email</a>.</p>
+				
+				<h2  id="installLinux">Install OpenCFU on a GNU/Linux distribution</h2> 
+					<h3>Arch Linux</h3> 
+						<p>OpenCFU is on <a href='https://aur.archlinux.org/packages/opencfu/'>AUR</a>.</p>
+					<h3>Fedora</h3> 
+						<p>OpenCFU is on the stable repository so you can install it, for instance, using yum:</p>
+						<ul class="codeblock"><li class="rootprompt">yum install opencfu</li></ul>
+					<h3>Other Distributions<h3>
+						<p>For now, users of other distributions will have to compile (see next section) the program. Hopefully, OpenCFU will, at least, go in Debian repositories soon.</p>
+				
+				<h2  id="git">Get the code</h2>
+					<P>OpenCFU is hosted on a <a href="http://en.wikipedia.org/wiki/Git_(software)">git repository</a>, so you can get the very last version and contribute to the code: 
+						<ul class="codeblock">
+							<li>git clone git://git.code.sf.net/p/opencfu/code opencfu-code</li>
+						</ul>
+					</P> 
+				
+				<h2  id="compile">How to compile OpenCFU with g++</h2> 
+					<h3  id="compileLinux">On GNU/Linux</h3> 
+						<h4 >Getting the dependencies</h4> 
+			
+						<h5>On <a href="http://www.fedoraproject.org/‎">Fedora</a>:</h5>
+							<p>In addition of the usual GNU tools (automake, autoconf, make, g++, ...), OpenCFU requieres <a href="http://opencv.org/">OpenCV</a>(2.4.3) for the image processing and, if you want a GUI, <a href="http://www.gtkmm.org">Gtkmm-2.4</a>.
+							</p>
+							
+						<ul class="codeblock">
+							<li class="rootprompt">yum groupinstall 'Development Tools'</li>
+							<li class="rootprompt">yum install opencv-devel gtkmm-devel</li>
+						</ul>
+						
+						<h5>On <a href="http://www.ubuntu.com/">Ubuntu</a>:</h5>
+						<ul class="codeblock">
+							<li class="rootprompt">apt-get install build-essential automake autoconf libopencv-dev libgtkmm-2.4-dev</li>
+						</ul>
+						
+						</ul>
+						<h5>On <a href="https://www.archlinux.org/">Archlinux</a>:</h5>
+						<ul class="codeblock">
+							<li class="rootprompt">pacman -S base-devel opencv gtkmm</li>
+						</ul>
+						
+						<p>
+						After that, download the last version of OpenCFU. You can find them on <a href="http://sourceforge.net/projects/opencfu/files/linux/">Sourceforge</a>. For instance:
+						</p>
+						<ul class="codeblock">
+							<li>wget htt<span>p</span>://sourceforge.net/projects/opencfu/files/linux/opencfu-<strong>3.8.5</strong>.tar.gz</li>
+							<li>tar -xvf opencfu-<strong>3.8.5</strong>.tar.gz</li>
+							<li>cd opencfu-<strong>3.8.5</strong></li>
+							
+						</ul>
+							<p>Note that you can replace the <strong>3.8.5</strong> above by a more recent version.</p>
+						<h4>Configure and Make</h4>				
+						<p>
+						At this point, you will configure the project. If you do not want a GUI (e.g. if you do not have Gtkmm installed) you can use the option <b>`--without-gui'</b>.
+						You can also turn on the debug message printing with <b>`--with-dbgmes'</b>.
+						</p>
+						<ul class="codeblock">
+							<li>./configure</li>
+							<li>make</li>
+							<li class="rootprompt">make install</li>
+						</ul>
+					<h3 id="compileWindows">On Windows (with MingW32)</h3> 
+						<p>
+							TODO
+						</p>
+			</div>	

@@ -1,0 +1,86 @@
+<script>
+
+ref={
+	title:"",
+	author:"<li><strong>Author</strong>: ",
+	email:"",
+	object:"<li><strong>Objects</strong>: ",
+	description:"<li><strong>Description</strong>: ",
+	dim:"<li><strong>Dimentions</strong>: ",
+	thumbnail:"",
+	link:""
+	};
+
+collects = [];
+
+collects[0]={
+	title:"<i>S. aureus</i>",
+	author:"Q. Geissmann",
+	email:"mailto:opencfu@gmail.com",
+	object:"<i>Staphilococcus aureus</i> colonies on LB agar plates. Bright background.",
+	description: "The high quality pictures used in the PLoS paper.",
+	dim:"1538x1536",
+	thumbnail:"./img/plosPicHQThumb.jpg",
+	link:"http://sourceforge.net/projects/opencfu/files/samples/plosPicHQ.zip"
+	};
+
+collects[2]={
+	title:"<i>S. aureus</i> webcam",
+	author:"Q. Geissmann",
+	email:"mailto:opencfu@gmail.com",
+	object:"<i>Staphilococcus aureus</i> colonies on LB agar plates. Bright background.",
+	description: "The low quality pictures used in the PLoS paper (taken by a cheap webcam).",
+	dim:"1000x1000",
+	thumbnail:"./img/plosPicLQThumb.jpg",
+	link:"http://sourceforge.net/projects/opencfu/files/samples/plosPicLQ.zip"
+};	
+
+collects[1]={
+	title:"RFP/GFP <i>E. coli</i>",
+	author:"Rob Egbert",
+	email:"http://depts.washington.edu/soslab/mw/index.php?title=User:Egbert",
+	object:"Fluorescent <i>E. coli</i> colonies on agar. Dark background",
+	description: "This is a collection of fluorescence images of <i>E. coli</i> colonies transformed with a bistable switch circuit, resulting in colonies expressing either RFP or GFP. The images were captured on a blue light transilluminator (Clare Chemical) using an acrylic filter from the same manufacturer.",
+	dim:"2592x1944",
+	thumbnail:"./img/EcoliRobEgbertPicThumb.jpg",
+	link:"http://sourceforge.net/projects/opencfu/files/samples/EcoliRobEgbert.zip"
+	};
+
+	
+function makeSampleThumb(){
+	final_str="<div id = 'thumbnails'>";
+	for(i=0;i<collects.length;i++){
+		tmp_str = "<div class='imgCollection'>"
+		//~ tmp_str = "<div id=\'" + collects[i].id + "\'class='imgCollection'>"
+		tmp_str +="<h1><a href='"+ collects[i].link + "'>"+collects[i].title+ "</a></h1>";
+		tmp_str =tmp_str+"<div class=imgCollectThumb> <a href='" + collects[i].link  + "'style='background:url("+ collects[i].thumbnail +") no-repeat 0 0;background-size: contain'></a></div>";
+		tmp_str += "<div class='imgCollectText'><ul>";
+		tmp_str += ref.object + " " + collects[i].object;
+		tmp_str += ref.description + " " + collects[i].description;
+		tmp_str +=  ref.dim + " " + collects[i].dim;
+		tmp_str +=  ref.author + "<a href='" + collects[i].email +"'>" + collects[i].author+"</a>";
+		tmp_str += "</ul></div><div class='clear'></div></div>";
+		final_str +=  tmp_str;
+	}
+	final_str +=  "</div>";
+	$('#thumbnails').html(final_str);
+	var cw = $('.imgCollectThumb a').width();
+	$('.imgCollectThumb a').css({'height':cw+'px'});
+}
+
+	
+</script>	
+
+			
+<div class="content_item">
+	
+<h1>Image Samples</h1> 
+
+	<p>This section contains a modest collection of images that you can use to try OpenCFU and practice.
+	Unless stated otherwise, you can share and reuse these images under the conditions of a <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons License (by-sa)</a>.
+	I would be very grateful if you could <a href="mailto:opencfu@gmail.com">send me your own pictures</a> to enrich this library.</p>
+	<h2  id="plosPaperHD"></h2>
+	<div id = "thumbnails">		
+	</div>
+<script>makeSampleThumb();</script>
+</div>	

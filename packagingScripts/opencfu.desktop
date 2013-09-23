@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=opencfu
+Name=OpenCFU
+Icon=opencfu
+Comment=A modern program to count circular objects from pictures or webcams
+Name[en_GB]=OpenCFU
+Comment[en_GB]=A modern program to count circular objects from pictures or webcams
+Icon[en_GB]=opencfu

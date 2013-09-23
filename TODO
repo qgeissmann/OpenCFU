@@ -1,0 +1,37 @@
+STABILITY:
+    16B IMG TILING !!
+FEATURES:
+    Video
+    save current image
+TOFINISH:
+        add new options (save result, paint img)
+FIX:
+    bug Nincluster: unchanged in colony invalid
+    #N in cluster instead of N neighbours
+    
+MAKEFILE:
+    test result during stresstest
+
+TOFIX:
+    MINOR:
+        OVERWRITE file when part of the files are present in the current list (Thanks to Rob Egbert)
+    improve colony spliter -> a lot of colonies are excluded afer spliting
+
+        TRANSPARENCE ON COLOUR WEEL
+
+        PERFOMANCE:
+            DISPLAY:
+                do not query and scale image systematically!!
+                -> nstead, cache  the scaled image !(espetialy when redecorating!)
+                use threading for display scaling!
+        RESULTLIST:
+            click on path to open file.
+
+Suggested Features:
+    Click and drag on display (Rob Egbert)
+
+ROADMAP:
+    TRAININGSET:
+        make more
+    GUI:
+        add images thumbnails to list

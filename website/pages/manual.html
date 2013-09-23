@@ -1,0 +1,228 @@
+
+<div class="content_item">
+<h1>User Manual</h1>
+<div id='toc'>
+<h1>Table of Content</h1>
+<h2><a class="q_scrollTo" href='#installation'>Installation</a></h2>
+<h2><a class="q_scrollTo" href='#gui'>User Interface</a></h2>
+<h2><a class="q_scrollTo" href='#processingParameters'>Processing Parameters</a></h2>
+<h3><a class="q_scrollTo" href='#threshold'>Threshold</a></h3>
+<h3><a class="q_scrollTo" href='#radius'>Radius</a></h3>
+<h3><a class="q_scrollTo" href='#RoiNMask'>ROIs and Mask</a></h3>
+<h3><a class="q_scrollTo" href='#colourFilter'>Colour Filter</a></h3>	
+<h3><a class="q_scrollTo" href='#outfilter'>Auto Outlier Filter</a></h3>
+<h2><a class="q_scrollTo" href='#results'>Results</a></h2>
+
+</div>
+
+<p>This section provides an exhaustive description about how to use OpenCFU.
+If you are using it for the first time, you should maybe have a look at the
+<a class="q_ajax_link" href=./tuto.php#quickStart>video tutorial section</a>.
+Questions and feedback are more than welcome, so feel free to <a href="mailto:opencfu@gmail.com">contact me</a>.
+In this manual, I will use the example of bacterial colonies, but you can obviously use the same instructions for whatever circular objects you wish to count.
+</p>
+<div class="clear"></div>	
+<H2 id='installation'>Installation</H2>
+<H3>Windows Users</H3>
+<P>Simply run and download the <a href="http://sourceforge.net/projects/opencfu/" onclick="_gaq.push(['_trackEvent', 'Leave', 'Leaved', 'SourceForgeLinkInManual']);">setup</a>. 
+</P>
+<H3>GNU/Linux Users</H3>
+<P>Linux users can compile OpenCFU for their machine. Information is
+available in the <a class="q_ajax_link" href=./devcorner.php#installLinux>developers' corner</a>.</P>
+<H3>MacOSX</H3>
+<P>OpenCFU is not available for Mac OSX yet.</P>
+<H2 id='gui'>The User Interface</H2>
+<figure>
+<IMG SRC="./img/GUI_overview.png" width="592px">
+<br>
+<figurecaption>The three main areas of the graphical interface.</figurecaption> 
+</figure>
+<H3>Panel</H3>
+<P>
+The top of the panel shows the result as “X<SUB>/Y</SUB>”, where X
+is the number of valid colonies and Y is the total number of objects
+including excluded ones. The result can be set as “NA” by
+clicking on the “Set as NA box”. “Show objects” and “Line
+width” can be modified to change how the objects are represented on
+the display without changing the results.</P>
+
+<figure>
+<IMG SRC="./img/expleResultTopPanel.png" width="400px">
+<br>
+<figurecaption>In this example 62 bacterial colonies while valid and 8 have been excluded.</figurecaption> 
+</figure>
+
+	
+<P>The bottom part of the panel allow the user to change <a class="q_scrollTo" href='#processingParameters'>processing parameters</a>.</P>
+<H3>Image display</H3>
+<P>The processed image is annotated with yellow and blue rectangles for
+each valid colony or red and black rectangles for invalid
+colonies. Scrolling up and down with the mouse will zoom in and out.
+Left-clicking on an colony will select it while right-clicking will
+change its state (<I>e.g.</I> valid -&gt; invalid).</P>
+
+<figure>
+<IMG SRC="./img/expleValidExcludedDisplay.png" width="592px">
+<br>
+<figurecaption>Here, the two non-colony objects are excluded.</figurecaption>
+</figure>
+<P>
+	
+<H3>Results</H3>
+<P>The results of the processing are shown below the display. They can
+be saved and altered (see <a class="q_scrollTo" href='#results'>Results</a>).</P>
+
+
+<H2 id='processingParameters'>Processing Parameters</H2>
+<P> Each time a processing
+variable is modified in the panel, the program will automatically re-analyse the
+image accordingly. 
+</P>
+<H3>Input Images</H3>
+<P>OpenCFU accepts usual types of images (JPEG, TIFF, PNG, BMP...).
+The images can be either in colour or grey-scale. It is possible to
+add several files at the same time or to drag-and-drop files from a
+folder. After loading the first files, one can browse the list of
+files using the “&lt;&lt;”, “&lt;”, “&gt;” and “&gt;&gt;”
+buttons.</P>
+<H3 id='threshold'>Threshold</H3>
+<P>The threshold can be one of three types: “regular”, “inverted”
+or “bilateral” according to the relative darkness of the
+colonies compared to the background.
+</P>
+
+
+<figure>
+<IMG SRC="./img/expleThresholdType.png" width="592px">
+<br>
+<figurecaption>From left to right, these images should be analysed with a regular, inverted and bilateral threshold.</figurecaption>
+</figure>
+<P>
+The value of threshold is a number defining how stringent the analysis
+will be. The higher the threshold the more likely colonies
+will be missed. Conversly, a very low threshold could result in false
+positives. Usual values are between 3 and 30. It is also possible to
+ask OpenCFU to find a value of threshold automatically (“Auto”). 
+</P>
+<H3 id='radius'>Radius</H3>
+<P>This parameter allows the user to constrain the analysis to objects of a
+certain size (between “Min” and “Max”). The size
+is in pixel. The minimal radius is an important parameter as it
+allows the user to exclude very small particles/noise that otherwise would be
+interpreted as colonies. By default, the maximal radius is
+automatically calculated from the image dimensions (“Auto-max”),
+but can be manually specified. 
+</P>
+<H3 id='RoiNMask'>ROIs and Mask</H3>
+<P>In OpenCFU, it is possible to define one or several regions of the
+image where the colonies lie. This is useful when the goal
+is to enumerate colonies in different areas. Different methods
+allow users to apply a mask: 
+</P>
+<UL>
+	<LI><STRONG>None</STRONG>: the default method; the entire image is used, no mask is set. 
+	
+	<LI><STRONG>Draw mask</STRONG>: A <a class="q_ajax_link" href=./tuto.php#maskDraw>video tutorial</a> explains how to draw masks. 
+	Briefly, a built-in tool
+	to draw mask will pop up and allow to draw multiple circular or
+	polygonal masks. To draw a circular mask, one simply clicks on three
+	points of a the edge of the circle. Clicking on “+/add” whilst
+	drawing a polygon will close the shape. 
+	<LI><STRONG>From file</STRONG>: 
+	A <a class="q_ajax_link" href=./tuto.php#maskFile>video tutorial</a> explains how to
+	use an external file as a mask. Briefly, the mask file (<i>e.g.</i>
+	a PNG file) should be a grey-scale image in which each level
+	of grey represents a region.
+	<LI><STRONG>Auto</STRONG>: If the colonies are located in a circular container such as bacterial
+	 colonies in a Petri dish, the program can try to detect the container and define it as a ROI.
+</UL>
+<H3 id='colourFilter'>Colour Filter</H3>
+<P>It is often possible to use colour information in order to improve
+colonies discrimination or to exclude unwanted objects. OpenCFU
+provides two variables to play with:</P>
+
+<UL>
+	<LI><STRONG>Hue: </STRONG> this is an angle (between 0 and 360°)
+	corresponding roughly to the “colour”(<I>e.g.
+	</I>red, green, blue...).
+	In OpenCFU, the user can specify a given hue ± a tolerance value
+	(from 0 to 180°). If the distance between the hue of an object and the selected hue is higher than the tolerance, it will be excluded.
+	<LI><STRONG>Saturation</STRONG>: the
+	saturation is an approximation of how “vibrant” a colour is. It
+	ranges from 0 (the colour is grey) to 255 (extremely colourful).
+	See the wiki pages for <a href = "http://en.wikipedia.org/wiki/Hue">hue</a> and <a href = "http://en.wikipedia.org/wiki/Saturation_%28color_theory%29">saturation</a>.
+</UL>
+<H3  id='outfilter'>Auto Outlier Filter</H3>
+<P>OpenCFU can also automatically find objects that are different
+from the average objects and exclude them. In order to do this, the
+software will first calculate the “average object colour” and
+then exclude colonies that are too different from this value. If
+there are too few (less than 10) clearly defined objects, the filter will
+not work.</P>
+<H2 id='results'>Results</H2>
+<H3>Per image</H3>
+<P>For each image, a summary result is
+given. It contains the following information:</P>
+<UL>
+	<LI><STRONG>ID</STRONG>: a unique
+	identifier.
+	<LI><STRONG>File name</STRONG>: the
+	name of the input file.
+	<LI><STRONG>#Objects</STRONG>: the number of valid objects/colonies.
+	<LI><STRONG>#Excluded</STRONG>: the number of objects/colonies that
+	have been excluded by filters (<I>i.e.</I>
+	ROI, colour or auto-filter).
+	<LI><STRONG>Comment</STRONG>: An optional user-writable comment that
+	can for instance describe the image.
+	<LI><STRONG>Full path</STRONG>: The complete path to the
+	analysed image. This is useful when working with images with the
+	same names in different folders.
+</UL>
+<H3>Per Object</H3>
+<P>In addition to the summary result, a list of objects is displayed.
+When clicking on a row of the list, the corresponding object will be
+highlighted on the display. Conversely, when left-clicking on an
+object in the display, the corresponding row will be selected in the
+list. Objects are can be sorted according to several criteria by
+clicking on the name of one of the features:</P>
+<UL>
+	<LI><STRONG>ID</STRONG>: a unique
+	identifier.
+	
+	<LI><STRONG>Valid</STRONG>: whether the
+	object has not been excluded by filters. One can click on the valid
+	box to override the result given by OpenCFU. This is also possible
+	by right clicking on the object in the display.
+	<LI><STRONG>X</STRONG> and <STRONG>Y</STRONG>: the
+	X and Y coordinates of the 
+	of the center of the object (the
+	origin being at the top-left of the image).
+	<LI><STRONG>ROI</STRONG>: the ROI in which the colony
+	lies, or “0” if the colony does not belong to any ROI (in this case
+	it is excluded by default). When no mask is used the ROI is 1 for
+	all colonies (see <a class="q_scrollTo" href='#RoiNMask'>ROI and Masks</a>).
+	<LI><STRONG>Area</STRONG>:
+	the area of the colony in number of pixels.
+	<LI><STRONG>Radius</STRONG>:
+	the radius of the colony in pixels.
+	<LI><STRONG>R</STRONG>, <STRONG>G</STRONG> and <STRONG>B</STRONG>:
+	the intensity of red, green and blue, from 0 to 255.
+	<LI><STRONG>Hue</STRONG> and <STRONG>Sat</STRONG>:
+	the hue and saturation (see <a class="q_scrollTo" href='#colourFilter'>Colour Filter</a>).
+	<LI><STRONG>#N in Cluster</STRONG>: 
+	the number of colony in the same “cluster” as the object/colony. Colonies that have been separated form each other during processing belong to the same cluster.
+</UL>
+
+<H3>Saving results</H3>
+<P>In order to save results, one simply needs to click on the “Save
+all” button, at the bottom of the result panel. A dialogue then
+will ask what kind of output is wanted. A summary output corresponds
+to the “Per image” result representation while a detailed output
+is similar to the “Per object” list (but for all images).
+In both cases, <strong>the result must be a saved as a CSV file</strong>.
+</P>
+<H2>Getting Good Pictures</H2>
+<P>TODO</P>
+<H2><BR><BR>
+</H2>
+</div>
