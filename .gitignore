@@ -1,0 +1,54 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+#dependence files
+*.Po
+opencfu
+trainer
+data/*.xml
+*.cache/
+*.cache
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tar.gz
+
+#dep
+*.d
+*.pdf
+*.avi
+*.out
+*.aux
+*.log
+*~
+#data file
+#data/
+html/
+latex/
+windowsBuild/
+.dirstamp
+.deps/
+
+*.in
+#*.layout
+*.layout.cbTemp
+Makefile
+config.h
+config.status
+stamp-h1
+
