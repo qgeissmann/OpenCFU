@@ -1,3 +1,13 @@
+#Specific project files
+
+opencfu
+trainer
+
+
+#Codeblocks
+*.layout.cbTemp
+geany_run_script.sh
+
 # Compiled source #
 ###################
 *.com
@@ -6,13 +16,21 @@
 *.exe
 *.o
 *.so
-#dependence files
+
+#autotools
 *.Po
-opencfu
-trainer
-data/*.xml
 *.cache/
 *.cache
+build-aux/
+.dirstamp
+.deps/
+config/
+config.*
+Makefile
+stamp-h1
+*.in
+aclocal.m4
+configure
 
 # Packages #
 ############
@@ -27,8 +45,6 @@ data/*.xml
 *.tar
 *.zip
 *.tar.gz
-
-#dep
 *.d
 *.pdf
 *.avi
@@ -36,19 +52,5 @@ data/*.xml
 *.aux
 *.log
 *~
-#data file
-#data/
-html/
-latex/
-windowsBuild/
-.dirstamp
-.deps/
 
-*.in
-#*.layout
-*.layout.cbTemp
-Makefile
-config.h
-config.status
-stamp-h1
 
