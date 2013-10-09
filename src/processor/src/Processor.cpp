@@ -14,8 +14,6 @@ Processor::Processor(ProcessingOptions& opts):
     m_is_busy(false)
 
 {
-
-
     cv::FileStorage fs;
     std::string path = std::string("./")+std::string(TRAINED_CLASSIF_XML_FILE);
     fs.open(path, cv::FileStorage::READ);
@@ -34,10 +32,7 @@ Processor::Processor(ProcessingOptions& opts):
             assert(!fs.isOpened());
         }
     }
-
-
     m_predictor.loadTrainData(path);
-
     std::string path_ps = std::string("./")+std::string(TRAINED_CLASSIF_PS_XML_FILE);
     fs.open(path_ps, cv::FileStorage::READ);
     DEV_INFOS("Trying to open any local trained classifier: "<<path_ps);
@@ -98,7 +93,6 @@ Processor::~Processor()
 }
 
 void Processor::writeResult(){
-
     std::cout   << "IsValid"<<","
                 << "X"<<","
                 << "Y"<<","
@@ -114,8 +108,6 @@ void Processor::writeResult(){
                 << "Rsd" <<","
                 << "Gsd" <<","
                 << "Bsd" << std::endl;
-
-
 
     for(unsigned int i = 0; i != m_result->size();i++){
         const OneObjectRow& oor = m_result->getRow(i);

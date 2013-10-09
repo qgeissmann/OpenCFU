@@ -9,10 +9,7 @@ class Step_FiltHS : public Step_BaseClass
 {
     public:
         Step_FiltHS(ProcessingOptions& opts):
-            Step_BaseClass(opts)
-            {}
-
-
+            Step_BaseClass(opts){}
     protected:
         void process(const void* src);
         void updateParams(const void* src,bool was_forced);
