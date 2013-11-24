@@ -244,8 +244,8 @@ publish_linux: $(DESKTOP_FILE) $(PKGBUILD_FILE) $(DESKTOP_FILE)
 ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 	./test/stressTest.sh make
 
-check: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
-	./test/stressTest.sh
+#check: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
+#	./test/stressTest.sh
 
 cleanall: clean-local
 	rm -f *.in *.m4 config.* configure *.log *.cache Makefile stamp-h1rm Sh	

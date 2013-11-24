@@ -1,0 +1,5 @@
+opencfu (3.8.11-1) UNRELEASED; urgency=low
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- Quentin Geissmann <quentin@debian>  Sun, 24 Nov 2013 21:27:03 +0000
