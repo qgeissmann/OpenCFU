@@ -2,7 +2,7 @@
 
 opencfu
 trainer
-
+data/*.xml
 
 #Codeblocks
 *.layout.cbTemp

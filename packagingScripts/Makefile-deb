@@ -1,0 +1,17 @@
+DEBIAN_FILE := ./debian
+TARBALL:=$(shell ls | grep  \.tar\.gz)
+PROG_DIR := $(shell echo $(TARBALL) | sed s/".orig.tar.gz"// | sed s/"_"/"-"/)
+all: $(PROG_DIR)
+	echo $(PROG_DIR)
+	echo $(TARBALL)
+# 	cp  $(DEBIAN_FILE) -r $(PROG_DIR)
+
+$(PROG_DIR): 
+	tar -xf *.tar.gz 
+	
+
+
+  
+	
+	
+
