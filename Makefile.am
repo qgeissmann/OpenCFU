@@ -264,5 +264,5 @@ ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 #	./test/stressTest.sh
 
 cleanall: clean-local
-	rm -f *.in *.m4 config.* configure *.log *.cache Makefile stamp-h1rm Sh	
-	rm -rf build-aux config 
+	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1rm Sh	
+	rm -rf build-aux config *.cache

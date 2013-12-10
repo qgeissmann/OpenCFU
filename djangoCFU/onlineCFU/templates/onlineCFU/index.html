@@ -1,0 +1,76 @@
+<head>
+	<script src='http://code.jquery.com/jquery-latest.min.js' type="text/javascript" ></script>
+	<script src="http://malsup.github.com/jquery.form.js" type="text/javascript"></script> 
+<!--
+	<script src="https://rawgithub.com/DmitryBaranovskiy/raphael/master/raphael-min.js" type="text/javascript"></script> 
+-->
+	<script src="https://rawgithub.com/paperjs/paper.js/master/dist/paper-full.min.js" type="text/javascript"></script> 
+	<script type="text/paperscript" canvas="my_canvas">
+	// Create a Paper.js Path to draw a line into it:
+	var path = new Path();
+	// Give the stroke a color
+	path.strokeColor = 'black';
+	var start = new Point(100, 100);
+	// Move to start and draw a line from there
+	path.moveTo(start);
+	// Note the plus operator on Point objects.
+	// PaperScript does that for us, and much more!
+	path.lineTo(start + [ 100, -50 ]);
+
+		var ocfu_result=[];
+		
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#my_img').attr('src', e.target.result);
+					//~ var raster = new Raster('my_img');
+
+					var context = document.getElementById('my_canvas').getContext('2d');
+					//~ img = new Image(input.files[0]);
+					img = new Image("http://www.whatsonyourwall.com/artists-29/limited-edition-marley-canvas-print-form-41895-57723_medium.jpg");
+					context.drawImage(img, 512, 0, 512, img.height * (512/img.width));
+				}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		function processJson(data) { 
+			ocfu_result = data;
+			console.log(ocfu_result.head)
+			for (var i = 0; i < ocfu_result.data.length; i++) {
+				p = new Point(ocfu_result.data[i][1],ocfu_result.data[i][2]);
+				var my_circle = new Path.Circle(p,50);
+				my_circle.fillColor ='#e9e9ff';
+				delete my_circle;
+				console.log(p);
+			}
+		}
+		
+		$(document).ready(function() { 
+			$('#my_form').ajaxForm({ 
+				dataType:  'json', 
+				success:   processJson 
+			});
+			$("#id_file").change(function(){readURL(this);});
+
+			//~ var raster = new Raster('my_img');
+		});
+
+	</script>
+</head>
+<body>
+
+
+		<p>Results:</p>
+		<form id="my_form" action="counting/" method="post" 
+		{% if form.is_multipart %} 
+		enctype="multipart/form-data"{% endif %}>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Submit"/>
+		</form>
+		<div id="result_frame"></div>
+<canvas id="my_canvas" width="512px" height="512px" style="border:3px solid #000000;">
+	<img id="my_img" src="#" alt="your image" />
+</canvas>
+</body>

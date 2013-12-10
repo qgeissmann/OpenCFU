@@ -3,7 +3,7 @@
 opencfu
 trainer
 data/*.xml
-
+*/images-stock/*
 #Codeblocks
 *.layout.cbTemp
 geany_run_script.sh
