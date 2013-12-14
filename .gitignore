@@ -17,6 +17,9 @@ geany_run_script.sh
 *.o
 *.so
 
+
+*/__pycache__/
+
 #autotools
 *.Po
 *.cache/
