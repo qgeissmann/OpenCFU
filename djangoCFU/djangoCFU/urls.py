@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     
 	url(r'^$', views.index, name='index'),
 	url(r'^counting/$', views.counting, name='counting'),
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^uploadImage/$', views.uploadImage, name='uploadImage'),
+    url(r'^admin/', include(admin.site.urls))
 )

@@ -35,9 +35,18 @@
 					$('#my_img').attr('src', e.target.result);
 					redraw();
 					}
-			reader.readAsDataURL(input.files[0]);
+				
+				reader.readAsDataURL(input.files[0]);
+				//force to submit this image:
+				$('#upload_form').submit();
+				
 			}
 		}
+		
+		function setFileRef(data){
+			$("#id_img").val(data);
+		}
+		
 		function processJson(data) { 
 			ocfu_result = data;
 			redraw();
@@ -73,6 +82,12 @@
 				dataType:  'json', 
 				success:   processJson 
 			});
+			
+			$('#upload_form').ajaxForm({ 
+				dataType:  'json', 
+				success:   setFileRef 
+			});
+			
 			$("#id_file").change(function(){readURL(this);});
 		});
 
@@ -82,15 +97,18 @@
 
 
 		
-		<form id="my_form" action="counting/" method="post" 
-		{% if form.is_multipart %} 
-		enctype="multipart/form-data"{% endif %}>
+		<form id="upload_form" action="uploadImage/" method="post"
+		enctype="multipart/form-data" accept="image/*" capture>
+		<p><label for="id_file">File:</label> <input id="id_file" name="file" type="file" /></p>
+		{% csrf_token %}
+		</form>
+		
+		<form id="my_form" action="counting/" method="post" >
 			{% csrf_token %}
 			{{ form.as_p }}
 			<input type="submit" value="Submit"/>
 		</form>
-		<div id="result_frame"></div>
-		
+
 		<h2 id="result"></h2>
 		
 <canvas id="my_canvas" width="512px" height="512px" style="border:3px solid #000000;">

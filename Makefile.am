@@ -10,8 +10,8 @@ AM_LDFLAGS =   -Wall -fopenmp
 
 
 if WIN32
-AM_CXXFLAGS += -mms-bitfields -mwindows
-AM_LDFLAGS += -Wl,-subsystem,windows -mwindows
+AM_CXXFLAGS += -mms-bitfields
+AM_LDFLAGS += -Wl,-subsystem,windows
 endif
 
 if DEV_MODE
@@ -142,6 +142,12 @@ dist_appicon48_DATA=data/icons/48x48/opencfu.png
 ##
 
 if USE_GUI
+
+if WIN32
+AM_CXXFLAGS += -mwindows
+AM_LDFLAGS += -mwindows
+endif
+
 opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_ColourWheel.cpp\
 					src/gui/src/Gui_ControlPanel.cpp\
@@ -256,7 +262,7 @@ deb: dist
 	echo "ok"
 #	mv $(ls $(TMP_DEB))	$(ls $(TMP_DEB) | sed s/"-"/"_"/ |  sed s/".tar."/".orig.tar."/)
 #	rm -rf $(TMP_DEB)
-	 
+
 ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 	./test/stressTest.sh make
 
@@ -264,5 +270,5 @@ ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 #	./test/stressTest.sh
 
 cleanall: clean-local
-	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1rm Sh	
+	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1rm Sh
 	rm -rf build-aux config *.cache
