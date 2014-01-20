@@ -56,4 +56,12 @@ configure
 *.log
 *~
 
+#django:
+
+djangoCFU/images-stock
+djangoCFU/images-stock/*
+db.sqlite3
+*.pyc
+*.pyo
+
 
