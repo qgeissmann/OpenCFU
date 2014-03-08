@@ -20,7 +20,6 @@ ProcessingOptions::ProcessingOptions():
 
 ProcessingOptions::~ProcessingOptions(){
     DEV_INFOS("destroying");
-    DEV_INFOS("destroyed");
 }
 
 

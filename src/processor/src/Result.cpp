@@ -2,10 +2,10 @@
 #include <sstream>
 
 OneObjectRow::OneObjectRow():
-m_n_in_clust(0),m_valid(false),m_ROI(1){}
+m_n_in_clust(0),m_valid(false),m_ROI(1), cluster_class(1){}
 
 OneObjectRow::OneObjectRow(ContourFamily cont_fam,const cv::Mat& raw_img):
-    m_n_in_clust(cont_fam.n_per_clust),m_valid(true),m_ROI(1)
+    m_n_in_clust(cont_fam.n_per_clust),m_valid(true),m_ROI(1),cluster_class(1)
     {
 
         m_rrect = cv::minAreaRect(cont_fam.contours[0]);

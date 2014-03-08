@@ -1,5 +1,4 @@
 #include "ResultMap.hpp"
-//#include <glibmm/datetime.h>
 #include <time.h>
 
 int ResultMap::append(const  Glib::RefPtr<Gio::File> file, const Result& res){
@@ -18,11 +17,6 @@ int ResultMap::append(const  Glib::RefPtr<Gio::File> file, const Result& res){
 
     else{
         DEV_INFOS(" N ot Found");
-
-//      Does not work on old API (e.g. on Win32)
-//        Glib::DateTime date = Glib::DateTime::create_now_local();
-//        Glib::ustring new_coment = date.format("%Y-%m-%d [@%H:%M:%S]: no comment");
-
         time_t now = time(0);
         struct tm  tstruct;
         char       buf[80];

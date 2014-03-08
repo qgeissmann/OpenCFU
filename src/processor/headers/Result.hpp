@@ -51,6 +51,7 @@ class OneObjectRow{
         bool m_valid;
         signed char m_GUI_mask; //-1 = neutral, 0 = force invalid, 1 = force valid
         int m_ROI;
+        int cluster_class; //for unsupervised leaning
 };
 
 class Result{

@@ -17,14 +17,14 @@
 #include "ProcessingOptions.hpp"
 #include "Gui_ProcessorHandler.hpp"
 #include "Gui_Display.hpp"
-
+#include "Gui_ConfigIO.hpp"
 
 
 
 class Gui_MyWindow: public Gtk::Window
 {
     public:
-        Gui_MyWindow(Gui_ProcessorHandler& processor_hand, ProcessingOptions& opts);
+        Gui_MyWindow(Gui_ProcessorHandler& processor_hand, Gui_ConfigIO& config);
         sigc::signal<void, std::vector<std::string> > signal_drag_and_drop(){
             return m_signal_drag_and_drop;
         }
