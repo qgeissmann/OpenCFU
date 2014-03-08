@@ -1,5 +1,5 @@
 #include "Result.hpp"
-
+#include <sstream>
 
 OneObjectRow::OneObjectRow():
 m_n_in_clust(0),m_valid(false),m_ROI(1){}
@@ -38,7 +38,48 @@ OneObjectRow::OneObjectRow(ContourFamily cont_fam,const cv::Mat& raw_img):
 
     }
 
+std::string OneObjectRow::print() const{
+    std::stringstream ss;
+    cv::Point2f center = (this->getPoint(0) + this->getPoint(2) ) * 0.5;
+    ss   << this->isValid()<<","
+                    << center.x<<","
+                    << center.y<<","
+                    << this->getROI()<<","
+                    << this->getNInClust()<<","
+                    << this->getArea()<<","
+                    << this->getRadius()<<","
+                    << this->getHue()<<","
+                    << this->getSat()<<","
+                    << this->getBGRMean()[2]<<","
+                    << this->getBGRMean()[1]<<","
+                    << this->getBGRMean()[0]<<","
+                    << this->getBGRSd()[2]<<","
+                    << this->getBGRSd()[1]<<","
+                    << this->getBGRSd()[0]<<std::endl;
 
+    return  ss.str();
+}
+
+std::string OneObjectRow::printHeader() const{
+    std::stringstream ss;
+    ss << "IsValid"<<","
+                << "X"<<","
+                << "Y"<<","
+                << "ROI"<<","
+                << "N_in_clust"<<","
+                << "Area"<<","
+                << "Radius"<<","
+                << "Hue" <<","
+                << "Saturation" <<","
+                << "Rmean" <<","
+                << "Gmean" <<","
+                << "Bmean" <<","
+                << "Rsd" <<","
+                << "Gsd" <<","
+                << "Bsd" << std::endl;
+
+    return ss.str();
+}
 
 void Result::reset(size_t s){
     v.clear();
