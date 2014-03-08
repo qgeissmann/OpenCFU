@@ -38,9 +38,6 @@ void MaskROI::setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f
                     pts[0].push_back(cv::Point(round(j.x),round(j.y)));
                 }
                 cv::convexHull(pts[0],pts[0]);
-//                for (auto k: pts)
-//                    DEV_INFOS(k);
-
                 cv::drawContours(m_original_mat,pts,0,cv::Scalar(j++),-1);
             }
     }
