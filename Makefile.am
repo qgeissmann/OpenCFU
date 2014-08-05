@@ -1,12 +1,9 @@
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
 
-AM_CXXFLAGS = ${OPENCV_CFLAGS}  -Isrc/ -fopenmp -Wall
+AM_CXXFLAGS = ${OPENCV_CFLAGS} ${OPENMP_CFLAGS} -Isrc/ -Wall
 #AM_LDFLAGS =    -fopenmp
-AM_LDFLAGS =   -Wall -fopenmp
-
-
-
+AM_LDFLAGS =   -Wall ${OPENMP_CFLAGS}
 
 
 if WIN32
