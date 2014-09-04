@@ -85,6 +85,8 @@ void Gui_Decorator::decorate(){
     std::vector<int> in_field_invalid;
     std::vector<int> in_cluster_one;
     std::vector<int> in_cluster_two;
+    std::vector<int> in_cluster_three;
+    std::vector<int> in_cluster_four;
     for(unsigned int i = 0; i != result.size();i++){
         const OneObjectRow& oor = result.getRow(i);
         bool inside = false;
@@ -100,106 +102,35 @@ void Gui_Decorator::decorate(){
             else if (oor.getColorClusterID() == 2){
                 in_cluster_two.push_back(i);
             }
+            else if (oor.getColorClusterID() == 3){
+                in_cluster_three.push_back(i);
+            }
+            else if (oor.getColorClusterID() == 4){
+                in_cluster_four.push_back(i);
+            }
             else {
                 oor.isValid() ? in_field_valid.push_back(i) : in_field_invalid.push_back(i);
             }
         }
     }
 /******************************************************************************
- * drawing each region here is done by copy and paste. should probably port
- * this to a function NJL 13/AUG/2014
+ *Drawing each region, migrated to a functional form 4/SEP/2014
  *****************************************************************************/
-    for(int i : in_cluster_one){
-        const OneObjectRow& oor = result.getRow(i);
-        if(oor.getGUIValid()  == -1){
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+    //clusters if present
+    highlightCells(cr, in_cluster_one,   0.0, 1.0, 0.0, 1, 3);
+    highlightCells(cr, in_cluster_two,   1.0, 0.5, 0.0, 1, 3);
+    highlightCells(cr, in_cluster_three, 0.0, 1.0, 1.0, 1, 3);
+    highlightCells(cr, in_cluster_four,  1.0, 0.0, 1.0, 1, 3);
 
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-        }
-        else{
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-        }
+    //valid cells not in  clusters
+    highlightCells(cr, in_field_valid, 1.0, 1.0, 0.0, 0.8, 3.0);
+    highlightCells(cr, in_field_valid, 0.0, 0.0, 1.0, 1.0, 1.5);
 
-    }
-    cr->set_line_width(3.0*m_line_width_multip);
-    cr->set_source_rgba(0.0, 1.0, 0.0,0.6);
-    cr->stroke_preserve();
-    cr->set_line_width(1.5*m_line_width_multip);
-    cr->set_source_rgba(0.0, 1.0, 0.0,1.0);
-    cr->stroke();
-
-    for(int i : in_cluster_two){
-        const OneObjectRow& oor = result.getRow(i);
-        if(oor.getGUIValid()  == -1){
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
-
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-        }
-        else{
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-        }
-
-    }
-    cr->set_line_width(3.0*m_line_width_multip);
-    cr->set_source_rgba(1.0, 1.0, 0.0,0.6);
-    cr->stroke_preserve();
-    cr->set_line_width(1.5*m_line_width_multip);
-    cr->set_source_rgba(1.0, 1.0, 0.0,1.0);
-    cr->stroke();
 
 /******************************************************************************
- * drawing each region here is done by copy and paste. should probably port
- * this to a function END OF NJL edits
+ * Drawing of invalid cells, done outside of function to accomodate extra
+ * lines
  *****************************************************************************/
-
-    for(int i : in_field_valid){
-        const OneObjectRow& oor = result.getRow(i);
-        if(oor.getGUIValid()  == -1){
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
-
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-        }
-        else{
-            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->close_path();
-            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
-            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
-            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
-        }
-
-    }
-    cr->set_line_width(3.0*m_line_width_multip);
-    cr->set_source_rgba(1.0, 1.0, 0.0,0.8);
-    cr->stroke_preserve();
-    cr->set_line_width(1.5*m_line_width_multip);
-    cr->set_source_rgba(0.0, 0.0, 1.0,1.0);
-    cr->stroke();
 
     for(int i : in_field_invalid){
         const OneObjectRow& oor = result.getRow(i);
@@ -261,4 +192,43 @@ void Gui_Decorator::decorate(){
         }
     DEV_INFOS("Decorating OK");
     drawCrosses(cr);
+}
+
+/**
+ * Gui_Decorator::higlightCells
+ * Routine for drawing squares around valid cells
+ * @param Cairo::RefPtr<Cairo::Context> cr >> Pointer to the cairo drawing context
+ * @param std::vector<int> cells >> vector of int values pointing to which rows in result to paint
+ * @param float r >> red pixel value [0,1]
+ * @param float g >> green pixel value [0,1]
+ * @param float b >> blue pixel value [0,1]
+ * @param float alpha >> alpha channel value [0,1]
+ * @param float width >> line width
+ */
+void Gui_Decorator::highlightCells(Cairo::RefPtr<Cairo::Context> cr, std::vector<int> cells, float r, float g, float b, float a, float width){
+    for(int i : cells){
+        const OneObjectRow& oor = m_processor_hand.getNumResult().getRow(i);
+        if(oor.getGUIValid()  == -1){
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+        }
+        else{
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+        }
+
+    }
+    cr->set_line_width(width*m_line_width_multip);
+    cr->set_source_rgba(r,g,b,a);
+    cr->stroke();
 }
