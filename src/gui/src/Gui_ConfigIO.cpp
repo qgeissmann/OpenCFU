@@ -36,6 +36,8 @@ void Gui_ConfigIO::makeNewConfig(){
 
     m_key_file.set_double("Processing","Likelihood-threshold",m_opts.getLikeThr());
 
+    m_key_file.set_double("Processing","Clustering-Distance",m_opts.getClustDist());
+
     m_key_file.set_string("General","former_version",PACKAGE_VERSION);
 
     m_file = Gio::File::create_for_path(m_config_file_name.c_str());
@@ -69,6 +71,8 @@ void Gui_ConfigIO::getOptionsFromConf(){
     m_opts.setCenTolHue(std::pair<int,int>(m_key_file.get_integer("Processing","Satur-min-saturation"),m_key_file.get_integer("Processing","Satur-max-saturation")));
 
     m_opts.setLikeThr(m_key_file.get_double("Processing","Likelihood-threshold"));
+
+    m_opts.setClustDist(m_key_file.get_double("Processing","Clustering-Distance"));
 try{
     m_version = m_key_file.get_string("General","former_version");
 }

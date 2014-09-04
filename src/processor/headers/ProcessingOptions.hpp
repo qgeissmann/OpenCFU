@@ -88,6 +88,21 @@ class ProcessingOptions
         const cv::Mat& getGUIFilter()const {
             return *m_gui_filter;
             }
+
+//NJL 10/AUG/2014
+/** \brief Getter for the clustering distance
+ *  \return double clustering search distance in L*a*b* colour space
+ */
+
+        const double getClustDist()const{return m_clustering_distance;}
+
+ //NJL 10/AUG/2014
+/** \brief Getter for the has_clustering_distance variable
+ *  \return bool state of the has_clustering_distance variable
+ */
+        const bool getHasClustDist()const{return m_has_clustering_distance;}
+
+
 /** \brief Setter for m_image
  * \param str the name of the file to read the image from
  */
@@ -249,6 +264,27 @@ class ProcessingOptions
         void setGUIFilter(std::shared_ptr<cv::Mat>& filt){
             m_gui_filter = filt;
             }
+
+//NJL 14/AUG/2014
+/** \brief Setter for Clustering Distance
+ *  \param double clustering_distance clustering distance in L*a*b* color space
+ */
+        bool setClustDist(const double clustering_distance){
+            if (clustering_distance>=0.1 && clustering_distance<=50.){
+                m_clustering_distance = clustering_distance;
+                return true;}
+            else{
+                return false;
+            }
+        }
+
+//NJL 14/AUG/2014
+/** \brief Setter for m_has_clustering_distance
+ *  \param bool has_clustering_distance state for whether to perform clustering
+ */
+        void setHasClustDist(const bool has_clustering_distance){m_has_clustering_distance = has_clustering_distance;}
+
+
     protected:
 //        void ajustmaskToImg();
     private:
@@ -259,6 +295,7 @@ class ProcessingOptions
         std::pair<int,int> m_min_max_radius;
         std::pair<int,int> m_cent_tol_hue;
         std::pair<int,int> m_min_max_sat;
+        double m_clustering_distance; //NJL 10/AUG/2014
         double m_likelihood_thr;
         int m_threshold;
         int m_threshold_mode;
@@ -266,6 +303,7 @@ class ProcessingOptions
         bool m_has_auto_threshold;
         bool m_has_hue_filter;
         bool m_has_outlier_filter;
+        bool m_has_clustering_distance; //NJL 10/AUG/2014
 
         std::shared_ptr<cv::Mat> m_gui_filter;
 };

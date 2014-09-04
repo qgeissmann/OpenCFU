@@ -7,6 +7,7 @@
 #include "Step_FiltHS.hpp"
 #include "Step_FiltIPosition2D.hpp"
 #include "Step_FiltLik.hpp"
+#include "Step_ColourCluster.hpp"
 #include <sstream>
 
 Processor::Processor(ProcessingOptions& opts):
@@ -67,6 +68,7 @@ Processor::Processor(ProcessingOptions& opts):
     m_processing_steps.push_back(new Step_FiltIPosition2D(opts));
     m_processing_steps.push_back(new Step_FiltHS(opts));
     m_processing_steps.push_back(new Step_FiltLik(opts));
+    m_processing_steps.push_back(new Step_ColourCluster(opts)); //NJL 28/AUG/2014 //Gives segfault at the moment
     DEV_INFOS("Processor constructed");
 }
 

@@ -81,8 +81,10 @@ void Gui_Decorator::decorate(){
     cv::Point2f tp;
 
 
-    std::vector<int> in_field_valid;
+    std::vector<int> in_field_valid; //valid, but clusterID=0
     std::vector<int> in_field_invalid;
+    std::vector<int> in_cluster_one;
+    std::vector<int> in_cluster_two;
     for(unsigned int i = 0; i != result.size();i++){
         const OneObjectRow& oor = result.getRow(i);
         bool inside = false;
@@ -90,10 +92,85 @@ void Gui_Decorator::decorate(){
             if(m_ROI.contains(oor.getPoint(j)))
                 inside = true;
         }
+        //edited 13/AUG/2014 to create groups for clusters 1 and 2
         if(inside){
-            oor.isValid() ? in_field_valid.push_back(i) : in_field_invalid.push_back(i);
+            if (oor.getColorClusterID() == 1){
+                in_cluster_one.push_back(i);
+            }
+            else if (oor.getColorClusterID() == 2){
+                in_cluster_two.push_back(i);
+            }
+            else {
+                oor.isValid() ? in_field_valid.push_back(i) : in_field_invalid.push_back(i);
+            }
         }
     }
+/******************************************************************************
+ * drawing each region here is done by copy and paste. should probably port
+ * this to a function NJL 13/AUG/2014
+ *****************************************************************************/
+    for(int i : in_cluster_one){
+        const OneObjectRow& oor = result.getRow(i);
+        if(oor.getGUIValid()  == -1){
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+        }
+        else{
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+        }
+
+    }
+    cr->set_line_width(3.0*m_line_width_multip);
+    cr->set_source_rgba(0.0, 1.0, 0.0,0.6);
+    cr->stroke_preserve();
+    cr->set_line_width(1.5*m_line_width_multip);
+    cr->set_source_rgba(0.0, 1.0, 0.0,1.0);
+    cr->stroke();
+
+    for(int i : in_cluster_two){
+        const OneObjectRow& oor = result.getRow(i);
+        if(oor.getGUIValid()  == -1){
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+        }
+        else{
+            cr->move_to (oor.getPoint(0).x,oor.getPoint(0).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->line_to ( oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->close_path();
+            cr->line_to ( oor.getPoint(2).x,oor.getPoint(2).y);
+            cr->move_to (oor.getPoint(3).x,oor.getPoint(3).y);
+            cr->line_to ( oor.getPoint(1).x,oor.getPoint(1).y);
+        }
+
+    }
+    cr->set_line_width(3.0*m_line_width_multip);
+    cr->set_source_rgba(1.0, 1.0, 0.0,0.6);
+    cr->stroke_preserve();
+    cr->set_line_width(1.5*m_line_width_multip);
+    cr->set_source_rgba(1.0, 1.0, 0.0,1.0);
+    cr->stroke();
+
+/******************************************************************************
+ * drawing each region here is done by copy and paste. should probably port
+ * this to a function END OF NJL edits
+ *****************************************************************************/
 
     for(int i : in_field_valid){
         const OneObjectRow& oor = result.getRow(i);

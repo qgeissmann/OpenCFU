@@ -21,15 +21,18 @@ m_help_string("OpenCFU options:\n\
 -R NUM : set a maximal radius\n\
 -c NUM : set a \"center\" value of the Hue/Colour threshold\n\
 -C NUM : set a \"tolerance\" value of the Hue/Colour threshold\n\
+-G NUM : set a \"coarseness\" value for the density based scanner\n\
 ")
 {
     std::stringstream tss;
     std::pair<int,int> min_max_radius,cent_tol_hue;
+    double clustering_distance;
     min_max_radius = opts.getMinMaxRad();
     cent_tol_hue = opts.getCenTolHue();
+    clustering_distance = opts.getClustDist();
     signed char c=0;
 
-    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:")) != -1){
+    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:G:")) != -1){
         switch(c){
             case 'h':
                  printHelp();
@@ -61,6 +64,10 @@ m_help_string("OpenCFU options:\n\
             case 'C':
                 opts.setHasHueFilt(true);
                 cent_tol_hue.second = atoi(optarg);
+                break;
+            case 'G':
+                opts.setHasClustDist(true);
+                clustering_distance = atoi(optarg);
                 break;
             case 'd':{
                 std::string str_optarg(optarg);
@@ -151,6 +158,12 @@ m_help_string("OpenCFU options:\n\
             must be in the [0,360] and [0,180] \
             range respecively"<<std::endl;
             exit(EXIT_FAILURE);
+    }
+
+    if(!opts.setClustDist(clustering_distance)){
+        std::cerr<<"ERROR setting up the clustering distance\
+         (argument \"-G\"). Must be in range [1,50]"<<std::endl;
+         exit(EXIT_FAILURE);
     }
 
 }

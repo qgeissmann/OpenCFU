@@ -8,7 +8,7 @@ Gui_ProcessorHandler::Gui_ProcessorHandler(Processor& processor,ProcessingOption
     m_filter(new cv::Mat)
 {
 //    m_thread = Glib::Threads::Thread::create(sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread));
-    m_thread = Glib::Thread::create(sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread),true);
+    m_thread = Glib::Thread::create( sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread),true);
     m_dispa_idle.connect( sigc::bind(sigc::mem_fun(m_signal_state,&sigc::signal<void, int>::emit),PROCESSOR_IDLE_SIGNAL));
     m_dispa_working.connect( sigc::bind(sigc::mem_fun(m_signal_state,&sigc::signal<void, int>::emit),PROCESSOR_WORKING_SIGNAL));
 }

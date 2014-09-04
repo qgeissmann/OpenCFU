@@ -39,6 +39,9 @@ class Gui_ResultListDisplay : public Gui_ResultDisplayBaseClass{
                 add(m_comment);
                 add(m_col_path);
                 add(m_col_name);
+                add(m_col_clust1);
+                add(m_col_clust2);
+                add(m_col_clust3);
                 }
 
                 Gtk::TreeModelColumn<int> m_col_id;
@@ -47,6 +50,9 @@ class Gui_ResultListDisplay : public Gui_ResultDisplayBaseClass{
                 Gtk::TreeModelColumn<Glib::ustring> m_comment;
                 Gtk::TreeModelColumn<std::string> m_col_path;
                 Gtk::TreeModelColumn<std::string> m_col_name;
+                Gtk::TreeModelColumn<int> m_col_clust1;
+                Gtk::TreeModelColumn<int> m_col_clust2;
+                Gtk::TreeModelColumn<int> m_col_clust3;
         };
        ModelColumns m_col_model;
     private:

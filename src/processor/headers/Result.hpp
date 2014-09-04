@@ -7,6 +7,10 @@
 #include "Features.hpp"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+#include <unordered_map>
+#include <string>
+
+bool pairCompare(const std::pair< int, std::vector<double> >& a, const std::pair< int, std::vector<double> >& b);
 
 class OneObjectRow{
     public:
@@ -32,15 +36,25 @@ class OneObjectRow{
         const int getSat() const{return m_sat_mean;}
         const cv::Scalar getBGRMean() const{return m_BGR_mean;}
         const cv::Scalar getBGRSd() const{return m_BGR_sd;}
+        const cv::Scalar getLABMean() const{return m_LAB_mean;} //NJL 11/AUG/2014
         void setValid(bool b){m_valid = b;}
         void setGUIValid(signed char i){m_GUI_mask = i;}
         void setROI(int r){m_ROI = r;}
+
+        const int getColorClusterID() const{return m_color_cluster_ID;} //NJL 11/AUG/2014
+        void setColorClusterID(int color_cluster_ID){m_color_cluster_ID = color_cluster_ID;} //NJL 11/AUG/2014
+
+        const cv::Scalar getClusterColor() const{return m_cluster_color;} //NJL 02/SEP/2014
+        void setClusterColor(cv::Scalar cluster_colour){m_cluster_color = cluster_colour;} //NJL 02/SEP/2014
 
     private:
 
         cv::RotatedRect m_rrect;
         cv::Scalar m_BGR_mean;
         cv::Scalar m_BGR_sd;
+        cv::Scalar m_cluster_color; //NJL 02/SEP/2014
+        cv::Scalar m_LAB_mean; //NJL 11/AUG/2014
+        int m_color_cluster_ID; //NJL 11/AUG/2014
         int m_sat_mean;
         int m_hue_mean;
         int m_n_in_clust;
@@ -52,6 +66,41 @@ class OneObjectRow{
 //        cv::Point2f m_points[4];
 //        ContourFamily m_cont_fam;
 
+};
+
+class ClusterData{
+    public:
+        ClusterData(){};
+        void addCluster(int id, int pop, cv::Scalar col){
+            if (!m_clusters.count(id)){
+                m_clusters.emplace( id, std::make_pair(pop, col) );
+            }
+            else{
+                DEV_INFOS("Duplicate cluster ID added");
+                m_clusters.erase(id);
+                m_clusters.emplace( id, std::make_pair(pop, col) );
+                }
+        };
+
+        void addCluster(int id, cv::Scalar col){
+            if (!m_clusters.count(id)){
+                m_clusters.emplace( id, std::make_pair(1, col) );
+            }
+            else{
+                m_clusters.find(id)->second.first++;
+                }
+        };
+
+        void incrementClusterPop(int id){m_clusters.find(id)->second.first++;}
+        const int clusterPop(int id) const{ return (m_clusters.count(id)) ? m_clusters.find(id)->second.first : 0;}
+        const cv::Scalar clusterColor(int id) const{cv::Scalar cvscl(0,0,0); return (m_clusters.count(id)) ? m_clusters.find(id)->second.second : cvscl;}
+
+        const int clustersTotal() const{return m_clusters.size();};
+        const std::string str() const;
+
+
+    private:
+        std::unordered_map< int, std::pair<int, cv::Scalar> > m_clusters;
 };
 
 class Result{
@@ -71,10 +120,21 @@ class Result{
         void applyGuiFilter(const cv::Mat& valid);
         void setSameObjects(bool b){m_same_objects = b;}
         const bool getSameObjects()const {return m_same_objects;}
+        void recluster(const std::vector< std::pair<int,int> > clustered); //NJL 13/AUG/2014
+        void ClusterOrder(); //NJL 02/SEP/2014
+        void uncluster(); // NJL 01/SEP/2014
+
+        const ClusterData& getClusterData() const{return m_clusterData;} //NJL 03/SEP/2014
+
     private:
         int m_n_valid;
         std::vector<OneObjectRow> v;
         bool m_same_objects;
+        ClusterData m_clusterData;
+
+
 };
+
+
 
 #endif // RESULT_H

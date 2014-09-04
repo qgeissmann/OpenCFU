@@ -35,6 +35,21 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_n_excluded);
 
+    m_tree_view.append_column("#C1", m_col_model.m_col_clust1);
+    tmp_col = m_tree_view.get_column(c++);
+    if(tmp_col)
+      tmp_col->set_sort_column(m_col_model.m_col_clust1);
+
+    m_tree_view.append_column("#C2", m_col_model.m_col_clust2);
+    tmp_col = m_tree_view.get_column(c++);
+    if(tmp_col)
+      tmp_col->set_sort_column(m_col_model.m_col_clust2);
+
+    m_tree_view.append_column("#C3", m_col_model.m_col_clust3);
+    tmp_col = m_tree_view.get_column(c++);
+    if(tmp_col)
+      tmp_col->set_sort_column(m_col_model.m_col_clust3);
+
 
     ++c;
     Gtk::CellRendererText* renderer_name = Gtk::manage( new Gtk::CellRendererText() );
@@ -110,6 +125,10 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
     row[m_col_model.m_col_name] = file->get_basename();
     row[m_col_model.m_col_path] = file->get_path();
     row[m_col_model.m_comment] = m_result_map.getCommentAt(idx);
+    row[m_col_model.m_col_clust1] = res.getClusterData().clusterPop(1);
+    row[m_col_model.m_col_clust2] = res.getClusterData().clusterPop(2);
+    row[m_col_model.m_col_clust3] = res.getClusterData().clusterPop(3);
+
     if(!NA){
         std::stringstream ss;
         ss <<N;
@@ -135,6 +154,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
 
     m_file_writer.setInUpToDate(false);
 }
+
 type_children::iterator Gui_ResultListDisplay::findWichRow(type_children& children,int idx){
     for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter){
         Gtk::TreeModel::Row tmp_row = *iter;

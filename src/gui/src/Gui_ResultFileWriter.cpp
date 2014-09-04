@@ -13,11 +13,11 @@ void Gui_ResultFileWriter::writeHeader(const bool detail){
 
     Glib::RefPtr< Gio::FileOutputStream > fout = m_out_file->replace();
     if(detail){
-        fout->write("Full_Path,Valid,X,Y,ROI,Area,Radius,R,G,B,Hue,Saturation,N_in_cluster,Comment\n");
+        fout->write("Full_Path,Valid,X,Y,ROI,Area,Radius,R,G,B,Hue,Saturation,N_in_cluster,ColourClusterID,Comment\n");
         fout->close();
     }
     else{
-        fout->write("ID,File_name,N_Objects,N_Excluded,Comment,Full_Path\n");
+        fout->write("ID,File_name,N_Objects,N_Excluded,Cluster1,Cluster2,Cluster3,Comment,Full_Path,ClusterDetail\n");
         fout->close();
     }
 }
@@ -52,6 +52,7 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
                         <<oor.getHue()<<","
                         <<oor.getSat()<<","
                         <<oor.getNInClust()<<","
+                        <<oor.getColorClusterID()<<","  //NJL 13/AUG/2014
                         <<"\""<<comment<<"\""<<std::endl;
                     fout->write(ss.str());
                 }
@@ -75,8 +76,12 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
             else{
                 ss<<"NA,NA,";
             }
-                ss<<comment<<","
-                <<"\""<<tmp_file->get_path()<<"\""<<std::endl;
+                ss<<res_ref.getClusterData().clusterPop(1)<<","
+                <<res_ref.getClusterData().clusterPop(2)<<","
+                <<res_ref.getClusterData().clusterPop(3)<<","
+                <<comment<<","
+                <<"\""<<tmp_file->get_path()<<"\","
+                <<res_ref.getClusterData().str()<<std::endl;
 
             fout->write(ss.str());
         }

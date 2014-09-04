@@ -15,6 +15,7 @@
 #include "Gui_HelloWindow.hpp"
 #include "Gui_PixbufOpener.hpp"
 #include "Gui_MaskSetter.hpp"
+#include "Gui_ColourCluster.hpp" //NJL 10/AUG/2014
 
 class MyAboutDialog : public Gtk::AboutDialog
 {
@@ -72,6 +73,7 @@ class Gui_ControlPanel: public Gtk::Frame
         Gui_MaskSetter m_mask_setter;
         Gui_ColourSelector m_col_select;
         Gui_LikFiltSelector m_lik_select;
+        Gui_ColourCluster m_col_cluster; //NJL 10/AUG/2014
         Gtk::VBox m_vbox;
         Gtk::Button m_about_opencfu_button;
 
