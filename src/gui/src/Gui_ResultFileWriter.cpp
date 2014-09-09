@@ -9,17 +9,24 @@ Gui_ResultFileWriter::Gui_ResultFileWriter(Gtk::Widget* parent):
 
 
 
-void Gui_ResultFileWriter::writeHeader(const bool detail){
+void Gui_ResultFileWriter::writeHeader(const bool detail,const ResultMap& res_map, const std::vector<int>& idxs){
 
     Glib::RefPtr< Gio::FileOutputStream > fout = m_out_file->replace();
+    std::stringstream ss;
     if(detail){
-        fout->write("Full_Path,Valid,X,Y,ROI,Area,Radius,R,G,B,Hue,Saturation,N_in_cluster,Comment\n");
-        fout->close();
+        for (auto i : idxs){
+            if(res_map.getResultAt(i).size() > 0){
+                const OneObjectRow& oor = res_map.getResultAt(i).getRow(0);
+                ss << "Full_Path, "<<oor.printHeader()<<", Comment"<<std::endl;
+            }
+        }
+
     }
     else{
-        fout->write("ID,File_name,N_Objects,N_Excluded,Comment,Full_Path\n");
-        fout->close();
+        ss<<"ID, ROI, File_name, N_Objects, N_Excluded, Comment, Full_Path"<<std::endl;
     }
+    fout->write(ss.str());
+    fout->close();
 }
 
 void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,const std::vector<int>& idxs){
@@ -36,23 +43,7 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
                 for (unsigned int j=0; j<res_ref.size();++j){
                     std::stringstream ss;
                     const OneObjectRow& oor = res_ref.getRow(j);
-                    cv::Scalar col = oor.getBGRMean();
-
-                    cv::Point2f center = (oor.getPoint(0) + oor.getPoint(2) ) * 0.5;
-                    ss  <<"\""<<path<<"\""<<","
-                        <<oor.isValid()<<","
-                        <<center.x<<","
-                        <<center.y<<","
-                        <<oor.getROI()<<","
-                        <<(int)oor.getArea()<<","
-                        <<oor.getRadius()<<","
-                        <<col[2]<<","
-                        <<col[1]<<","
-                        <<col[0]<<","
-                        <<oor.getHue()<<","
-                        <<oor.getSat()<<","
-                        <<oor.getNInClust()<<","
-                        <<"\""<<comment<<"\""<<std::endl;
+                    ss <<"\""<<path<<"\", "<< oor.print()<<", \""<<comment<<"\""<<std::endl;
                     fout->write(ss.str());
                 }
             }
@@ -63,22 +54,33 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
             const Result& res_ref = res_map.getResultAt(i);
             Glib::RefPtr<Gio::File> tmp_file = res_map.getFileFromIdx(i);
 
+            //results per roi table:
+            std::map < uint,std::pair<uint,uint> > table;
+            for(uint i=0; i != (uint)res_ref.size(); ++i){
+                OneObjectRow object = res_ref.getRow(i);
+                int roi = object.getROI();
+                if (roi > 0){
+                    if(object.getGUIValid())
+                        ++(table[roi].first);
+                    else
+                        ++(table[roi].second);
+                }
+            }
+
             const std::string& comment = res_map.getCommentAt(i);
 
             std::stringstream ss;
-            ss  <<i<<","
-                <<"\""<<tmp_file->get_basename()<<"\""<<",";
-            if(!res_map.getIsNAAt(i)){
-                ss<<res_ref.getNValid()<<","
-                <<res_ref.size() - res_ref.getNValid()<<",";
-            }
-            else{
-                ss<<"NA,NA,";
-            }
-                ss<<comment<<","
-                <<"\""<<tmp_file->get_path()<<"\""<<std::endl;
+            for(auto& t : table){
+                ss  <<i<<", "<<t.first<<", \""<<tmp_file->get_basename()<<"\",";
+                auto val_unval = t.second;
+                if(!res_map.getIsNAAt(i))
+                    ss<<val_unval.first<<","<<val_unval.second<<",";
+                else
+                    ss<<"NA,NA,";
 
-            fout->write(ss.str());
+                ss<<comment<<", \""<<tmp_file->get_path()<<"\""<<std::endl;
+
+            fout->write(ss.str());}
         }
     }
     fout->flush ();
@@ -132,7 +134,7 @@ bool Gui_ResultFileWriter::saveSelection(const ResultMap& res_map, const std::ve
 
     m_out_file = Gio::File::create_for_uri(file_uri);
 
-    writeHeader(detailed_result);
+    writeHeader(detailed_result,res_map,idxs);
     writeRows(detailed_result,res_map,idxs);
     m_up_to_date = true;
     return true;

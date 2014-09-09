@@ -55,7 +55,7 @@ std::string OneObjectRow::print() const{
                     << this->getBGRMean()[0]<<","
                     << this->getBGRSd()[2]<<","
                     << this->getBGRSd()[1]<<","
-                    << this->getBGRSd()[0]<<std::endl;
+                    << this->getBGRSd()[0];
 
     return  ss.str();
 }
@@ -76,7 +76,7 @@ std::string OneObjectRow::printHeader() const{
                 << "Bmean" <<","
                 << "Rsd" <<","
                 << "Gsd" <<","
-                << "Bsd" << std::endl;
+                << "Bsd";
 
     return ss.str();
 }
