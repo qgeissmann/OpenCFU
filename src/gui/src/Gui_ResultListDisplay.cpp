@@ -33,7 +33,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_n_excluded);
-
+/*
     m_tree_view.append_column("#C1", m_col_model.m_col_clust1);
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
@@ -48,7 +48,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_clust3);
-
+*/
 
     ++c;
     Gtk::CellRendererText* renderer_name = Gtk::manage( new Gtk::CellRendererText() );
