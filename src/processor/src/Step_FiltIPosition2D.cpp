@@ -60,10 +60,7 @@ void Step_FiltIPosition2D::makeROIPolygons(){
 }
 
 std::vector<int> Step_FiltIPosition2D::filter(const Result& in_numerical_result){
-//    #pragma omp parallel for schedule(dynamic)
-
     std::vector<int> valid(in_numerical_result.size(),1);
-
     if(!m_ROIS_polygs.empty()){
         for(unsigned int i = 0; i < valid.size(); i++){
             const OneObjectRow& oor = in_numerical_result.getRow(i);
@@ -79,18 +76,15 @@ std::vector<int> Step_FiltIPosition2D::filter(const Result& in_numerical_result)
                     if(dist > how_far_from_edge ){
                         how_far_from_edge = dist;
                         val = m_ROIS_val[j];
-
                     }
                 }
             }
-
             if(val > 0 && how_far_from_edge > oor.getRadius() ){
 
                 valid[i] = val;
             }
             else
                 valid[i] = 0;
-
         }
     }
     return valid;

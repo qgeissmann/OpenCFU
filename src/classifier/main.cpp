@@ -1,5 +1,5 @@
 /*
-    Copyright Quentin Geissmann 2012
+    Copyright Quentin Geissmann 2012-2013
 
     This file is part of OpenCFU
 
@@ -21,17 +21,14 @@
 #include "Predictor.hpp"
 #include "defines.hpp"
 
-
 int main(int argc, char **argv){
-
-
     Predictor my_predictor;
     std::vector<signed char> categs;
-
     cv::Mat features;
 
     assert(argc == 3 || argc == 4 );
-    /*training*/
+
+    /*If the program is called to TRAIN the model*/
     if(argv[1][0] == 't'){
         std::cout<<"\n~~~~~~~~~~~~~~TRAINING PREDICTOR~~~~~~~~~~~~~\n "<<std::endl;
 
@@ -45,6 +42,7 @@ int main(int argc, char **argv){
         std::cout<<"\n~~~~~~~~~~~~~~PREDICTOR TRAINED~~~~~~~~~~~~~\n "<<std::endl;
 
     }
+    /*Else, if the program is called to validate the training*/
     else{
         DataMaker dm(TRAINING_SET_IMG,TRAINING_SET_IMG_PS);
         if(argc == 3)
@@ -56,9 +54,6 @@ int main(int argc, char **argv){
 
         std::vector<signed char> pred;
         my_predictor.predict(features,pred);
-
-//'
-//'
         int n_false(0);
         cv::Mat m_mat(3,3,CV_32F,cv::Scalar(0));
         std::map<char,int> lut;
@@ -90,18 +85,9 @@ int main(int argc, char **argv){
         std::cout<<"\nTRAINNING CLASS BALANCE:"<<std::endl;
 
         std::cout.setf(std::ios::fixed);
-//        std::cout.precision(1);
         for(unsigned int i = 0; i < counts.size();i++)
             std::cout<<"N(class =="<<revLut[i]<<") "<<counts[i]<<std::endl;
-
-
-
         std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(m_mat,"CSV")<<"\n"<<std::endl;
-
-//        std::cout<<cv::format(features,"CSV")<<std::endl;
-
     }
-
     return 0;
-
 }

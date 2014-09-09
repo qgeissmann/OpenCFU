@@ -12,7 +12,6 @@ class Step_BaseClass
 {
     public:
         Step_BaseClass(ProcessingOptions& opts);
-//        void* getResult(){return m_step_result;}
         bool run(void*& inout,bool forceReprocess = false);
 
         virtual void process(const void* src) = 0;
@@ -23,8 +22,6 @@ class Step_BaseClass
         virtual bool needReprocess(const void* src) = 0;
         ProcessingOptions& m_opts;
         void* m_step_result;
-//        cv::Mat m_step_result;
-//        Result m_numerical_result;
 };
 
 #endif // STEPBASECLASS_H

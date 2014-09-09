@@ -44,8 +44,6 @@ void Step_1::process(const void* src){
     if(m_kernel_size > 1 ){
         cv::medianBlur(in,tmp_mat,1);
         cv::GaussianBlur(tmp_mat,m_step_img,cv::Size(m_kernel_size,m_kernel_size),5);
-//        cv::bilateralFilter(tmp_mat,m_step_img,m_kernel_size,500,500);
-//        cv::imwrite("/tmp/test.tiff",m_step_img);
         }
     else{
         in.copyTo(m_step_img);

@@ -1,11 +1,9 @@
 #include "Gui_ControlPanel.hpp"
-//#include <gtkmm.h>
 
-
-Gui_ControlPanel::Gui_ControlPanel(Gui_ProcessorHandler& processor_hand,ResultMap& result_map):
+Gui_ControlPanel::Gui_ControlPanel(Gui_ProcessorHandler& processor_hand,ResultMap& result_map, Gui_ConfigIO& config):
     m_processor_hand(processor_hand),
     m_result_label(m_processor_hand,result_map),
-    m_file_setter(processor_hand,NAME_IMAGE_FILE_SETTER),
+    m_file_setter(processor_hand,NAME_IMAGE_FILE_SETTER, config),
     m_thr_setter(processor_hand,NAME_THR_SETTER),
     m_rad_setter(processor_hand,NAME_RAD_SETTER),
     m_mask_setter(processor_hand,NAME_MASK_SETTER),

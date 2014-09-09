@@ -3,13 +3,13 @@
 #include "opencv2/imgproc/imgproc.hpp"
 
 
-Gui_ImgFileSetter::Gui_ImgFileSetter(Gui_ProcessorHandler& processor_hand,const std::string str):
+Gui_ImgFileSetter::Gui_ImgFileSetter(Gui_ProcessorHandler& processor_hand,const std::string str, Gui_ConfigIO& config):
     Gui_OptionSetterBaseClass(processor_hand,str),
     m_add_file_button(ADD_FILE_BUTTON_TEXT),
     m_file_buttons(4),
     m_button_scores{-2,-1,1,2},
     m_button_text{"<<","<",">",">>"},
-    m_last_dir(Glib::get_home_dir()),
+    m_last_dir(config.getLastDir()),
     m_current_file_idx(0),
     m_label(m_files,m_current_file_idx)
 {
@@ -58,6 +58,7 @@ Gui_ImgFileSetter::Gui_ImgFileSetter(Gui_ProcessorHandler& processor_hand,const 
 bool Gui_ImgFileSetter::updateOptions(){
     DEV_INFOS("Trying to send a processing option");
     std::string tmp_path = m_current_file->get_path();
+    m_last_dir = Glib::path_get_dirname(m_current_file->get_path());
     return m_opts.setImage(tmp_path);
 }
 

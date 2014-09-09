@@ -18,7 +18,6 @@ class Step_3: public Step_BaseClass
             Step_BaseClass(opts),
             m_predictor(predictor){
             }
-
         void process(const void* src);
 
     protected:
@@ -34,7 +33,6 @@ class Step_3: public Step_BaseClass
         int m_min_radius, m_max_radius,m_max_cont_width;
         bool m_has_max_radius;
         cv::Mat m_step_img;
-
 };
 
 

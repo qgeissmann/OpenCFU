@@ -12,7 +12,8 @@ class Gui_ConfigIO
         Gui_ConfigIO(ProcessingOptions& opts);
         ~Gui_ConfigIO();
         int& getHelloLevelRef(){return m_hello_lev;}
-
+        std::string& getLastDir(){
+            return m_last_working_dir;}
     protected:
         void makeNewConfig();
         void readConfig();
@@ -24,6 +25,7 @@ class Gui_ConfigIO
         ProcessingOptions& m_opts;
         Glib::KeyFile m_key_file;
         Glib::RefPtr<Gio::File> m_file;
+        std::string m_last_working_dir;
 
 };
 
