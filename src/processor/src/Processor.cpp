@@ -93,40 +93,12 @@ Processor::~Processor()
 }
 
 void Processor::writeResult(){
-    std::cout   << "IsValid"<<","
-                << "X"<<","
-                << "Y"<<","
-                << "ROI"<<","
-                << "N_in_clust"<<","
-                << "Area"<<","
-                << "Radius"<<","
-                << "Hue" <<","
-                << "Saturation" <<","
-                << "Rmean" <<","
-                << "Gmean" <<","
-                << "Bmean" <<","
-                << "Rsd" <<","
-                << "Gsd" <<","
-                << "Bsd" << std::endl;
-
     for(unsigned int i = 0; i != m_result->size();i++){
         const OneObjectRow& oor = m_result->getRow(i);
-        cv::Point2f center = (oor.getPoint(0) + oor.getPoint(2) ) * 0.5;
-        std::cout   << oor.isValid()<<","
-                    << center.x<<","
-                    << center.y<<","
-                    << oor.getROI()<<","
-                    << oor.getNInClust()<<","
-                    << oor.getArea()<<","
-                    << oor.getRadius()<<","
-                    << oor.getHue()<<","
-                    << oor.getSat()<<","
-                    << oor.getBGRMean()[2]<<","
-                    << oor.getBGRMean()[1]<<","
-                    << oor.getBGRMean()[0]<<","
-                    << oor.getBGRSd()[2]<<","
-                    << oor.getBGRSd()[1]<<","
-                    << oor.getBGRSd()[0]<<std::endl;
+        if (i == 0){
+            std::cout << oor.printHeader();
+        }
+        oor.print();
     }
 }
 

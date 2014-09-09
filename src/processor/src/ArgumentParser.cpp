@@ -8,32 +8,18 @@
 
 ArgumentParser::ArgumentParser(int argc, char **argv,ProcessingOptions& opts):
 m_help_string("OpenCFU options:\n\
--i FILE\n\
-    \tThe name of the input image file\n\
--h\n\
-    \tPrint this help\n\
--v\n\
-    \tPrint the version number\n\
--a\n\
-    \tSet the auto-threshold ON. It overrides the argument -t\n\
--o FILE\n\
-    \tThe name of the output image file (none by default)\n\
--m {FILE, auto}\n\
-    \tThe name of the mask image file OR the keyword `auto'\n\
--d {reg,inv,bil}\n\
-    \tThe type of threshold: regular, inverted OR bilateral (the default value `reg')\n\
--t NUM\n\
-    \tSet the threshold (the default value is 10)\n\
--l NUM\n\
-    \tSet a threshold for outlier exclusion(the default value is 10)\n\
--r NUM\n\
-    \tSet the minimal radius (the default value is 3)\n\
--R NUM\n\
-    \tSet a maximal radius (none by default)\n\
--c NUM\n\
-    \tset a \"center\" value of the Hue/Colour threshold\n\
--C NUM\n\
-    \tset a \"tolerance\" value of the Hue/Colour threshold\n\
+-h = print this help\n\
+-v = print the version number\n\
+-a = set the auto-threshold ON. It overrides the argument -t\n\
+-i FILE : the name of the input image file\n\
+-m [FILE | auto]  :the name of the mask image file or the keyword `auto'\n\
+-d {reg,inv,bil} : The type of threshold: regular, inverted or bilateral (the default value `reg')\n\
+-t NUM :set the threshold (the default value is 10)\n\
+-l NUM : set a threshold for outlier exclusion(the default value is 10)\n\
+-r NUM : set the minimal radius (the default value is 3)\n\
+-R NUM : set a maximal radius\n\
+-c NUM : set a \"center\" value of the Hue/Colour threshold\n\
+-C NUM : set a \"tolerance\" value of the Hue/Colour threshold\n\
 ")
 {
     std::stringstream tss;
