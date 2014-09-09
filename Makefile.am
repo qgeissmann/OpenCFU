@@ -10,8 +10,8 @@ AM_LDFLAGS =   -Wall -fopenmp
 
 
 if WIN32
-AM_CXXFLAGS += -mms-bitfields -mwindows
-AM_LDFLAGS += -Wl,-subsystem,windows -mwindows
+AM_CXXFLAGS += -mms-bitfields
+AM_LDFLAGS += -Wl,-subsystem,windows
 endif
 
 if DEV_MODE
@@ -142,6 +142,12 @@ dist_appicon48_DATA=data/icons/48x48/opencfu.png
 ##
 
 if USE_GUI
+
+if WIN32
+AM_CXXFLAGS += -mwindows
+AM_LDFLAGS += -mwindows
+endif
+
 opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_ColourWheel.cpp\
 					src/gui/src/Gui_ControlPanel.cpp\
@@ -241,12 +247,28 @@ $(PKGBUILD_FILE): $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS) $(MD5
 publish_linux: $(DESKTOP_FILE) $(PKGBUILD_FILE) $(DESKTOP_FILE)
 	rsync -avP -e ssh $(DIST_ARCHIVES) quentelery,opencfu@frs.sourceforge.net:/home/frs/project/o/op/opencfu/linux
 
+
+
+TMP_DEB:=$(shell mktemp --suffix='.opencfu' -u)
+#~ DEB_TAR:=$(TMP_DEB)$(DIST_ARCHIVES)
+DEB_TAR:= $(shell echo $(TMP_DEB)/$(DIST_ARCHIVES)| sed s/"-"/"_"/ |  sed s/".tar."/".orig.tar."/)
+DEB_DIR:=$(PKG_SCRIPT_DIR)/debian
+deb: dist
+	mkdir $(TMP_DEB)
+	cp $(DIST_ARCHIVES) $(DEB_TAR)
+	cp $(PKG_SCRIPT_DIR)/Makefile-deb $(TMP_DEB)/Makefile
+	cp $(DEB_DIR) $(TMP_DEB) -r
+	make -C  $(TMP_DEB) all
+	echo "ok"
+#	mv $(ls $(TMP_DEB))	$(ls $(TMP_DEB) | sed s/"-"/"_"/ |  sed s/".tar."/".orig.tar."/)
+#	rm -rf $(TMP_DEB)
+
 ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 	./test/stressTest.sh make
 
-check: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
-	./test/stressTest.sh
+#check: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
+#	./test/stressTest.sh
 
 cleanall: clean-local
-	rm -f *.in *.m4 config.* configure *.log *.cache Makefile stamp-h1rm Sh	
-	rm -rf build-aux config 
+	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1rm Sh
+	rm -rf build-aux config *.cache

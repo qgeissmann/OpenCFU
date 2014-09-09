@@ -2,8 +2,8 @@
 
 opencfu
 trainer
-
-
+data/*.xml
+*/images-stock/*
 #Codeblocks
 *.layout.cbTemp
 geany_run_script.sh
@@ -16,6 +16,9 @@ geany_run_script.sh
 *.exe
 *.o
 *.so
+
+
+*/__pycache__/
 
 #autotools
 *.Po
@@ -52,5 +55,13 @@ configure
 *.aux
 *.log
 *~
+
+#django:
+
+djangoCFU/images-stock
+djangoCFU/images-stock/*
+db.sqlite3
+*.pyc
+*.pyo
 
 
