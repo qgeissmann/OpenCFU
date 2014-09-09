@@ -2,13 +2,12 @@
 
 ContourFamily::ContourFamily():
 n_per_clust(0)
-{
-}
+{}
+
 ContourFamily::ContourFamily(const cont_chunk& cc):
 contours(cc),
 n_per_clust(0)
 {
-
     this->makeHierarchies(cc.size() -1 );
 }
 

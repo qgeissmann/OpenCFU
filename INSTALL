@@ -1,9 +1,10 @@
- To install compile OpenCFU, you will need the GNU development toolbox (
+To compile and install OpenCFU, you will need the GNU development toolbox (
 i.e. autoconf, automake, make, gcc/g++). In most distribution, all these
 packages are in an installable group (e.g. "build-essensial").
 You also need OpenCV library and optionally, to have a GUI, Gtkmm.
 
 Then you can do the usual :
+
 ./configure
 make
 make install

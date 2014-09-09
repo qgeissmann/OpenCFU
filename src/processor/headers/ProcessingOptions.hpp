@@ -13,10 +13,7 @@ class ProcessingOptions
 /** \brief The default constructor
  */
         ProcessingOptions();
-        ~ProcessingOptions();
-//        ProcessingOptions(const ProcessingOptions& cpy);
         ProcessingOptions& operator= (const ProcessingOptions& cpy);
-//        void copyTo(ProcessingOptions& po);
 
 /** \brief Getter for the m_min_max_radius variable
  * \return the minimal and maximal radii as a pair of integer
@@ -115,7 +112,6 @@ class ProcessingOptions
                 cv::minMaxLoc(tmpImg, &min, &max);
                 double rat = max / 256.0;
                 cv::divide(tmpImg,cv::Scalar(rat,rat,rat),tmpImg,1,CV_8UC3) ;//* (double)(1/2);
-//                tmpImg.convertTo(tmpImg,CV_8UC3);
             }
 
             if(!tmpImg.empty()){
@@ -208,9 +204,7 @@ class ProcessingOptions
  * \param likelihood_thr the new value for m_likelihood_thr
  */
         bool setLikeThr(const double likelihood_thr){
-//            if()
             m_likelihood_thr = likelihood_thr;
-// TODO (quentin#5#): check the correctness of the threshold
             return true;
             }
 
@@ -258,8 +252,9 @@ class ProcessingOptions
 /** \brief Setter for m_has_outlier_filter
  * \param has_outlier_filter the new value for m_has_outlier_filter
  */
-        void setHasOutlierFilt(const bool has_outlier_filter){m_has_outlier_filter = has_outlier_filter; }
-
+        void setHasOutlierFilt(const bool has_outlier_filter){
+            m_has_outlier_filter = has_outlier_filter;
+            }
 
         void setGUIFilter(std::shared_ptr<cv::Mat>& filt){
             m_gui_filter = filt;
@@ -290,7 +285,6 @@ class ProcessingOptions
     private:
         cv::Mat m_image;
         std::string m_image_path;
-//        cv::Mat m_mask;
         MaskROI m_mask;
         std::pair<int,int> m_min_max_radius;
         std::pair<int,int> m_cent_tol_hue;

@@ -7,8 +7,8 @@ Gui_ProcessorHandler::Gui_ProcessorHandler(Processor& processor,ProcessingOption
     m_end_process(false),
     m_filter(new cv::Mat)
 {
-//    m_thread = Glib::Threads::Thread::create(sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread));
-    m_thread = Glib::Thread::create( sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread),true);
+    m_thread = Glib::Thread::create(sigc::mem_fun(*this,&Gui_ProcessorHandler::runProcessOnThread),true);
+
     m_dispa_idle.connect( sigc::bind(sigc::mem_fun(m_signal_state,&sigc::signal<void, int>::emit),PROCESSOR_IDLE_SIGNAL));
     m_dispa_working.connect( sigc::bind(sigc::mem_fun(m_signal_state,&sigc::signal<void, int>::emit),PROCESSOR_WORKING_SIGNAL));
 }
@@ -29,7 +29,6 @@ void Gui_ProcessorHandler::runProcessOnThread(){
         if(m_to_process){
 
             {
-//            Glib::Threads::Mutex::Lock lock (m_mutex);
             Glib::Mutex::Lock lock (m_mutex);
             DEV_INFOS("DBG SETTING PROC OPTIONS filter size :"<<m_opts.getGUIFilter().rows);
             m_processor.setOptions(m_opts);
@@ -42,7 +41,6 @@ void Gui_ProcessorHandler::runProcessOnThread(){
             m_processor.runAll();
             const Result& result(m_processor.getNumResult());
             {
-//            Glib::Threads::Mutex::Lock lock (m_mutex_result);
             Glib::Mutex::Lock lock (m_mutex_result);
             m_result = result;
             }

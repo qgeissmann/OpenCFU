@@ -70,7 +70,6 @@ std::vector<bool>  Step_FiltLik::filter(const Result& in_numerical_result){
 
 
     std::vector<bool> valid(in_numerical_result.size(),false);
-//    #pragma omp parallel for schedule(dynamic)
     for(unsigned int i = 0; i < valid.size(); i++){
         const OneObjectRow& oor = in_numerical_result.getRow(i);
         if(oor.isValid()){
@@ -99,15 +98,12 @@ std::vector<bool>  Step_FiltLik::filter(const Result& in_numerical_result){
 float Step_FiltLik::calcLikScore(std::vector<float>& in){
     float p =0;
     float pi = 3.14;
-
     for(int i = 0; i < N_FEATURES;i++){
-
         double sqrt_dif_by_sd = -std::pow((m_means[i] - in[i] )/m_sds[i],2)/2;
         double A = std::exp(sqrt_dif_by_sd);
         double B = m_sds[i] * std::sqrt(2*pi);
         double pp = A / B;
         p += std::log(pp);
     }
-
     return -1 * p;
 }

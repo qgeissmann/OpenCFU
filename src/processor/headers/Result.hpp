@@ -47,6 +47,9 @@ class OneObjectRow{
         const cv::Scalar getClusterColor() const{return m_cluster_color;} //NJL 02/SEP/2014
         void setClusterColor(cv::Scalar cluster_colour){m_cluster_color = cluster_colour;} //NJL 02/SEP/2014
 
+        std::string print() const ;
+        std::string printHeader() const ;
+
     private:
 
         cv::RotatedRect m_rrect;
@@ -63,9 +66,7 @@ class OneObjectRow{
         bool m_valid;
         signed char m_GUI_mask; //-1 = neutral, 0 = force invalid, 1 = force valid
         int m_ROI;
-//        cv::Point2f m_points[4];
-//        ContourFamily m_cont_fam;
-
+        int cluster_class; //for unsupervised leaning
 };
 
 class ClusterData{

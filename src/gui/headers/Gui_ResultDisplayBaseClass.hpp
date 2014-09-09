@@ -28,7 +28,7 @@ class Gui_ResultDisplayBaseClass : public Gtk::Frame
         ResultMap& m_result_map;
         Gtk::TreeModel::ColumnRecord m_col_model;
         Gtk::TreeView m_tree_view;
-        Glib::RefPtr<Gtk::ListStore> m_ref_tree_model;
+
         class ModelColumnsBaseClass : public Gtk::TreeModel::ColumnRecord{};
         Glib::RefPtr<Gtk::TreeSelection> m_ref_tree_selection;
         Gtk::ScrolledWindow m_scrolled_window;

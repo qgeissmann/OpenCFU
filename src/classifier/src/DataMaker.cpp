@@ -20,20 +20,17 @@ void DataMaker::makeFileList(std::vector<std::string>& out,const char direct[]){
         ss<<ent->d_name;
         std::string str = ss.str();
         int found = str.rfind(".png");
-        if(found != std::string::npos){
-
+        if(found != std::string::npos)
             out.push_back(str);
-        }
       }
-
       std::sort(out.begin(), out.end());
-
       closedir (dir);
     }
     else {
       return;
     }
 }
+
 signed char DataMaker::findCategFromName(const std::string& str){
     int neg = str.rfind("Neg_");
     int sing = str.rfind("Sing_");
@@ -48,27 +45,13 @@ signed char DataMaker::findCategFromName(const std::string& str){
     return toRet;
 }
 
-//int DataMaker::findNInClustFromName(const std::string& str){
-//    unsigned int a = str.find_last_of("_");
-//    unsigned int b = str.find_last_of(".");
-//    std::string n_str = str.substr(a+1,b-a-1);
-//    DEV_INFOS("N in clust: "<<a<<" -> "<<b<<" => "<<n_str);
-//    return atoi(n_str.c_str());
-//}
-
-
-
-
-
 void DataMaker::makeDataPS(cv::Mat& out, std::vector<signed char>& category ){
     out =cv::Mat();
     category.resize(0);
     std::vector<std::string> allFiles;
     makeFileList(allFiles,m_library_ps.c_str());
     std::vector< std::vector<ContourFamily> >contour_fams;
-
     for(auto& str : allFiles){
-        DEV_INFOS(str);
         cv::Mat src = cv::imread(str,0);
         assert(!src.empty());
         signed char categ = findCategFromName(str);
@@ -98,7 +81,6 @@ void DataMaker::makeDataPS(cv::Mat& out, std::vector<signed char>& category ){
                 }
             }
         }
-
     }
 }
 
@@ -106,11 +88,9 @@ void DataMaker::makeDataPS(cv::Mat& out, std::vector<signed char>& category ){
 void DataMaker::makeData(cv::Mat& out, std::vector<signed char>& category ){
     out =cv::Mat();
     category.resize(0);
-
     std::vector<std::string> allFiles;
     makeFileList(allFiles,m_library.c_str());
     std::vector< std::vector<ContourFamily> >contour_fams;
-
     for(auto& str : allFiles){
         DEV_INFOS(str);
         cv::Mat src = cv::imread(str,0);
@@ -142,7 +122,6 @@ void DataMaker::makeData(cv::Mat& out, std::vector<signed char>& category ){
                 }
             }
         }
-
     }
 }
 

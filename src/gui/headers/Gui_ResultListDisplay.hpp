@@ -5,6 +5,7 @@
 #include <pangomm/attributes.h>
 #include <gtkmm/button.h>
 #include <gtkmm/box.h>
+#include <gtkmm/treestore.h>
 #include "Gui_ResultDisplayBaseClass.hpp"
 #include "Gui_ResultFileWriter.hpp"
 #include "text.hpp"
@@ -29,6 +30,8 @@ class Gui_ResultListDisplay : public Gui_ResultDisplayBaseClass{
             m_indeces_of_selected.push_back((*ite)[m_col_model.m_col_id]);
         }
         void updateView(Glib::RefPtr<Gio::File> file, int idx);
+        int getDepthFromPath(const Glib::ustring& path);
+
         class ModelColumns : public Gtk::TreeModel::ColumnRecord{
             public:
                 ModelColumns()
@@ -50,13 +53,13 @@ class Gui_ResultListDisplay : public Gui_ResultDisplayBaseClass{
                 Gtk::TreeModelColumn<Glib::ustring> m_comment;
                 Gtk::TreeModelColumn<std::string> m_col_path;
                 Gtk::TreeModelColumn<std::string> m_col_name;
-                Gtk::TreeModelColumn<int> m_col_clust1;
+/*                Gtk::TreeModelColumn<int> m_col_clust1;
                 Gtk::TreeModelColumn<int> m_col_clust2;
-                Gtk::TreeModelColumn<int> m_col_clust3;
+                Gtk::TreeModelColumn<int> m_col_clust3;*/
         };
        ModelColumns m_col_model;
     private:
-
+        Glib::RefPtr<Gtk::TreeStore> m_ref_tree_model;
         Gtk::Button m_save_selected;
         Gtk::Button m_save_all;
         Gtk::Button m_delete_selected;

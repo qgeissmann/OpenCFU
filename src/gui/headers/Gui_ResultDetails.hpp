@@ -90,7 +90,7 @@ class Gui_ResultDetails : public Gui_ResultDisplayBaseClass{
                 Gtk::TreeModelColumn<int> m_Sat;
                 Gtk::TreeModelColumn<int> m_NinClust;
                 Gtk::TreeModelColumn<int> m_cluster_id; //NJL 13/AUG/2014
-//                Gtk::TreeModelColumn<std::string> m_colour;
+
         };
 
        ModelColumns m_col_model;
@@ -98,6 +98,7 @@ class Gui_ResultDetails : public Gui_ResultDisplayBaseClass{
 
 
     private:
+        Glib::RefPtr<Gtk::ListStore> m_ref_tree_model;
         sigc::signal<void,int>& m_signal_select_object;
         sigc::signal<void,int,bool>& m_signal_toggle_object;
         Glib::RefPtr<Gio::File> m_old_file;

@@ -12,9 +12,6 @@ void Step_3::updateParams(const void* src,bool was_forced){
 }
 
 bool Step_3::needReprocess(const void* src){
-
-
-
     if (m_has_max_radius){
       if(!m_opts.getHasMaxRad())
         return true;
@@ -27,30 +24,7 @@ bool Step_3::needReprocess(const void* src){
     }
     if(m_min_radius != m_opts.getMinMaxRad().first)
         return true;
-
     return false;
-//    if(!m_has_max_radius && (m_min_radius != m_opts.getMinMaxRad().first));
-//    else
-//        toReprocess = !m_opts.getHasMaxRad() || m_min_radius != m_opts.getMinMaxRad().first || m_max_radius == m_opts.getMinMaxRad().second;
-
-
-//    if(toReprocess) DEV_INFOS("reprocess !!");
-//
-//
-//    if (m_has_max_radius != m_opts.getHasMaxRad())
-//        return true;
-//    else if(m_max_radius != m_opts.getMinMaxRad().second)
-//        return true;
-//    if(m_has_auto_thr != m_opts.getHasAutoThr() )
-//        return true;
-//    else if (m_threshold != m_opts.getThr())
-//        return true;
-//
-//    if(m_min_radius != m_opts.getMinMaxRad().first)
-//        return true;
-//
-//    return false;
-
 }
 
 void Step_3::process(const void* src){
@@ -89,13 +63,10 @@ void Step_3::makeFeaturesMatrix(const std::vector<ContourFamily>& contour_fams,c
     dst = cv::Mat(n,n_features,CV_32F);
 
     //#pragma omp parallel for schedule(guided)
-
     for(unsigned int i = 0; i < n;i++){
 
         cv::Mat tmp_row(1,n_features,CV_32F);
-        //DEV_INFOS(i);
         m_featureMaker.calcFeatures(contour_fams[i],tmp_row);
-
         //#pragma omp critical
         {
         tmp_row.copyTo(dst.row(i));
@@ -125,12 +96,6 @@ void Step_3::makeContourChunksVect(const cv::Mat& src,std::vector<ContourFamily>
         for(auto& c : all_contours_chunk[i] ){
             if(c.size()>100)
                 subsample(c,c,100);
-//            unsigned int s = c.size();
-//            double epsilon = 0;
-//            if( s > 50){
-//                epsilon = (double)s/100;
-//                cv::approxPolyDP(c,c,epsilon,true);
-//            }
         }
     }
 
@@ -178,25 +143,17 @@ void Step_3::drawAllValid(cv::Mat& inout,std::vector<ContourFamily>& contour_fam
 void  Step_3::subsample(const std::vector<cv::Point>& in, std::vector<cv::Point>& out,const unsigned int size_out){
 
     std::vector<cv::Point> preout (size_out);
-//    out.resize(size_out);
-
     unsigned int size_in = in.size();
     std::vector<float> data((size_in+1)*2);
-
     for(unsigned int i = 0; i != size_in; i++){
         const cv::Point& p = in[i];
         data[i*2] = p.x;
         data[i*2+1] = p.y;
     }
-    // the last point is a copy of the first point
-    // this makes interpolation work as a closed sequence of points
     data[size_in*2] = data[0];
     data[size_in*2+1] = data[1];
-
-
     cv::Mat tmp_mat = cv::Mat(data,false).reshape(1,size_in+1).t();
     cv::resize(tmp_mat,tmp_mat,cv::Size(size_out+1,2),cv::INTER_LINEAR);
-
     for(unsigned int i = 0;i != size_out; ++i){
         int x = std::round(tmp_mat.at<float>(0,i));
         int y = std::round(tmp_mat.at<float>(1,i));

@@ -18,8 +18,6 @@ class Processor
         void runAll();
         void setOptions(const ProcessingOptions& opts){
             m_opts = opts;
-//            DEV_INFOS(m_opts.m_gui_filter());
-            DEV_INFOS(&m_opts);
         }
         const Result& getNumResult()const {
             return *m_result;
@@ -28,9 +26,6 @@ class Processor
         bool getIsBusy(){return m_is_busy;}
 
         void writeResult();
-
-    protected:
-
     private:
         std::vector<Step_BaseClass*> m_processing_steps;
         ProcessingOptions& m_opts;

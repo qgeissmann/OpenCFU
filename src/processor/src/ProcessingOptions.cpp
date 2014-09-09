@@ -20,11 +20,9 @@ ProcessingOptions::ProcessingOptions():
     m_gui_filter(new cv::Mat){
 }
 
-ProcessingOptions::~ProcessingOptions(){
-    DEV_INFOS("destroying");
-    DEV_INFOS("destroyed");
-}
-
+//ProcessingOptions::~ProcessingOptions(){
+//    DEV_INFOS("destroying");
+//}
 
 ProcessingOptions&  ProcessingOptions::operator= (const ProcessingOptions& cpy){
     m_min_max_radius = cpy.getMinMaxRad();

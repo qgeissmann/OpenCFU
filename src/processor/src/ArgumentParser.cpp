@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,7 +12,6 @@ m_help_string("OpenCFU options:\n\
 -v = print the version number\n\
 -a = set the auto-threshold ON. It overrides the argument -t\n\
 -i FILE : the name of the input image file\n\
--o FILE : the name of the output image file (none by default)\n\
 -m [FILE | auto]  :the name of the mask image file or the keyword `auto'\n\
 -d {reg,inv,bil} : The type of threshold: regular, inverted or bilateral (the default value `reg')\n\
 -t NUM :set the threshold (the default value is 10)\n\
@@ -126,17 +125,12 @@ m_help_string("OpenCFU options:\n\
             case '?':
                 if (optopt == 'c')
                     std::cerr<<"Option -"<<optopt<<" requires an argument"<<std::endl;
-//                   fprintf (stderr, "Option -%c requires an argument.\n", optopt);
                 else if (isprint (optopt))
-//                    fprintf (stderr, "Unknown option `-%c'.\n", optopt);
                     std::cerr<<"Unknown option -"<<optopt<<std::endl;
                 else
                     std::cerr<<"Unknown option character"<<optopt<<std::endl;
-//                    fprintf (stderr,"Unknown option character `\\x%x'.\n", optopt);
                 exit(EXIT_FAILURE);
                 break;
-
-
             default:
                 break;
         }

@@ -2,12 +2,12 @@
 
 
 
-Gui_MyWindow::Gui_MyWindow(Gui_ProcessorHandler& processor_hand,ProcessingOptions& opts):
+Gui_MyWindow::Gui_MyWindow(Gui_ProcessorHandler& processor_hand, Gui_ConfigIO& config):
      Gtk::Window(),
 
      m_processor_hand(processor_hand),
 
-     m_controlPanel(m_processor_hand,m_result_map),
+     m_controlPanel(m_processor_hand,m_result_map,config),
      m_draw_frame(m_processor_hand,m_controlPanel.signal_show_decorator(),m_controlPanel.signal_show_mask()),
      m_result_frame(m_processor_hand,m_controlPanel.signal_set_to_NA(),m_result_map),
 
