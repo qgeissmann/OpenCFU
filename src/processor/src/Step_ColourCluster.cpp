@@ -28,7 +28,7 @@ void Step_ColourCluster::updateParams(const void* src,bool was_forced){
     m_use_this_filter = m_opts.getHasClustDist();
     m_clustering_distance = m_opts.getClustDist();
     m_clustering_distance_2 = m_clustering_distance*m_clustering_distance;
-    DEV_INFOS("Cluster Distance set to "+std::to_string(m_clustering_distance));
+    DEV_INFOS("Cluster Distance set to "<<m_clustering_distance);
 
 }
 
@@ -73,7 +73,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
  *
  */
 void Step_ColourCluster::dbscan(){
-    DEV_INFOS("Launching density scanner on " + std::to_string(m_cluster_vector.size()) + " entries");
+    DEV_INFOS("Launching density scanner on "<<m_cluster_vector.size()<<" entries");
     m_current_cluster = 0;
 
     for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){

@@ -124,8 +124,8 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
     row[m_col_model.m_col_path] = file->get_path();
     row[m_col_model.m_comment] = m_result_map.getCommentAt(idx);
 
-    std::map < uint,std::pair<uint,uint> > table;
-    for(uint i=0; i != (uint)res.size(); ++i){
+    std::map < unsigned int,std::pair<unsigned int,unsigned int> > table;
+    for(unsigned int i=0; i != (unsigned int)res.size(); ++i){
         OneObjectRow object = res.getRow(i);
         int roi = object.getROI();
         if (roi > 0){
@@ -279,7 +279,7 @@ void Gui_ResultListDisplay::on_edit_comment(const Glib::ustring& path, const Gli
 
 int Gui_ResultListDisplay::getDepthFromPath(const Glib::ustring& path){
     int ncolons=0;
-    for (uint i=0; i != path.length(); ++i)
+    for (unsigned int i=0; i != path.length(); ++i)
         if (path[i] == ':')
             ++ncolons;
 
