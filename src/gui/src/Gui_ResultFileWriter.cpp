@@ -76,12 +76,12 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
             else{
                 ss<<"NA,NA,";
             }
-                ss<<res_ref.getClusterData().clusterPop(1)<<","
-                <<res_ref.getClusterData().clusterPop(2)<<","
-                <<res_ref.getClusterData().clusterPop(3)<<","
+                ss<<res_ref.getROIClusterData(0).clusterPop(1)<<","
+                <<res_ref.getROIClusterData(0).clusterPop(2)<<","
+                <<res_ref.getROIClusterData(0).clusterPop(3)<<","
                 <<comment<<","
                 <<"\""<<tmp_file->get_path()<<"\","
-                <<res_ref.getClusterData().str()<<std::endl;
+                <<res_ref.getROIClusterData(0).str()<<std::endl;
 
             fout->write(ss.str());
         }

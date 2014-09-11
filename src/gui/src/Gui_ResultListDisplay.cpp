@@ -33,7 +33,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_n_excluded);
-/*
+
     m_tree_view.append_column("#C1", m_col_model.m_col_clust1);
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
@@ -48,7 +48,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_clust3);
-*/
+
 
     ++c;
     Gtk::CellRendererText* renderer_name = Gtk::manage( new Gtk::CellRendererText() );
@@ -115,6 +115,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
 
     const Result& res(m_result_map.getResultAt(idx));
     const bool NA (m_result_map.getIsNAAt(idx));
+    const bool colCluster = ((res.getROIClusterData(1).clusterPop(1) >= 1) && (!NA));
 
     int N = (int) res.getNValid();
     int N_excl = (int) res.size() - res.getNValid();
@@ -122,12 +123,6 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
     row[m_col_model.m_col_name] = file->get_basename();
     row[m_col_model.m_col_path] = file->get_path();
     row[m_col_model.m_comment] = m_result_map.getCommentAt(idx);
-/*<<<<<<< HEAD
-    row[m_col_model.m_col_clust1] = res.getClusterData().clusterPop(1);
-    row[m_col_model.m_col_clust2] = res.getClusterData().clusterPop(2);
-    row[m_col_model.m_col_clust3] = res.getClusterData().clusterPop(3);
-=======
-*/
 
     std::map < uint,std::pair<uint,uint> > table;
     for(uint i=0; i != (uint)res.size(); ++i){
@@ -154,6 +149,26 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
         row[m_col_model.m_col_n_objects] = str;
         row[m_col_model.m_col_n_excluded] = str;
     }
+
+    if (colCluster){
+        std::stringstream ss;
+        ss << res.getROIClusterData(0).clusterPop(1);
+        row[m_col_model.m_col_clust1] = ss.str();
+        ss.str("");
+        ss << res.getROIClusterData(0).clusterPop(2);
+        row[m_col_model.m_col_clust2] = ss.str();
+        ss.str("");
+        ss << res.getROIClusterData(0).clusterPop(3);
+        row[m_col_model.m_col_clust3] = ss.str();
+    }
+    else {
+        std::string str("NA");
+        row[m_col_model.m_col_clust1] = str;
+        row[m_col_model.m_col_clust2] = str;
+        row[m_col_model.m_col_clust3] = str;
+
+    }
+
 
     while(!row.children().empty()){
         m_ref_tree_model->erase(row.children().begin());
@@ -182,6 +197,25 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
                     std::string str("NA");
                     childrow[m_col_model.m_col_n_objects] = str;
                     childrow[m_col_model.m_col_n_excluded] = str;
+                }
+
+                if (colCluster){
+                    std::stringstream ss;
+                    ss << res.getROIClusterData(roi).clusterPop(1);
+                    childrow[m_col_model.m_col_clust1] = ss.str();
+                    ss.str("");
+                    ss << res.getROIClusterData(roi).clusterPop(2);
+                    childrow[m_col_model.m_col_clust2] = ss.str();
+                    ss.str("");
+                    ss << res.getROIClusterData(roi).clusterPop(3);
+                    childrow[m_col_model.m_col_clust3] = ss.str();
+                }
+                else {
+                    std::string str("NA");
+                    childrow[m_col_model.m_col_clust1] = str;
+                    childrow[m_col_model.m_col_clust2] = str;
+                    childrow[m_col_model.m_col_clust3] = str;
+
                 }
         }
     }

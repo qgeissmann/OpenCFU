@@ -69,6 +69,11 @@ class OneObjectRow{
         int cluster_class; //for unsupervised leaning
 };
 
+/**
+ *
+ *
+ *
+ */
 class ClusterData{
     public:
         ClusterData(){};
@@ -83,13 +88,17 @@ class ClusterData{
                 }
         };
 
+        // Note that using this method only the first colour added is used. We only print to
+        // DEV_INFOS if there is a mismatch
         void addCluster(int id, cv::Scalar col){
             if (!m_clusters.count(id)){
                 m_clusters.emplace( id, std::make_pair(1, col) );
             }
             else{
                 m_clusters.find(id)->second.first++;
-                }
+                if (m_clusters.find(id)->second.second != col)
+                    DEV_INFOS("Warning: Colour mismatch has occurred in cluster ID " + std::to_string(id) );
+            }
         };
 
         void incrementClusterPop(int id){m_clusters.find(id)->second.first++;}
@@ -102,6 +111,38 @@ class ClusterData{
 
     private:
         std::unordered_map< int, std::pair<int, cv::Scalar> > m_clusters;
+};
+
+
+class ROIData{
+    public:
+        ROIData(){};
+
+        const ClusterData& getROIClusterData(int roi) const{
+            if (!m_roi_clusters.count(roi)){
+                DEV_INFOS("Could not find roi");
+                return m_empty_cluster_data;
+            }
+            else
+                return (m_roi_clusters.find(roi)->second);
+        }
+
+        ClusterData& addROIClusterData(int roi) {
+            if (!m_roi_clusters.count(roi)){
+                ClusterData thisROI;
+                m_roi_clusters.emplace(roi, thisROI);
+            }
+            return (m_roi_clusters.find(roi)->second);
+        }
+
+        void delClusterData(int roi) { m_roi_clusters.erase(roi); }
+
+        //void addPoint(OneObjectRow&);
+
+    private:
+        std::unordered_map<int, ClusterData> m_roi_clusters;
+        ClusterData m_empty_cluster_data;
+
 };
 
 class Result{
@@ -125,13 +166,15 @@ class Result{
         void ClusterOrder(); //NJL 02/SEP/2014
         void uncluster(); // NJL 01/SEP/2014
 
-        const ClusterData& getClusterData() const{return m_clusterData;} //NJL 03/SEP/2014
+        //const ClusterData& getClusterData() const{return m_clusterData;} //NJL 03/SEP/2014 //deprecated by getROIData(0)
+        const ClusterData& getROIClusterData(int roi) const{return m_roi_data.getROIClusterData(roi);} //NJL 10/SEP/2014
 
     private:
         int m_n_valid;
         std::vector<OneObjectRow> v;
         bool m_same_objects;
         ClusterData m_clusterData;
+        ROIData m_roi_data;
 
 
 };

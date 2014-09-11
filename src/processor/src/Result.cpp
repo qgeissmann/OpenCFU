@@ -54,6 +54,7 @@ std::string OneObjectRow::print() const{
                     << center.x<<","
                     << center.y<<","
                     << this->getROI()<<","
+                    << this->getColorClusterID()<<","
                     << this->getNInClust()<<","
                     << this->getArea()<<","
                     << this->getRadius()<<","
@@ -75,6 +76,7 @@ std::string OneObjectRow::printHeader() const{
                 << "X"<<","
                 << "Y"<<","
                 << "ROI"<<","
+                << "Colour_group"<<","
                 << "N_in_clust"<<","
                 << "Area"<<","
                 << "Radius"<<","
@@ -179,6 +181,8 @@ void Result::recluster(const std::vector< std::pair<int,int> > clustered){
 
     for(std::vector< std::pair<int,int> >::const_iterator it = clustered.begin(); it != clustered.end(); ++it){
         v[it->first].setColorClusterID(it->second);
+        if (it->second == 0) //if not in a cluster, point is invalid
+            v[it->first].setValid(false);
     }
     ClusterOrder();
 }
@@ -255,16 +259,19 @@ void Result::ClusterOrder(){
 
 //Apply translation map to each row
 //add RGB cluster colour to each row.
-
-    ClusterData clusterData;
+    ROIData roiData;
     for (std::vector<OneObjectRow>::iterator it = v.begin(); it != v.end(); ++it){
         std::unordered_map<int, std::pair<int,cv::Scalar> >::iterator loc = translationTable.find(it->getColorClusterID());
         it->setColorClusterID( (loc->second).first );
         it->setClusterColor( (loc->second).second );
-        clusterData.addCluster(it->getColorClusterID(), it->getClusterColor());
+        int roi = it->getROI();
+        roiData.addROIClusterData(0).addCluster(it->getColorClusterID(), it->getClusterColor());
+        if (roi != 0){
+            roiData.addROIClusterData(roi).addCluster(it->getColorClusterID(), it->getClusterColor());
+        }
     }
 
-    m_clusterData = clusterData;
+    m_roi_data = roiData;
 }
 
 bool pairCompare(const std::pair< int, std::vector<double> >& a, const std::pair< int, std::vector<double> >& b){return ( a.second.at(0) < b.second.at(0) );}
@@ -303,15 +310,20 @@ void Result::applyGuiFilter(const cv::Mat& valid){
 
 const std::string ClusterData::str() const{
     std::string outString;
-    outString = "{";
-    for (unsigned ii = 0; ii != m_clusters.size(); ++ii ){
-        outString += "id : " + std::to_string(ii) + ", ";
-        outString += "n : " + std::to_string(clusterPop(ii)) + ", ";
-        outString += "r : " + std::to_string(clusterColor(ii)[2]) + ", ";
-        outString += "g : " + std::to_string(clusterColor(ii)[1]) + ", ";
-        outString += "b : " + std::to_string(clusterColor(ii)[0]) + ", ";
-        outString += ";";
+    outString = "{ ";
+    if (m_clusters.size() >= 2){
+        for (unsigned ii = 1; ii != m_clusters.size(); ++ii ){
+            outString += "id : " + std::to_string(ii) + ", ";
+            outString += "n : " + std::to_string(clusterPop(ii)) + ", ";
+            outString += "r : " + std::to_string( (int) clusterColor(ii)[2]) + ", ";
+            outString += "g : " + std::to_string( (int) clusterColor(ii)[1]) + ", ";
+            outString += "b : " + std::to_string( (int) clusterColor(ii)[0]);
+            if (ii != m_clusters.size()-1)
+                outString += "; ";
+        }
     }
     outString += "}";
     return outString;
 }
+
+
