@@ -98,7 +98,7 @@ class ClusterData{
             else{
                 m_clusters.find(id)->second.first++;
                 if (m_clusters.find(id)->second.second != col)
-                    DEV_INFOS("Warning: Colour mismatch has occurred in cluster ID " + std::to_string(id) );
+                    DEV_INFOS("Warning: Colour mismatch has occurred in cluster ID "<<id);
             }
         };
 

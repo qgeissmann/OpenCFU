@@ -310,21 +310,21 @@ void Result::applyGuiFilter(const cv::Mat& valid){
 }
 
 const std::string ClusterData::str() const{
-    std::string outString;
-    outString = "{ ";
+    std::stringstream ss;
+    ss<<"{ ";
     if (m_clusters.size() >= 2){
         for (unsigned ii = 1; ii != m_clusters.size(); ++ii ){
-            outString += "id : " + std::to_string(ii) + ", ";
-            outString += "n : " + std::to_string(clusterPop(ii)) + ", ";
-            outString += "r : " + std::to_string( (int) clusterColor(ii)[2]) + ", ";
-            outString += "g : " + std::to_string( (int) clusterColor(ii)[1]) + ", ";
-            outString += "b : " + std::to_string( (int) clusterColor(ii)[0]);
+            ss  <<"id : "<<(ii)<<", "
+                <<"n : "<<clusterPop(ii)<<", "
+                <<"r : "<<(int) clusterColor(ii)[2]<<", "
+                <<"g : "<<(int) clusterColor(ii)[1]<<", "
+                <<"b : "<<(int) clusterColor(ii)[0];
             if (ii != m_clusters.size()-1)
-                outString += "; ";
+                ss<<"; ";
         }
     }
-    outString += "}";
-    return outString;
+    ss<<"}";
+    return ss.str();
 }
 
 
