@@ -2,10 +2,10 @@
 #include <sstream>
 
 OneObjectRow::OneObjectRow():
-m_n_in_clust(0),m_valid(false),m_ROI(1), cluster_class(1){}
+m_n_in_clust(0),m_valid(false),m_ROI(1), cluster_class(1),m_color_cluster_ID(0){}
 
 OneObjectRow::OneObjectRow(ContourFamily cont_fam,const cv::Mat& raw_img):
-    m_n_in_clust(cont_fam.n_per_clust),m_valid(true),m_ROI(1),cluster_class(1)
+    m_n_in_clust(cont_fam.n_per_clust),m_valid(true),m_ROI(1),cluster_class(1),m_color_cluster_ID(0)
     {
 
         m_rrect = cv::minAreaRect(cont_fam.contours[0]);
@@ -39,9 +39,6 @@ OneObjectRow::OneObjectRow(ContourFamily cont_fam,const cv::Mat& raw_img):
         //added NJL 11/AUG/2014
         cv::cvtColor(one_pix, one_pix_lab, CV_BGR2Lab);
         m_LAB_mean = cv::mean(one_pix_lab);
-
-        //set m_color_cluster_ID = 0, default value for not in a cluster.
-        m_color_cluster_ID = 0; //NJL 11/AUG/2014
 
 
 
@@ -173,17 +170,21 @@ void Result::applyFilter(const std::vector<int>& valid){
  *
  * \param vector<pair<int,int>> values of row id and cluster to update each oor with
  */
-void Result::recluster(const std::vector< std::pair<int,int> > clustered){
+void Result::recluster(std::vector< std::pair<int,int> > clustered){
     if (clustered.empty()){
         return;
     }
 
-
+    std::sort(clustered.begin(), clustered.end());
+    std::vector<bool> valid;
     for(std::vector< std::pair<int,int> >::const_iterator it = clustered.begin(); it != clustered.end(); ++it){
         v[it->first].setColorClusterID(it->second);
         if (it->second == 0) //if not in a cluster, point is invalid
-            v[it->first].setValid(false);
+            valid.push_back(false);
+        else
+            valid.push_back(true);
     }
+    applyFilter(valid);
     ClusterOrder();
 }
 

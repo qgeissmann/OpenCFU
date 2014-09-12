@@ -289,8 +289,8 @@ class ProcessingOptions
         std::pair<int,int> m_min_max_radius;
         std::pair<int,int> m_cent_tol_hue;
         std::pair<int,int> m_min_max_sat;
-        double m_clustering_distance; //NJL 10/AUG/2014
         double m_likelihood_thr;
+        double m_clustering_distance; //NJL 10/AUG/2014
         int m_threshold;
         int m_threshold_mode;
         bool m_has_max_radius;
