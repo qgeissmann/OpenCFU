@@ -260,19 +260,17 @@ void Result::ClusterOrder(){
 
 //Apply translation map to each row
 //add RGB cluster colour to each row.
-    ROIData roiData;
+    m_roi_data.clear();
     for (std::vector<OneObjectRow>::iterator it = v.begin(); it != v.end(); ++it){
         std::unordered_map<int, std::pair<int,cv::Scalar> >::iterator loc = translationTable.find(it->getColorClusterID());
         it->setColorClusterID( (loc->second).first );
         it->setClusterColor( (loc->second).second );
         int roi = it->getROI();
-        roiData.addROIClusterData(0).addCluster(it->getColorClusterID(), it->getClusterColor());
+        m_roi_data.addROIClusterData(0).addCluster(it->getColorClusterID(), it->getClusterColor());
         if (roi != 0){
-            roiData.addROIClusterData(roi).addCluster(it->getColorClusterID(), it->getClusterColor());
+            m_roi_data.addROIClusterData(roi).addCluster(it->getColorClusterID(), it->getClusterColor());
         }
     }
-
-    m_roi_data = roiData;
 }
 
 bool pairCompare(const std::pair< int, std::vector<double> >& a, const std::pair< int, std::vector<double> >& b){return ( a.second.at(0) < b.second.at(0) );}

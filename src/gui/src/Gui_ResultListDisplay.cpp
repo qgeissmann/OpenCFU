@@ -33,7 +33,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_n_excluded);
-
+/**
     m_tree_view.append_column("#C1", m_col_model.m_col_clust1);
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
@@ -48,7 +48,7 @@ Gui_ResultListDisplay::Gui_ResultListDisplay(sigc::signal<void,Glib::RefPtr<Gio:
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_col_clust3);
-
+*/
 
     ++c;
     Gtk::CellRendererText* renderer_name = Gtk::manage( new Gtk::CellRendererText() );
@@ -115,7 +115,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
 
     const Result& res(m_result_map.getResultAt(idx));
     const bool NA (m_result_map.getIsNAAt(idx));
-    const bool colCluster = ((res.getROIClusterData(1).clusterPop(1) >= 1) && (!NA));
+    const bool hasClusters = (res.getROIClusterData(0).clusterPop(1) >= 1);
 
     int N = (int) res.getNValid();
     int N_excl = (int) res.size() - res.getNValid();
@@ -149,7 +149,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
         row[m_col_model.m_col_n_objects] = str;
         row[m_col_model.m_col_n_excluded] = str;
     }
-
+/**
     if (colCluster){
         std::stringstream ss;
         ss << res.getROIClusterData(0).clusterPop(1);
@@ -168,7 +168,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
         row[m_col_model.m_col_clust3] = str;
 
     }
-
+*/
 
     while(!row.children().empty()){
         m_ref_tree_model->erase(row.children().begin());
@@ -177,46 +177,99 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
     if (table.size() > 1){
         for(auto& i : table){
             Gtk::TreeModel::Row childrow = *(m_ref_tree_model->append(row.children()));
-                int roi = i.first;
-                childrow[m_col_model.m_col_id] = roi;
+            int roi = i.first;
+            childrow[m_col_model.m_col_id] = roi;
+            std::stringstream ss;
+            ss <<"ROI #"<<roi;
+            childrow[m_col_model.m_col_name] = ss.str();
+
+            if(!NA){
+                int number_valid = i.second.first;
+                int number_excluded = i.second.second;
+                ss.str("");
+                ss << number_valid;
+                childrow[m_col_model.m_col_n_objects] = ss.str();
+                ss.str("");
+                ss << number_excluded;
+                childrow[m_col_model.m_col_n_excluded] = ss.str();
+            }
+            else{
+                std::string str("NA");
+                childrow[m_col_model.m_col_n_objects] = str;
+                childrow[m_col_model.m_col_n_excluded] = str;
+            }
+            /**
+            if (colCluster){
                 std::stringstream ss;
-                ss <<"ROI #"<<roi;
-                childrow[m_col_model.m_col_name] = ss.str();
+                ss << res.getROIClusterData(roi).clusterPop(1);
+                childrow[m_col_model.m_col_clust1] = ss.str();
+                ss.str("");
+                ss << res.getROIClusterData(roi).clusterPop(2);
+                childrow[m_col_model.m_col_clust2] = ss.str();
+                ss.str("");
+                ss << res.getROIClusterData(roi).clusterPop(3);
+                childrow[m_col_model.m_col_clust3] = ss.str();
+            }
+            else {
+                std::string str("NA");
+                childrow[m_col_model.m_col_clust1] = str;
+                childrow[m_col_model.m_col_clust2] = str;
+                childrow[m_col_model.m_col_clust3] = str;
 
-                if(!NA){
-                    int number_valid = i.second.first;
-                    int number_excluded = i.second.second;
-                    ss.str("");
-                    ss << number_valid;
-                    childrow[m_col_model.m_col_n_objects] = ss.str();
-                    ss.str("");
-                    ss << number_excluded;
-                    childrow[m_col_model.m_col_n_excluded] = ss.str();
-                }
-                else{
-                    std::string str("NA");
-                    childrow[m_col_model.m_col_n_objects] = str;
-                    childrow[m_col_model.m_col_n_excluded] = str;
-                }
-
-                if (colCluster){
+            }*/
+            if (hasClusters){
+                for (int jj = 1; jj != res.getROIClusterData(0).clustersTotal(); ++jj){
+                    Gtk::TreeModel::Row clusters = *(m_ref_tree_model->append(childrow.children()));
+                    clusters[m_col_model.m_col_id] = jj;
                     std::stringstream ss;
-                    ss << res.getROIClusterData(roi).clusterPop(1);
-                    childrow[m_col_model.m_col_clust1] = ss.str();
-                    ss.str("");
-                    ss << res.getROIClusterData(roi).clusterPop(2);
-                    childrow[m_col_model.m_col_clust2] = ss.str();
-                    ss.str("");
-                    ss << res.getROIClusterData(roi).clusterPop(3);
-                    childrow[m_col_model.m_col_clust3] = ss.str();
-                }
-                else {
-                    std::string str("NA");
-                    childrow[m_col_model.m_col_clust1] = str;
-                    childrow[m_col_model.m_col_clust2] = str;
-                    childrow[m_col_model.m_col_clust3] = str;
+                    ss <<"Clust #"<<jj;
+                    clusters[m_col_model.m_col_name] = ss.str();
+
+                    if(!NA){
+                        int number_valid = res.getROIClusterData(roi).clusterPop(jj);
+                        std::string number_excluded = "";
+                        ss.str("");
+                        ss << number_valid;
+                        clusters[m_col_model.m_col_n_objects] = ss.str();
+                        ss.str("");
+                        ss << number_excluded;
+                        clusters[m_col_model.m_col_n_excluded] = ss.str();
+                    }
+                    else{
+                        std::string str("NA");
+                        clusters[m_col_model.m_col_n_objects] = str;
+                        clusters[m_col_model.m_col_n_excluded] = str;
+                    }
 
                 }
+
+            }
+        }
+    }
+
+    else if (hasClusters){
+        for (int jj = 1; jj != res.getROIClusterData(0).clustersTotal(); ++jj){
+            Gtk::TreeModel::Row clusters = *(m_ref_tree_model->append(row.children()));
+            clusters[m_col_model.m_col_id] = jj;
+            std::stringstream ss;
+            ss <<"Clust #"<<jj;
+            clusters[m_col_model.m_col_name] = ss.str();
+
+            if(!NA){
+                int number_valid = res.getROIClusterData(0).clusterPop(jj);
+                std::string number_excluded = "";
+                ss.str("");
+                ss << number_valid;
+                clusters[m_col_model.m_col_n_objects] = ss.str();
+                ss.str("");
+                ss << number_excluded;
+                clusters[m_col_model.m_col_n_excluded] = ss.str();
+            }
+            else{
+                std::string str("NA");
+                clusters[m_col_model.m_col_n_objects] = str;
+                clusters[m_col_model.m_col_n_excluded] = str;
+            }
         }
     }
 

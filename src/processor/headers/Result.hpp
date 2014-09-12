@@ -137,6 +137,7 @@ class ROIData{
         }
 
         void delClusterData(int roi) { m_roi_clusters.erase(roi); }
+        void clear() {m_roi_clusters.clear();}
 
         //void addPoint(OneObjectRow&);
 
