@@ -188,7 +188,12 @@ void Gui_ResultDetails::setOneRow(Gtk::TreeModel::Row& row, const OneObjectRow& 
     row[m_col_model.m_Hue] = oor.getHue();
     row[m_col_model.m_Sat] = oor.getSat();
     row[m_col_model.m_NinClust] = oor.getNInClust();
-    row[m_col_model.m_cluster_id] = oor.getColorClusterID(); //NJL 13/AUG/2014
+    std::stringstream ss;
+    if (oor.getColorClusterID() == 0)
+        ss<<"NA";
+    else
+        ss<<oor.getColorClusterID();
+    row[m_col_model.m_cluster_id] = ss.str(); //NJL 13/AUG/2014
 }
 
 

@@ -129,7 +129,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
         OneObjectRow object = res.getRow(i);
         int roi = object.getROI();
         if (roi > 0){
-            if(object.getGUIValid())
+            if(object.getGUIValid() && object.isValid()) //otherwise colour filters etc. don't work
                 ++(table[roi].first);
             else
                 ++(table[roi].second);

@@ -176,13 +176,13 @@ void Result::recluster(std::vector< std::pair<int,int> > clustered){
     }
 
     std::sort(clustered.begin(), clustered.end());
-    std::vector<int> valid;
+    std::vector<bool> valid;
     for(std::vector< std::pair<int,int> >::const_iterator it = clustered.begin(); it != clustered.end(); ++it){
         v[it->first].setColorClusterID(it->second);
         if (it->second == 0) //if not in a cluster, point is invalid
-            valid.push_back(0);
+            valid.push_back(false);
         else
-            valid.push_back(v[it->first].getROI());
+            valid.push_back(true);
     }
     applyFilter(valid);
     ClusterOrder();

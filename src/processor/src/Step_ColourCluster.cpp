@@ -51,7 +51,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
     for(unsigned int ii = 0; ii < in_numerical_result.size(); ii++){
         const OneObjectRow& oor = in_numerical_result.getRow(ii);
         //populate the list of valid items with LAB color mean, ID and the cluster state
-        if ( oor.isValid() ){
+        if ( oor.isValid() || (oor.getGUIValid() == 1) ){
             m_cluster_vector.push_back(ClusterPoint( ii, 0, false, oor.getLABMean() ));
         }
         else {
