@@ -57,7 +57,7 @@ class OneObjectRow{
         cv::Scalar m_BGR_sd;
         cv::Scalar m_cluster_color; //NJL 02/SEP/2014
         cv::Scalar m_LAB_mean; //NJL 11/AUG/2014
-        int m_color_cluster_ID; //NJL 11/AUG/2014
+
         int m_sat_mean;
         int m_hue_mean;
         int m_n_in_clust;
@@ -67,6 +67,7 @@ class OneObjectRow{
         signed char m_GUI_mask; //-1 = neutral, 0 = force invalid, 1 = force valid
         int m_ROI;
         int cluster_class; //for unsupervised leaning
+        int m_color_cluster_ID; //NJL 11/AUG/2014
 };
 
 /**
