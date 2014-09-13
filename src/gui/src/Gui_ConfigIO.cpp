@@ -100,7 +100,7 @@ void Gui_ConfigIO::readConfig(){
     }
     else{
         DEV_INFOS("Creating the directory");
-        Gio::File::create_for_path(config_dir_name.c_str())->make_directory();
+        Gio::File::create_for_path(config_dir_name.c_str())->make_directory_with_parents();
     }
 
     std::stringstream ss;
