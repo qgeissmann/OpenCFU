@@ -17,13 +17,14 @@ void Gui_ResultFileWriter::writeHeader(const bool detail){
         fout->close();
     }
     else{
-        fout->write("ID,File_name,N_Objects,N_Excluded,Cluster1,Cluster2,Cluster3,Comment,Full_Path,ClusterDetail\n");
+        fout->write("ID,File_name,ROI,N_Objects,N_Excluded,Cluster1,Cluster2,Cluster3,Comment,Full_Path,ClusterDetail\n");
         fout->close();
     }
 }
 
 void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,const std::vector<int>& idxs){
     Glib::RefPtr< Gio::FileOutputStream > fout = m_out_file->append_to();
+
 
     if(detail){
         for (auto i : idxs){
@@ -63,27 +64,51 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
         for (auto i : idxs){
             const Result& res_ref = res_map.getResultAt(i);
             Glib::RefPtr<Gio::File> tmp_file = res_map.getFileFromIdx(i);
-
+            const std::vector<int> roi_keys = res_ref.getROIs();
             const std::string& comment = res_map.getCommentAt(i);
 
-            std::stringstream ss;
-            ss  <<i<<","
-                <<"\""<<tmp_file->get_basename()<<"\""<<",";
-            if(!res_map.getIsNAAt(i)){
-                ss<<res_ref.getNValid()<<","
-                <<res_ref.size() - res_ref.getNValid()<<",";
+            std::map < unsigned int,std::pair<unsigned int,unsigned int> > table;
+            table[0].first = res_ref.getNValid();
+            table[0].second =  res_ref.size() - res_ref.getNValid();
+            for(unsigned int i=0; i != (unsigned int)res_ref.size(); ++i){
+                OneObjectRow object = res_ref.getRow(i);
+                int roi = object.getROI();
+                if (roi > 0){
+                    if(object.getGUIValid() && object.isValid()) //otherwise colour filters etc. don't work
+                        ++(table[roi].first);
+                    else
+                        ++(table[roi].second);
+                }
             }
-            else{
-                ss<<"NA,NA,";
-            }
-                ss<<res_ref.getROIClusterData(0).clusterPop(1)<<","
-                <<res_ref.getROIClusterData(0).clusterPop(2)<<","
-                <<res_ref.getROIClusterData(0).clusterPop(3)<<","
-                <<comment<<","
-                <<"\""<<tmp_file->get_path()<<"\","
-                <<res_ref.getROIClusterData(0).str()<<std::endl;
 
-            fout->write(ss.str());
+
+            for (auto &it : table){
+                int roi = it.first;
+                std::cout << roi_keys.size();
+                if ((table.size() == 1) || (roi >= 1)){
+
+                    std::stringstream ss;
+                    ss  <<i<<","
+                        <<"\""<<tmp_file->get_basename()<<"\""<<","
+                        <<roi<<",";
+
+                    if(!res_map.getIsNAAt(i)){
+                        ss<<it.second.first<<","
+                        <<it.second.second<<",";
+                    }
+                    else{
+                        ss<<"NA,NA,";
+                    }
+                        ss<<res_ref.getROIClusterData(roi).clusterPop(1)<<","
+                        <<res_ref.getROIClusterData(roi).clusterPop(2)<<","
+                        <<res_ref.getROIClusterData(roi).clusterPop(3)<<","
+                        <<comment<<","
+                        <<"\""<<tmp_file->get_path()<<"\","
+                        <<res_ref.getROIClusterData(roi).str()<<std::endl;
+
+                    fout->write(ss.str());
+                }
+            }
         }
     }
     fout->flush ();

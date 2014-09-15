@@ -309,19 +309,26 @@ void Result::applyGuiFilter(const cv::Mat& valid){
 
 const std::string ClusterData::str() const{
     std::stringstream ss;
+    //this makes a python-dict like output for the saved string.
+    std::vector<int> keys;
+    for (auto &it : m_clusters){
+        keys.push_back(it.first);
+    }
+    int maxClustIndex = keys.begin() == keys.end() ? 0 : *std::max_element(keys.begin(),keys.end());
+
     ss<<"{ ";
-    if (m_clusters.size() >= 2){
-        for (unsigned ii = 1; ii != m_clusters.size(); ++ii ){
-            ss  <<"id : "<<(ii)<<", "
-                <<"n : "<<clusterPop(ii)<<", "
-                <<"r : "<<(int) clusterColor(ii)[2]<<", "
-                <<"g : "<<(int) clusterColor(ii)[1]<<", "
-                <<"b : "<<(int) clusterColor(ii)[0];
-            if (ii != m_clusters.size()-1)
-                ss<<"; ";
+    if ( maxClustIndex >= 1){
+        for (int ii = 1; ii != maxClustIndex+1; ++ii ){
+            ss  <<(ii)<<" : { "
+                <<"\"num\" : "<<clusterPop(ii)<<", "
+                <<"\"r\" : "<<(int) clusterColor(ii)[2]<<", "
+                <<"\"g\" : "<<(int) clusterColor(ii)[1]<<", "
+                <<"\"b\" : "<<(int) clusterColor(ii)[0]<<" }";
+            if (ii != maxClustIndex)
+                ss<<",  ";
         }
     }
-    ss<<"}";
+    ss<<" }";
     return ss.str();
 }
 

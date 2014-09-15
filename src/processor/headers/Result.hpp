@@ -136,6 +136,15 @@ class ROIData{
             return (m_roi_clusters.find(roi)->second);
         }
 
+        const std::vector<int> getROIkeys() const{
+            std::vector<int> keys;
+            for (auto &it : m_roi_clusters){
+                keys.push_back(it.first);
+            }
+            std::sort(keys.begin(),keys.end());
+            return keys;
+        }
+
         void delClusterData(int roi) { m_roi_clusters.erase(roi); }
         void clear() {m_roi_clusters.clear();}
 
@@ -170,6 +179,7 @@ class Result{
 
         //const ClusterData& getClusterData() const{return m_clusterData;} //NJL 03/SEP/2014 //deprecated by getROIData(0)
         const ClusterData& getROIClusterData(int roi) const{return m_roi_data.getROIClusterData(roi);} //NJL 10/SEP/2014
+        const std::vector<int> getROIs() const{return m_roi_data.getROIkeys();}
 
     private:
         int m_n_valid;
