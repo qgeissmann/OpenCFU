@@ -9,6 +9,7 @@
 #include "Step_FiltLik.hpp"
 #include "Step_ColourCluster.hpp"
 #include <sstream>
+#include <iostream>
 
 Processor::Processor(ProcessingOptions& opts):
     m_opts(opts),
