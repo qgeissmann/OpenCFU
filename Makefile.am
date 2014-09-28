@@ -270,7 +270,8 @@ deb: dist
 	cp $(PKG_SCRIPT_DIR)/Makefile-deb $(TMP_DEB)/Makefile
 	cp $(DEB_DIR) $(TMP_DEB) -r
 	make -C  $(TMP_DEB) all
-	echo "ok"
+	echo SUCCESS DEBIAN PACKAGE FILES ARE IN '$(TMP_DEB)'
+
 #	mv $(ls $(TMP_DEB))	$(ls $(TMP_DEB) | sed s/"-"/"_"/ |  sed s/".tar."/".orig.tar."/)
 #	rm -rf $(TMP_DEB)
 

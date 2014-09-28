@@ -1,10 +1,11 @@
-DEBIAN_FILE := ./debian
+DEBIAN_FILE := ./debian/
 TARBALL:=$(shell ls | grep  \.tar\.gz)
 PROG_DIR := $(shell echo $(TARBALL) | sed s/".orig.tar.gz"// | sed s/"_"/"-"/)
 all: $(PROG_DIR)
 	echo $(PROG_DIR)
 	echo $(TARBALL)
-	mv  $(DEBIAN_FILE)  $(PROG_DIR)
+	rm -rf  $(PROG_DIR)/$(DEBIAN_FILE)
+	cp -r  $(DEBIAN_FILE)  $(PROG_DIR)
 #	cd $(PROG_DIR)  && debuild -us -uc -d
 	cd $(PROG_DIR)  && dpkg-buildpackage -us -uc -d
 
