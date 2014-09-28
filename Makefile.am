@@ -1,12 +1,9 @@
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
 
-AM_CXXFLAGS = ${OPENCV_CFLAGS}  -Isrc/ -fopenmp -Wall
+AM_CXXFLAGS = ${OPENCV_CFLAGS} ${OPENMP_CFLAGS} -Isrc/ -Wall
 #AM_LDFLAGS =    -fopenmp
-AM_LDFLAGS =   -Wall -fopenmp
-
-
-
+AM_LDFLAGS =   -Wall ${OPENMP_CFLAGS}
 
 
 if WIN32
@@ -125,12 +122,18 @@ opencfu_LDADD = ${OPENCV_LIBS}
 
 
 opencfudir = $(pkgdatadir)
-nobase_dist_opencfu_DATA = $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS) data/banner.png data/logo.png data/noise-texture.png
+nobase_dist_opencfu_DATA = $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
+
+if USE_GUI
+nobase_dist_opencfu_DATA += data/banner.png data/logo.png data/noise-texture.png
+endif
 
 #\
 #data/icon_128px.png data/icon_64px.png data/icon_48px.png data/icon_24px.png
 
 ###LINUX PACKAGING
+
+if USE_GUI
 applicationdir=$(datadir)/applications
 dist_application_DATA=packagingScripts/opencfu.desktop
 
@@ -142,7 +145,7 @@ dist_appicon128_DATA=data/icons/128x128/opencfu.png
 
 appicon48dir=$(datadir)/icons/hicolor/48x48/apps
 dist_appicon48_DATA=data/icons/48x48/opencfu.png
-
+endif
 ##
 
 if USE_GUI
