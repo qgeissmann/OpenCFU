@@ -5,7 +5,8 @@ all: $(PROG_DIR)
 	echo $(PROG_DIR)
 	echo $(TARBALL)
 	mv  $(DEBIAN_FILE)  $(PROG_DIR)
-	cd $(PROG_DIR) ; debuild -us -uc -d
+#	cd $(PROG_DIR)  && debuild -us -uc -d
+	cd $(PROG_DIR)  && dpkg-buildpackage -us -uc -d
 
 $(PROG_DIR): 
 	tar -xf *.tar.gz 
