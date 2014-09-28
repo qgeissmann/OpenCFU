@@ -49,7 +49,7 @@ std::string OneObjectRow::print() const{
     cv::Point2f center = (this->getPoint(0) + this->getPoint(2) ) * 0.5;
     ss   << this->isValid()<<","
                     << center.x<<","
-                    << center.y<<","
+                    <<center.y<<","
                     << this->getROI()<<","
                     << this->getColorClusterID()<<","
                     << this->getNInClust()<<","
@@ -319,11 +319,11 @@ const std::string ClusterData::str() const{
     ss<<"{ ";
     if ( maxClustIndex >= 1){
         for (int ii = 1; ii != maxClustIndex+1; ++ii ){
-            ss  <<(ii)<<" : { "
-                <<"\"num\" : "<<clusterPop(ii)<<", "
-                <<"\"r\" : "<<(int) clusterColor(ii)[2]<<", "
-                <<"\"g\" : "<<(int) clusterColor(ii)[1]<<", "
-                <<"\"b\" : "<<(int) clusterColor(ii)[0]<<" }";
+            ss  <<(ii)<<": { "
+                <<"'num' : "<<clusterPop(ii)<<", "
+                <<"'r' : "<<(int) clusterColor(ii)[2]<<", "
+                <<"'g' : "<<(int) clusterColor(ii)[1]<<", "
+                <<"'b' : "<<(int) clusterColor(ii)[0]<<" }";
             if (ii != maxClustIndex)
                 ss<<",  ";
         }

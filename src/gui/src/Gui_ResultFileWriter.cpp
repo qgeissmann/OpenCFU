@@ -25,6 +25,7 @@ void Gui_ResultFileWriter::writeHeader(const bool detail,const ResultMap& res_ma
     else{
         ss<<"ID, File_name, ROI, N_Objects, N_Excluded, Cluster1, Cluster2, Cluster3, Comment, Full_Path, ClusterDetail"<<std::endl;
     }
+    DEV_INFOS(ss);
     fout->write(ss.str());
     fout->close();
 }
@@ -92,9 +93,9 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
                         ss<<res_ref.getROIClusterData(roi).clusterPop(1)<<","
                         <<res_ref.getROIClusterData(roi).clusterPop(2)<<","
                         <<res_ref.getROIClusterData(roi).clusterPop(3)<<","
-                        <<comment<<","
+                        <<"\""<<comment<<"\""<<","
                         <<"\""<<tmp_file->get_path()<<"\","
-                        <<res_ref.getROIClusterData(roi).str()<<std::endl;
+                        <<"\""<<res_ref.getROIClusterData(roi).str()<<"\""<<std::endl;
 
                     fout->write(ss.str());
                 }
