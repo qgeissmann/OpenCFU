@@ -1,0 +1,8 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OpenCFU
+Upstream-Contact: Quentun Geissmann <opencfu@gmail.com>
+Source: http://sourceforge.net/projects/opencfu/
+
+Files: *
+Copyright: 2013-2014 Quentin GEISSMANN
+License: GPL-3+
