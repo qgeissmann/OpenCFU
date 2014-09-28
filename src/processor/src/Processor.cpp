@@ -100,7 +100,8 @@ void Processor::writeResult(){
         if (i == 0){
             std::cout << oor.printHeader()<<std::endl;
         }
-        std::cout << oor.print();
+        std::cout << oor.print()<<std::endl;
     }
+
 }
 
