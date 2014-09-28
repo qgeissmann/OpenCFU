@@ -6,6 +6,7 @@ data/*.xml
 */images-stock/*
 #Codeblocks
 *.layout.cbTemp
+*.cscope_file_list
 geany_run_script.sh
 
 # Compiled source #
