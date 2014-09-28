@@ -95,11 +95,9 @@ Processor::~Processor()
 }
 
 void Processor::writeResult(){
+    std::cout << OneObjectRow::printHeader()<<std::endl;
     for(unsigned int i = 0; i != m_result->size();i++){
         const OneObjectRow& oor = m_result->getRow(i);
-        if (i == 0){
-            std::cout << oor.printHeader()<<std::endl;
-        }
         std::cout << oor.print()<<std::endl;
     }
 

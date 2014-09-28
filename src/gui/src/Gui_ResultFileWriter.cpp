@@ -14,18 +14,12 @@ void Gui_ResultFileWriter::writeHeader(const bool detail,const ResultMap& res_ma
     Glib::RefPtr< Gio::FileOutputStream > fout = m_out_file->replace();
     std::stringstream ss;
     if(detail){
-        for (auto i : idxs){
-            if(res_map.getResultAt(i).size() > 0){
-                const OneObjectRow& oor = res_map.getResultAt(i).getRow(0);
-                ss << "Full_Path, "<<oor.printHeader()<<", Comment"<<std::endl;
-            }
-        }
-
+            ss << "Full_Path, "<<OneObjectRow::printHeader()<<", Comment"<<std::endl;
     }
     else{
         ss<<"ID, File_name, ROI, N_Objects, N_Excluded, Cluster1, Cluster2, Cluster3, Comment, Full_Path, ClusterDetail"<<std::endl;
     }
-    DEV_INFOS(ss);
+    DEV_INFOS(ss.str());
     fout->write(ss.str());
     fout->close();
 }

@@ -67,7 +67,7 @@ std::string OneObjectRow::print() const{
     return  ss.str();
 }
 
-std::string OneObjectRow::printHeader() const{
+std::string OneObjectRow::printHeader(){
     std::stringstream ss;
     ss << "IsValid"<<","
                 << "X"<<","

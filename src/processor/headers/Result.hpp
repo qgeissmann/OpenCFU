@@ -48,7 +48,7 @@ class OneObjectRow{
         void setClusterColor(cv::Scalar cluster_colour){m_cluster_color = cluster_colour;} //NJL 02/SEP/2014
 
         std::string print() const ;
-        std::string printHeader() const ;
+        static std::string printHeader();
 
     private:
 
