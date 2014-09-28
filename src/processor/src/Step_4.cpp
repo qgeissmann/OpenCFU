@@ -70,8 +70,6 @@ void Step_4::process(const void* src){
     this->makeFeaturesMatrix(contour_fams,feature_mat);
     std::vector<signed char> categ;
     m_predictor.predict(feature_mat,categ);
-//    std::vector<int> n_per_clust;
-
 
     m_contour_spliter.split(contour_fams,categ);
     std::vector<ContourFamily> contour_fams_split, contour_fams_unsplit;
@@ -93,8 +91,6 @@ void Step_4::process(const void* src){
 
     contour_fams_split.insert( contour_fams_split.end(), contour_fams_unsplit.begin(), contour_fams_unsplit.end() );
     std::swap(contour_fams_split,contour_fams);
-
-//    testFun(contour_fams_split,categ_split);
     categ_split.insert( categ_split.end(), categ_unsplit.begin(), categ_unsplit.end() );
     std::swap(categ_split,categ);
 
@@ -157,7 +153,6 @@ void Step_4::writeNumResults(const std::vector<ContourFamily>& contour_fams, con
     DEV_INFOS(valid_idx.size());
     m_step_numerical_result.reset(valid_idx.size());
 
-//    #pragma omp parallel for
     for(unsigned int i=0;i < valid_idx.size() ; i++){
          unsigned int idx = valid_idx[i];
             m_step_numerical_result.add_at(OneObjectRow(contour_fams[idx],m_raw_img),i);

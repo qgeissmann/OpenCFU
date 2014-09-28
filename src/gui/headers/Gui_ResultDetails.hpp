@@ -73,6 +73,7 @@ class Gui_ResultDetails : public Gui_ResultDisplayBaseClass{
                 add(m_Hue);
                 add(m_Sat);
                 add(m_NinClust);
+                add(m_cluster_id); //NJL 13/AUG/2014
                 }
 
                 Gtk::TreeModelColumn<int> m_id;
@@ -88,6 +89,7 @@ class Gui_ResultDetails : public Gui_ResultDisplayBaseClass{
                 Gtk::TreeModelColumn<int> m_Hue;
                 Gtk::TreeModelColumn<int> m_Sat;
                 Gtk::TreeModelColumn<int> m_NinClust;
+                Gtk::TreeModelColumn<std::string> m_cluster_id; //NJL 13/AUG/2014
 
         };
 

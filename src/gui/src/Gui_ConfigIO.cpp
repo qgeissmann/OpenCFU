@@ -36,6 +36,8 @@ void Gui_ConfigIO::makeNewConfig(){
 
     m_key_file.set_double("Processing","Likelihood-threshold",m_opts.getLikeThr());
 
+    m_key_file.set_double("Processing","Clustering-Distance",m_opts.getClustDist());
+
     m_key_file.set_string("General","former_version",PACKAGE_VERSION);
 
 
@@ -71,12 +73,20 @@ void Gui_ConfigIO::getOptionsFromConf(){
 
     m_opts.setLikeThr(m_key_file.get_double("Processing","Likelihood-threshold"));
 
-    try{
-        m_version = m_key_file.get_string("General","former_version");
-
+    //This exception block catches the instance where an older config file is used,
+    //In some cases, on the first run, the parameter "Clustering-Distance" will not be defined.
+    try {
+        m_opts.setClustDist(m_key_file.get_double("Processing","Clustering-Distance"));
     }
-    catch(Glib::KeyFileError){
-        m_version = "3.8.0";
+    catch (Glib::KeyFileError) {
+        m_opts.setClustDist(2.3);
+    }
+
+    try {
+        m_version = m_key_file.get_string("General","former_version");
+    }
+    catch (Glib::KeyFileError) {
+    m_version = "3.8.0";
     }
 
     try{

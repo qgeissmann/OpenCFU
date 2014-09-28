@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="all" />
+<<<<<<< HEAD
 	<File name="src/gui/headers/Gui_ResultDetails.hpp" open="0" top="0" tabpos="34" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2998" topLine="0" />
+=======
+	<File name="src/gui/src/Gui_ResultDetails.cpp" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="696" topLine="4" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 	<File name="src/processor/src/Features.cpp" open="0" top="0" tabpos="37" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
@@ -11,6 +17,7 @@
 			<Cursor1 position="1010" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src/processor/headers/Processor.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="887" topLine="0" />
@@ -64,6 +71,70 @@
 	<File name="src/processor/src/MaskROI.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2298" topLine="0" />
+=======
+	<File name="src/gui/src/Gui_ColourWheel.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2332" topLine="32" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_UserFilterSetter.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1203" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/classifier/src/DataMaker.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="712" topLine="14" />
+		</Cursor>
+		<Folding>
+			<Collapse line="13" />
+			<Collapse line="35" />
+		</Folding>
+	</File>
+	<File name="src/gui/src/Gui_Display.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1147" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="NEWS" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_MouseHandler.hpp" open="0" top="0" tabpos="40" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="78" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_DisplayRoi.hpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2119" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_PixbufOpener.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/MaskROI.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1524" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/ContourSpliter.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="187" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ThresholdSetter.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="484" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_RadiusSetter.hpp" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="511" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 	<File name="src/main.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
@@ -76,6 +147,7 @@
 			<Cursor1 position="303" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src/gui/headers/Gui_ResultLabel.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="477" topLine="5" />
@@ -117,6 +189,46 @@
 	<File name="src/gui/src/ResultMap.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1052" topLine="0" />
+=======
+	<File name="src/gui/headers/Gui_ThresholdSetter.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="648" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/text.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2803" topLine="68" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/MaskROI.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="199" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_DisplayBaseClass.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3349" topLine="87" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Result.hpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1708" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Step_FiltIPosition2D.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="338" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ProcessorHandler.cpp" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1237" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="src/defines.hpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="447" topLine="4" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 	<File name="src/gui/src/Gui_PixbufOpener.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
@@ -124,6 +236,7 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src/processor/src/Processor.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3379" topLine="75" />
@@ -142,13 +255,29 @@
 	<File name="src/classifier/main.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="983" topLine="25" />
-		</Cursor>
-	</File>
-	<File name="src/processor/headers/ContourSpliter.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+=======
+	<File name="src/processor/src/Step_FiltGUI.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="187" topLine="0" />
+			<Cursor1 position="931" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="src/gui/headers/Gui_ResultFrame.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="594" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Step_FiltLik.hpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="15" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ConfigIO.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3977" topLine="72" />
+		</Cursor>
+	</File>
+<<<<<<< HEAD
 	<File name="src/processor/src/Step_1.cpp" open="0" top="0" tabpos="41" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1339" topLine="0" />
@@ -192,8 +321,59 @@
 	<File name="src/gui/headers/Gui_MyApplication.hpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="530" topLine="0" />
+=======
+	<File name="src/processor/src/Step_FiltHS.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="721" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="src/processor/src/Step_1.cpp" open="0" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="15" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1339" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Predictor.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="493" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/ResultMap.hpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="40" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/ContourFamily.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ResultDetails.hpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2215" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_RadiusSetter.cpp" open="0" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="677" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_MaskSetter.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6198" topLine="200" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ResultFrame.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="721" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+		<Folding>
+			<Collapse line="21" />
+			<Collapse line="25" />
+			<Collapse line="33" />
+		</Folding>
+	</File>
+<<<<<<< HEAD
 	<File name="src/processor/src/ContourFamily.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="99" topLine="0" />
@@ -202,12 +382,28 @@
 	<File name="src/classifier/src/DataMaker.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="712" topLine="14" />
+=======
+	<File name="src/processor/headers/Step_3.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="889" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ResultFileWriter.hpp" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2498" topLine="47" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_MyWindow.hpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="754" topLine="31" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 		<Folding>
 			<Collapse line="13" />
 			<Collapse line="35" />
 		</Folding>
 	</File>
+<<<<<<< HEAD
 	<File name="src/processor/headers/Result.hpp" open="0" top="0" tabpos="35" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2646" topLine="0" />
@@ -241,11 +437,47 @@
 	<File name="src/gui/headers/Gui_Display.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="127" topLine="1" />
+=======
+	<File name="src/processor/src/Processor.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3187" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_LikFiltSelector.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="581" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/ArgumentParser.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="319" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/classifier/headers/DataMaker.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="105" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ControlPanel.cpp" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1973" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_MouseHandler.cpp" open="0" top="0" tabpos="39" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="86" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_PixbufOpener.hpp" open="0" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="327" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 		<Folding>
 			<Collapse line="46" />
 		</Folding>
 	</File>
+<<<<<<< HEAD
 	<File name="src/processor/headers/ProcessingOptions.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="4024" topLine="111" />
@@ -257,6 +489,17 @@
 		</Cursor>
 	</File>
 	<File name="src/processor/src/Step_4.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+=======
+	<File name="src/gui/headers/Gui_ControlPanel.hpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2114" topLine="14" />
+		</Cursor>
+		<Folding>
+			<Collapse line="19" />
+		</Folding>
+	</File>
+	<File name="src/gui/headers/Gui_Decorator.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		<Cursor>
 			<Cursor1 position="2262" topLine="1" />
 		</Cursor>
@@ -264,6 +507,7 @@
 			<Collapse line="2" />
 		</Folding>
 	</File>
+<<<<<<< HEAD
 	<File name="src/gui/src/Gui_ResultDetails.cpp" open="0" top="0" tabpos="33" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="192" topLine="45" />
@@ -287,8 +531,32 @@
 	<File name="src/gui/headers/Gui_RadiusSetter.hpp" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="511" topLine="0" />
+=======
+	<File name="config.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2214" topLine="55" />
 		</Cursor>
 	</File>
+	<File name="src/gui/headers/Gui_MyApplication.hpp" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="277" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ResultDisplayBaseClass.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="368" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_Display.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="127" topLine="1" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+		<Folding>
+			<Collapse line="46" />
+		</Folding>
+	</File>
+<<<<<<< HEAD
 	<File name="src/gui/src/Gui_MouseHandler.cpp" open="0" top="0" tabpos="39" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="86" topLine="0" />
@@ -312,8 +580,37 @@
 	<File name="src/processor/src/Step_FiltHS.cpp" open="0" top="0" tabpos="39" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="721" topLine="0" />
+=======
+	<File name="Makefile.am" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7634" topLine="215" />
 		</Cursor>
 	</File>
+	<File name="src/gui/headers/Gui_ColourSelector.hpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="744" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ImgFileSetter.hpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3359" topLine="91" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Predictor.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="684" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Step_FiltLik.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="853" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+		</Folding>
+	</File>
+<<<<<<< HEAD
 	<File name="src/gui/headers/Gui_DisplayBaseClass.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1039" topLine="4" />
@@ -422,6 +719,116 @@
 	<File name="NEWS" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="118" topLine="0" />
+=======
+	<File name="src/gui/src/Gui_MyWindow.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="269" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ImgFileSetter.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1090" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_Decorator.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1592" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/ArgumentParser.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="958" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Step_BaseClass.hpp" open="0" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="528" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_DisplayRoi.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="496" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Processor.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="185" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_OptionSetterBaseClass.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="388" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/ResultMap.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="73" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ResultListDisplay.cpp" open="0" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4664" topLine="111" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ResultFileWriter.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1610" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Step_FiltHS.hpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ResultLabel.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="477" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="src/classifier/main.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="983" topLine="25" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_UserFilterSetter.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="431" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ResultListDisplay.hpp" open="0" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="524" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Step_BaseClass.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="724" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Step_2.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="665" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_MyApplication.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1792" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ResultLabel.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="677" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ColourWheel.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="288" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/ContourSpliter.cpp" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1040" topLine="35" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 	<File name="src/gui/headers/text.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -429,6 +836,7 @@
 			<Cursor1 position="2803" topLine="68" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src/gui/src/Gui_HelloWindow.cpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="158" topLine="0" />
@@ -457,6 +865,36 @@
 	<File name="src/gui/headers/Gui_HelloWindow.hpp" open="0" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="403" topLine="0" />
+=======
+	<File name="src/processor/src/ProcessingOptions.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="563" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_ColourSelector.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2653" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="src/processor/headers/Features.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="659" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TODO" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="91" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/src/Gui_HelloWindow.cpp" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1207" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_ResultDisplayBaseClass.hpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="580" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 	<File name="src/gui/src/Gui_OptionSetterBaseClass.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
@@ -464,6 +902,7 @@
 			<Cursor1 position="335" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src/processor/src/Step_FiltLik.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="853" topLine="0" />
@@ -472,8 +911,24 @@
 	<File name="src/processor/src/Predictor.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="684" topLine="0" />
+=======
+	<File name="src/processor/headers/ContourFamily.hpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="303" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="src/processor/src/Step_4.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2262" topLine="19" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="27" />
+			<Collapse line="42" />
+		</Folding>
+	</File>
+<<<<<<< HEAD
 	<File name="src/gui/headers/Gui_MyWindow.hpp" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1484" topLine="0" />
@@ -502,8 +957,42 @@
 	<File name="src/processor/headers/Step_BaseClass.hpp" open="0" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="528" topLine="0" />
+=======
+	<File name="src/main.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1116" topLine="10" />
 		</Cursor>
 	</File>
+	<File name="src/gui/headers/Gui_ConfigIO.hpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="529" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_DisplayBaseClass.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1039" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Step_FiltIPosition2D.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="647" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_HelloWindow.hpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="403" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_MaskSetter.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5934" topLine="111" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
+		</Cursor>
+		<Folding>
+			<Collapse line="106" />
+		</Folding>
+	</File>
+<<<<<<< HEAD
 	<File name="src/gui/headers/Gui_ConfigIO.hpp" open="0" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="155" topLine="0" />
@@ -512,6 +1001,26 @@
 	<File name="src/gui/src/Gui_MyApplication.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="233" topLine="3" />
+=======
+	<File name="src/processor/headers/Step_FiltGUI.hpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="537" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/processor/src/Result.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2953" topLine="79" />
+		</Cursor>
+	</File>
+	<File name="src/gui/headers/Gui_OptionSetterBaseClass.hpp" open="0" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="487" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="configure.ac" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+>>>>>>> fb2dac5d4bc1880cbd0c8287a20c1a8e5c7092e8
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

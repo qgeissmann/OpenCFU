@@ -90,12 +90,16 @@ Gui_ResultDetails::Gui_ResultDetails(sigc::signal<void,Glib::RefPtr<Gio::File>,i
       tmp_col->set_sort_column(m_col_model.m_Sat);
 
 
-    m_tree_view.append_column("# in cluster", m_col_model.m_NinClust);
+    m_tree_view.append_column("Neighbours", m_col_model.m_NinClust);
     tmp_col = m_tree_view.get_column(c++);
     if(tmp_col)
       tmp_col->set_sort_column(m_col_model.m_NinClust);
 
-
+    //NJL 01/SEP/2014
+    m_tree_view.append_column("Cluster ID", m_col_model.m_cluster_id);
+    tmp_col = m_tree_view.get_column(c++);
+    if(tmp_col)
+      tmp_col->set_sort_column(m_col_model.m_cluster_id);
 
 
     Gtk::CellRenderer *cell = m_tree_view.get_column_cell_renderer(0);
@@ -184,7 +188,12 @@ void Gui_ResultDetails::setOneRow(Gtk::TreeModel::Row& row, const OneObjectRow& 
     row[m_col_model.m_Hue] = oor.getHue();
     row[m_col_model.m_Sat] = oor.getSat();
     row[m_col_model.m_NinClust] = oor.getNInClust();
-//    row[m_col_model.m_colour] = std::string("coucou");
+    std::stringstream ss;
+    if (oor.getColorClusterID() == 0)
+        ss<<"NA";
+    else
+        ss<<oor.getColorClusterID();
+    row[m_col_model.m_cluster_id] = ss.str(); //NJL 13/AUG/2014
 }
 
 

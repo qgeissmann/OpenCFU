@@ -46,6 +46,8 @@ them in the end of your current list."
 #define NAME_MASK_SETTER "<b><i>ROIs and Mask:</i></b>"
 #define NAME_COL_SELECT "<b><i>Colour filter:</i></b>"
 #define NAME_LIK_SELECT "<b><i>Auto outlier filter:</i></b>"
+//NJL 10/AUG/2014
+#define NAME_COL_CLUSTER "<b><i>Group similar colours:</i></b>"
 
 #define LABEL_CHECKBUTTON_MAX_RAD "Auto-Max"
 #define LABEL_CHECKBUTTON_AUTO_THR "Auto"
@@ -96,6 +98,12 @@ about ROIs, you will find video tutorial on the website.</big>"
 
 #define THREE_POINT_CIRCLE_TOOL "Three points circle"
 #define CONVEX_POLYGON_TOOL "Convex polygon"
+
+
+//NJL 10/AUG/2014 Colour Clustering
+#define LABEL_CHECKBUTTON_HAS_CLUSTERING_DISTANCE "Recognise similar colours"
+#define LABEL_CLUSTERING "Coarseness:"
+
 /*==================TOOLTIPS==================*/
 
 #define TOOLTIP_COLOUR_SELECTOR "Select objects by colour (Hue and Saturation)"
@@ -143,5 +151,12 @@ annotations on the image"
 #define TOOLTIP_MASK_SETTER "To define one or several regions of interest"
 #define TOOLTIP_MASK_SETTER_SHOW "Hide/show the ROIs on the image"
 #define TOOLTIP_MASK_SETTER_REFRESH "Redraw current mask"
+
+//NJL 10/AUG/2014 Colour Clustering
+#define TOOLTIP_CLUSTERING "Use a density based algorithm to identify like coloured colonies"
+#define TOOLTIP_CLUSTERING_DISTANCE_SELECTOR "\
+The \"Coarseness\" defines the maximum difference\n\
+between colours grouped as similar. A coarseness\n\
+of 2.3 corresponds to a just notable difference"
 
 #endif

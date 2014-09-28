@@ -23,7 +23,7 @@ void Gui_ResultFileWriter::writeHeader(const bool detail,const ResultMap& res_ma
 
     }
     else{
-        ss<<"ID, ROI, File_name, N_Objects, N_Excluded, Comment, Full_Path"<<std::endl;
+        ss<<"ID, File_name, ROI, N_Objects, N_Excluded, Cluster1, Cluster2, Cluster3, Comment, Full_Path, ClusterDetail"<<std::endl;
     }
     fout->write(ss.str());
     fout->close();
@@ -31,6 +31,7 @@ void Gui_ResultFileWriter::writeHeader(const bool detail,const ResultMap& res_ma
 
 void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,const std::vector<int>& idxs){
     Glib::RefPtr< Gio::FileOutputStream > fout = m_out_file->append_to();
+
 
     if(detail){
         for (auto i : idxs){
@@ -53,34 +54,51 @@ void Gui_ResultFileWriter::writeRows(const bool detail,const ResultMap& res_map,
         for (auto i : idxs){
             const Result& res_ref = res_map.getResultAt(i);
             Glib::RefPtr<Gio::File> tmp_file = res_map.getFileFromIdx(i);
+            const std::vector<int> roi_keys = res_ref.getROIs();
+            const std::string& comment = res_map.getCommentAt(i);
 
-            //results per roi table:
-            std::map < uint,std::pair<uint,uint> > table;
-            for(uint i=0; i != (uint)res_ref.size(); ++i){
+            std::map < unsigned int,std::pair<unsigned int,unsigned int> > table;
+            table[0].first = res_ref.getNValid();
+            table[0].second =  res_ref.size() - res_ref.getNValid();
+            for(unsigned int i=0; i != (unsigned int)res_ref.size(); ++i){
                 OneObjectRow object = res_ref.getRow(i);
                 int roi = object.getROI();
                 if (roi > 0){
-                    if(object.getGUIValid())
+                    if(object.getGUIValid() && object.isValid()) //otherwise colour filters etc. don't work
                         ++(table[roi].first);
                     else
                         ++(table[roi].second);
                 }
             }
 
-            const std::string& comment = res_map.getCommentAt(i);
 
-            std::stringstream ss;
-            for(auto& t : table){
-                ss  <<i<<", "<<t.first<<", \""<<tmp_file->get_basename()<<"\",";
-                auto val_unval = t.second;
-                if(!res_map.getIsNAAt(i))
-                    ss<<val_unval.first<<","<<val_unval.second<<",";
-                else
-                    ss<<"NA,NA,";
+            for (auto &it : table){
+                int roi = it.first;
+                std::cout << roi_keys.size();
+                if ((table.size() == 1) || (roi >= 1)){
 
-                ss<<comment<<", \""<<tmp_file->get_path()<<"\""<<std::endl;
+                    std::stringstream ss;
+                    ss  <<i<<","
+                        <<"\""<<tmp_file->get_basename()<<"\""<<","
+                        <<roi<<",";
 
-            fout->write(ss.str());}
+                    if(!res_map.getIsNAAt(i)){
+                        ss<<it.second.first<<","
+                        <<it.second.second<<",";
+                    }
+                    else{
+                        ss<<"NA,NA,";
+                    }
+                        ss<<res_ref.getROIClusterData(roi).clusterPop(1)<<","
+                        <<res_ref.getROIClusterData(roi).clusterPop(2)<<","
+                        <<res_ref.getROIClusterData(roi).clusterPop(3)<<","
+                        <<comment<<","
+                        <<"\""<<tmp_file->get_path()<<"\","
+                        <<res_ref.getROIClusterData(roi).str()<<std::endl;
+
+                    fout->write(ss.str());
+                }
+            }
         }
     }
     fout->flush ();

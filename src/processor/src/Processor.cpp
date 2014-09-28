@@ -7,6 +7,7 @@
 #include "Step_FiltHS.hpp"
 #include "Step_FiltIPosition2D.hpp"
 #include "Step_FiltLik.hpp"
+#include "Step_ColourCluster.hpp"
 #include <sstream>
 
 Processor::Processor(ProcessingOptions& opts):
@@ -14,8 +15,6 @@ Processor::Processor(ProcessingOptions& opts):
     m_is_busy(false)
 
 {
-
-
     cv::FileStorage fs;
     std::string path = std::string("./")+std::string(TRAINED_CLASSIF_XML_FILE);
     fs.open(path, cv::FileStorage::READ);
@@ -34,10 +33,7 @@ Processor::Processor(ProcessingOptions& opts):
             assert(!fs.isOpened());
         }
     }
-
-
     m_predictor.loadTrainData(path);
-
     std::string path_ps = std::string("./")+std::string(TRAINED_CLASSIF_PS_XML_FILE);
     fs.open(path_ps, cv::FileStorage::READ);
     DEV_INFOS("Trying to open any local trained classifier: "<<path_ps);
@@ -67,6 +63,7 @@ Processor::Processor(ProcessingOptions& opts):
     m_processing_steps.push_back(new Step_FiltIPosition2D(opts));
     m_processing_steps.push_back(new Step_FiltHS(opts));
     m_processing_steps.push_back(new Step_FiltLik(opts));
+    m_processing_steps.push_back(new Step_ColourCluster(opts)); //NJL 28/AUG/2014 //Gives segfault at the moment
     DEV_INFOS("Processor constructed");
 }
 
@@ -98,13 +95,12 @@ Processor::~Processor()
 }
 
 void Processor::writeResult(){
-
     for(unsigned int i = 0; i != m_result->size();i++){
         const OneObjectRow& oor = m_result->getRow(i);
         if (i == 0){
             std::cout << oor.printHeader()<<std::endl;
         }
-        oor.print();
+        std::cout << oor.print();
     }
 }
 

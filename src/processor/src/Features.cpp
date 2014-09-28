@@ -25,35 +25,22 @@ void Features::calcFeatures(const ContourFamily& fam,cv::Mat out){
             area_hole +=  cv::contourArea(fam.contours[i]);
         }
     }
-
     if(area_hole  >= area)
         area = 1;
     else
         area -= area_hole;
-
     perim += perim_hole;
-
     PA_hull.y -= area_hole;
     PA_hull.x += perim_hole;
-
     float matData[m_nfeatures];
-
-
-
-    assert(area>0);
     int p=0;
-//    matData[p++] = 0;// fam.n_per_clust;
-//    if(fam.n_per_clust   > 0)
-//        matData[p++] = 1;
-//    else
-//        matData[p++] = 0;
 
-    matData[p++] = perim*perim/area;
-    matData[p++] = (PA_hull.y - area)/ PA_hull.y;
-    matData[p++] = (PA_hull.x - perim)/ PA_hull.x;
-    matData[p++] = area_hole/(area+area_hole);
-    matData[p++] = perim_hole/(perim+perim_hole);
-    matData[p++] = WH.x/(WH.y + WH.x);
+    matData[p++] = perim * perim / area;
+    matData[p++] = (PA_hull.y - area) / PA_hull.y;
+    matData[p++] = (PA_hull.x - perim) / PA_hull.x;
+    matData[p++] = area_hole / (area+area_hole);
+    matData[p++] = perim_hole / (perim+perim_hole);
+    matData[p++] = WH.x / (WH.y + WH.x);
 
     double hu_moms[7];
     cv::HuMoments(cv::moments(contour),hu_moms);
@@ -61,7 +48,6 @@ void Features::calcFeatures(const ContourFamily& fam,cv::Mat out){
         matData[i + p] = hu_moms[i];
 
     }
-
     cv::Mat layers(1,m_nfeatures,CV_32F,(void*)matData);
     layers.copyTo(out);
 
@@ -79,8 +65,8 @@ cv::Point2f Features::calculateWH(const std::vector<cv::Point>& contour){
     cv::minAreaRect(contour).points(rRect);
 
     float A,B;
-    A = calcTwoPointDist(rRect[0],rRect[1])+1;
-    B = calcTwoPointDist(rRect[1],rRect[2])+1;
+    A = calcTwoPointDist(rRect[0],rRect[1]) + 1;
+    B = calcTwoPointDist(rRect[1],rRect[2]) + 1;
 
     return cv::Point(std::max(A,B),std::min(A,B));
 }
@@ -88,11 +74,11 @@ cv::Point2f Features::calculateWH(const std::vector<cv::Point>& contour){
 
 inline float Features::calcTwoPointDist(const cv::Point P0,const cv::Point P1){
         float Ax,Ay;
-        Ax=P0.x-P1.x;
+        Ax = P0.x - P1.x;
         Ax *= Ax;
-        Ay=P0.y-P1.y;
+        Ay = P0.y - P1.y;
         Ay *= Ay;
-        return sqrt(Ax+Ay)/2;
+        return sqrt(Ax + Ay) / 2;
 }
 
 
@@ -120,7 +106,6 @@ void Features::smoothContour(const std::vector<cv::Point>& in ,std::vector<cv::P
         /* We remove the artificial border put two lines ago  */
         smooth_mat.rowRange(cv::Range((k-1)/2,1+smooth_mat.rows-(k-1)/2)).copyTo(out);
     }
-
     else
         out = in;
 }

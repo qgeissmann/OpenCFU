@@ -72,6 +72,8 @@ $(DESKTOP_FILE)
 #######################################################
 bin_PROGRAMS = opencfu
 
+#NJL 13/AUG/2014
+#Step_ColourCluster.cpp/hpp added
 opencfu_SOURCES = 	src/main.cpp \
 					src/processor/src/ArgumentParser.cpp \
 					src/processor/src/ProcessingOptions.cpp\
@@ -90,7 +92,8 @@ opencfu_SOURCES = 	src/main.cpp \
 					src/processor/src/ContourFamily.cpp\
 					src/processor/src/Predictor.cpp\
 					src/processor/src/ContourSpliter.cpp\
-					src/processor/src/MaskROI.cpp
+					src/processor/src/MaskROI.cpp\
+					src/processor/src/Step_ColourCluster.cpp
 
 
 
@@ -111,7 +114,8 @@ opencfu_SOURCES +=  src/processor/headers/Features.hpp \
                     src/processor/headers/Step_2.hpp\
                     src/processor/headers/ArgumentParser.hpp\
                     src/processor/headers/ContourFamily.hpp\
-                    src/processor/headers/MaskROI.hpp
+                    src/processor/headers/MaskROI.hpp\
+		    src/processor/headers/Step_ColourCluster.hpp
 
 
 opencfu_CPPFLAGS = 	 -Isrc/processor/headers/
@@ -148,6 +152,8 @@ AM_CXXFLAGS += -mwindows
 AM_LDFLAGS += -mwindows
 endif
 
+#NJL 13/AUG/2014
+#Gui_ColourCluster.cpp/hpp added
 opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_ColourWheel.cpp\
 					src/gui/src/Gui_ControlPanel.cpp\
@@ -175,7 +181,8 @@ opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_HelloWindow.cpp\
 					src/gui/src/ResultMap.cpp\
 					src/gui/src/Gui_UserFilterSetter.cpp\
-					src/gui/src/Gui_PixbufOpener.cpp
+					src/gui/src/Gui_PixbufOpener.cpp\
+					src/gui/src/Gui_ColourCluster.cpp
 
 
 
@@ -207,6 +214,7 @@ opencfu_SOURCES +=  src/gui/headers/Gui_ColourSelector.hpp\
 					src/gui/headers/ResultMap.hpp\
 					src/gui/headers/Gui_UserFilterSetter.hpp\
 					src/gui/headers/Gui_PixbufOpener.hpp\
+					src/gui/headers/Gui_ColourCluster.hpp\
 					src/gui/headers/text.hpp
 
 opencfu_CPPFLAGS += ${GTKMM_CFLAGS}
