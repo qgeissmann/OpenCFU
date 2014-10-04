@@ -22,6 +22,7 @@
 #include "ProcessingOptions.hpp"
 #include "Processor.hpp"
 
+ /*Only if compiled with Gtk support*/
 #ifdef WITH_GUI
 	#include "Gui_MyApplication.hpp"
 #endif

@@ -2,10 +2,7 @@
 #define ARGUMENTPARSER_H
 
 #include "defines.hpp"
-#include <iostream>
 #include "ProcessingOptions.hpp"
-
-
 
 class ArgumentParser
 {

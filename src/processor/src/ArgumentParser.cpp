@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,7 +12,6 @@ m_help_string("OpenCFU options:\n\
 -v = print the version number\n\
 -a = set the auto-threshold ON. It overrides the argument -t\n\
 -i FILE : the name of the input image file\n\
--o FILE : the name of the output image file (none by default)\n\
 -m [FILE | auto]  :the name of the mask image file or the keyword `auto'\n\
 -d {reg,inv,bil} : The type of threshold: regular, inverted or bilateral (the default value `reg')\n\
 -t NUM :set the threshold (the default value is 10)\n\
@@ -21,15 +20,18 @@ m_help_string("OpenCFU options:\n\
 -R NUM : set a maximal radius\n\
 -c NUM : set a \"center\" value of the Hue/Colour threshold\n\
 -C NUM : set a \"tolerance\" value of the Hue/Colour threshold\n\
+-G NUM : set a \"coarseness\" value for the density based scanner\n\
 ")
 {
     std::stringstream tss;
     std::pair<int,int> min_max_radius,cent_tol_hue;
+    double clustering_distance;
     min_max_radius = opts.getMinMaxRad();
     cent_tol_hue = opts.getCenTolHue();
+    clustering_distance = opts.getClustDist();
     signed char c=0;
 
-    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:")) != -1){
+    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:G:")) != -1){
         switch(c){
             case 'h':
                  printHelp();
@@ -61,6 +63,10 @@ m_help_string("OpenCFU options:\n\
             case 'C':
                 opts.setHasHueFilt(true);
                 cent_tol_hue.second = atoi(optarg);
+                break;
+            case 'G':
+                opts.setHasClustDist(true);
+                clustering_distance = atoi(optarg);
                 break;
             case 'd':{
                 std::string str_optarg(optarg);
@@ -119,17 +125,12 @@ m_help_string("OpenCFU options:\n\
             case '?':
                 if (optopt == 'c')
                     std::cerr<<"Option -"<<optopt<<" requires an argument"<<std::endl;
-//                   fprintf (stderr, "Option -%c requires an argument.\n", optopt);
                 else if (isprint (optopt))
-//                    fprintf (stderr, "Unknown option `-%c'.\n", optopt);
                     std::cerr<<"Unknown option -"<<optopt<<std::endl;
                 else
                     std::cerr<<"Unknown option character"<<optopt<<std::endl;
-//                    fprintf (stderr,"Unknown option character `\\x%x'.\n", optopt);
                 exit(EXIT_FAILURE);
                 break;
-
-
             default:
                 break;
         }
@@ -151,6 +152,12 @@ m_help_string("OpenCFU options:\n\
             must be in the [0,360] and [0,180] \
             range respecively"<<std::endl;
             exit(EXIT_FAILURE);
+    }
+
+    if(!opts.setClustDist(clustering_distance)){
+        std::cerr<<"ERROR setting up the clustering distance\
+         (argument \"-G\"). Must be in range [1,50]"<<std::endl;
+         exit(EXIT_FAILURE);
     }
 
 }

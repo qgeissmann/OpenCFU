@@ -2,21 +2,14 @@
 
 void MaskROI::update(const cv::Mat parent_image){
     if(!m_original_mat.empty() && !parent_image.empty()){
-
-        if((m_original_mat.rows != parent_image.rows || m_original_mat.cols != parent_image.cols) && (type == MASK_TYPE_FILE ||type == MASK_TYPE_DRAW) ){
-            DEV_INFOS("mask had wrong size. RESIZING MASK to fit image");
+        if(( m_original_mat.rows != parent_image.rows || m_original_mat.cols != parent_image.cols)
+            && (type == MASK_TYPE_FILE ||type == MASK_TYPE_DRAW))
             cv::resize(m_original_mat,m_mat,cv::Size(parent_image.cols,parent_image.rows),0,0,cv::INTER_NEAREST);
-        }
-
         else
             m_original_mat.copyTo(m_mat);
     }
-    if(type == MASK_TYPE_AUTO && !parent_image.empty()){
-            DEV_INFOS("updating auto mask");
-            DEV_INFOS("parent img"<<parent_image.channels());
-            this->makeAutoMask(parent_image);
-        }
-
+    if(type == MASK_TYPE_AUTO && !parent_image.empty())
+        this->makeAutoMask(parent_image);
 }
 
 void MaskROI::setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f>,int > >& points,int width,int height){
@@ -25,27 +18,23 @@ void MaskROI::setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f
     type = MASK_TYPE_DRAW;
     unsigned char j = 1;
     for(auto& i : points){
-            if(i.second == MASK_TOOL_3P_CIRCLE){
-                assert((i.first).size() == 3);
-                std::vector<float> vec(3);
-                vec = circleFrom3(i.first);
-                cv::circle( m_original_mat,cv::Point(vec[0],vec[1]), vec[2], cv::Scalar(j++), CV_FILLED, 8, 0 );
+        if(i.second == MASK_TOOL_3P_CIRCLE){
+            assert((i.first).size() == 3);
+            std::vector<float> vec(3);
+            vec = circleFrom3(i.first);
+            cv::circle( m_original_mat,cv::Point(vec[0],vec[1]), vec[2], cv::Scalar(j++), CV_FILLED, 8, 0 );
+        }
+        else if(i.second == MASK_TOOL_CONV_POLYGON){
+            assert((i.first).size() >2 );
+            std::vector<std::vector<cv::Point> > pts(1);
+            for(auto j : i.first){
+                pts[0].push_back(cv::Point(round(j.x),round(j.y)));
             }
-            else if(i.second == MASK_TOOL_CONV_POLYGON){
-                assert((i.first).size() >2 );
-                std::vector<std::vector<cv::Point> > pts(1);
-                for(auto j : i.first){
-                    pts[0].push_back(cv::Point(round(j.x),round(j.y)));
-                }
-                cv::convexHull(pts[0],pts[0]);
-//                for (auto k: pts)
-//                    DEV_INFOS(k);
-
-                cv::drawContours(m_original_mat,pts,0,cv::Scalar(j++),-1);
-            }
+            cv::convexHull(pts[0],pts[0]);
+            cv::drawContours(m_original_mat,pts,0,cv::Scalar(j++),-1);
+        }
     }
 }
-
 
 void MaskROI::makeAutoMask(const cv::Mat& parent){
     cv::Mat grey;
@@ -65,9 +54,7 @@ void MaskROI::makeAutoMask(const cv::Mat& parent){
     else{
         m_original_mat = cv::Mat();
         m_mat = cv::Mat();
-
     }
-
 }
 
 /** This function is to calculate the cicle matching 3 points (used to draw a circular mask) */

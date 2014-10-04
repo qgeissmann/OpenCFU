@@ -14,43 +14,28 @@ class MaskROI
 
         MaskROI(const std::string& path){
             cv::imread(path,CV_LOAD_IMAGE_GRAYSCALE).copyTo(m_original_mat);
-//            m_original_mat = m_mat;
-//            m_original_mat = m_mat;
             type = MASK_TYPE_FILE;
         }
         MaskROI(cv::Mat img){
-//            img.copyTo(m_mat);
             img.copyTo(m_original_mat);
             type = MASK_TYPE_FILE;
-//            m_original_mat = m_mat;
         }
         MaskROI(cv::Mat img,int typepp){
 
             if(typepp != MASK_TYPE_NONE)
-//                img.copyTo(m_mat);
                 img.copyTo(m_original_mat);
                 img.copyTo(m_mat);
             type = typepp;
-            DEV_INFOS("making a new maskroi. type = "<< type);
-//            if(m_mat.empty())
-//                        DEV_INFOS("empty mat");
-//            m_original_mat = m_mat;
         }
 
         MaskROI():type(MASK_TYPE_NONE){};
         void setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f>,int > >& points,int width,int height);
         void none(){
             type = MASK_TYPE_NONE;
-//            m_mat = cv::Mat();
             m_original_mat = cv::Mat();
-            DEV_INFOS("Nonifying a the mask. type = "<< type);
-//             if(m_mat.empty())
-//                        DEV_INFOS("empty mat");
-//            m_original_mat = m_mat;
             }
 
         const bool isValid()const {
-// = m_mat;
             if(type == MASK_TYPE_NONE || type == MASK_TYPE_AUTO)
                 return true;
             else if(type == MASK_TYPE_FILE && !m_original_mat.empty())

@@ -34,6 +34,8 @@ class Gui_Decorator
         double m_line_width_multip;
         std::vector<cv::Point2f> *m_vector_crosses;
 
+        void highlightCells(Cairo::RefPtr<Cairo::Context> cr, std::vector<int> cells, float r, float g, float b, float a, float width);
+
 
 };
 

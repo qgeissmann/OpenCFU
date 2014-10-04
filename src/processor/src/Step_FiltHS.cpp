@@ -19,7 +19,6 @@ void Step_FiltHS::updateParams(const void* src,bool was_forced){
      m_min_sat = m_opts.getMinMaxSat().first;
      m_tol_hue = m_opts.getCenTolHue().second;
      m_max_sat = m_opts.getMinMaxSat().second;
-
 }
 
 bool Step_FiltHS::needReprocess(const void* src){

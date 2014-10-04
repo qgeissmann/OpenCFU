@@ -67,7 +67,7 @@ class Gui_ResultFileWriter
         void setInUpToDate(bool up_to_date){m_up_to_date = up_to_date;}
         bool getInUpToDate(){return m_up_to_date;}
     protected:
-         void writeHeader(const bool detail);
+         void writeHeader(const bool detail,const ResultMap& res_map, const std::vector<int>& idxs);
          void writeRows(const bool detail,const ResultMap& res_map,const std::vector<int>& idxs);
 
     private:

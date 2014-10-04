@@ -20,48 +20,25 @@ bool Step_2::needReprocess(const void* src){
 }
 
 void Step_2::makeConvolvedMask(){
-//    if(m_old_mask.empty()){
-        m_conv_mask=cv::Mat(m_opts.getImage().rows,m_opts.getImage().cols,CV_8U,cv::Scalar(255));
-
-
-//    }
-//    else{
-//        cv::blur(m_old_mask,m_conv_mask,cv::Size(m_block_size,m_block_size));
-//    }
-
-
-    //tofix todel
+    m_conv_mask=cv::Mat(m_opts.getImage().rows,m_opts.getImage().cols,CV_8U,cv::Scalar(255));
     m_old_mask=m_conv_mask;
-
 }
 void Step_2::process(const void* src){
     DEV_INFOS("Correcting brightness ...");
-
     this->makeConvolvedMask();
-
     cv::Mat invertMask;
     cv::bitwise_not(m_old_mask,invertMask);
-
-
     std::vector<cv::Mat> compos;
     cv::split(*((cv::Mat*)src),compos);
-//    cv::Ptr<cv::CLAHE> ptr =  cv::createCLAHE(30,cv::Size(m_block_size*3,m_block_size*3));
     #pragma omp parallel for schedule(static, 1)
     for(unsigned int i=0;i<compos.size();i++){
         /* Remove  masked regions*/
         compos[i] = compos[i]-invertMask;
-//
         cv::Mat conv;
-
         float r = 196.0/ (float) compos[i].cols ;
         cv::resize(compos[i],conv,cv::Size(0,0),r,r,cv::INTER_AREA);
         cv::medianBlur(conv,conv,11);
         cv::resize(conv,conv,compos[i].size(),0,0,cv::INTER_LINEAR);
-//
-//        if(m_block_size<MEDIAN_BLUR_MAX_BLOCKSIZE)
-//            cv::medianBlur(compos[i],conv,m_block_size);
-//        else
-//            cv::blur(compos[i],conv,cv::Size(m_block_size,m_block_size));
         if(m_old_thr_mode == OCFU_THR_NORM){
             compos[i]=255*(conv/m_conv_mask)-compos[i];
         }
@@ -71,21 +48,11 @@ void Step_2::process(const void* src){
         else if(m_old_thr_mode == OCFU_THR_BILAT){ //bilateral threshold
             cv::absdiff(compos[i],255*(conv/m_conv_mask),compos[i]);
         }
-
-//        ptr->apply(compos[i],compos[i]);
-//
         cv::normalize(compos[i], compos[i],0,255, cv::NORM_MINMAX,-1, m_old_mask);
         this->SubstractLapOGauss(compos[i], compos[i],LAPOFGAUSS_BLUR_SIZE);
-
     }
-
-
     m_step_img = (compos[0]+compos[1]+compos[2])/3;
-
-
-
     m_step_result = (void*) &m_step_img;
-
     DEV_INFOS("Correcting brightness finished...");
 }
 
@@ -111,5 +78,4 @@ void Step_2::SubstractLapOGauss(const cv::Mat& in, cv::Mat& out, int blurSize){
         }
     }
     out = in-tmp_mat;
-
 }

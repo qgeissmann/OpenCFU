@@ -1,12 +1,9 @@
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
 
-AM_CXXFLAGS = ${OPENCV_CFLAGS}  -Isrc/ -fopenmp -Wall
+AM_CXXFLAGS = ${OPENCV_CFLAGS} ${OPENMP_CFLAGS} -Isrc/ -Wall
 #AM_LDFLAGS =    -fopenmp
-AM_LDFLAGS =   -Wall -fopenmp
-
-
-
+AM_LDFLAGS =   -Wall ${OPENMP_CFLAGS}
 
 
 if WIN32
@@ -72,6 +69,8 @@ $(DESKTOP_FILE)
 #######################################################
 bin_PROGRAMS = opencfu
 
+#NJL 13/AUG/2014
+#Step_ColourCluster.cpp/hpp added
 opencfu_SOURCES = 	src/main.cpp \
 					src/processor/src/ArgumentParser.cpp \
 					src/processor/src/ProcessingOptions.cpp\
@@ -90,7 +89,8 @@ opencfu_SOURCES = 	src/main.cpp \
 					src/processor/src/ContourFamily.cpp\
 					src/processor/src/Predictor.cpp\
 					src/processor/src/ContourSpliter.cpp\
-					src/processor/src/MaskROI.cpp
+					src/processor/src/MaskROI.cpp\
+					src/processor/src/Step_ColourCluster.cpp
 
 
 
@@ -111,7 +111,8 @@ opencfu_SOURCES +=  src/processor/headers/Features.hpp \
                     src/processor/headers/Step_2.hpp\
                     src/processor/headers/ArgumentParser.hpp\
                     src/processor/headers/ContourFamily.hpp\
-                    src/processor/headers/MaskROI.hpp
+                    src/processor/headers/MaskROI.hpp\
+		    src/processor/headers/Step_ColourCluster.hpp
 
 
 opencfu_CPPFLAGS = 	 -Isrc/processor/headers/
@@ -121,12 +122,18 @@ opencfu_LDADD = ${OPENCV_LIBS}
 
 
 opencfudir = $(pkgdatadir)
-nobase_dist_opencfu_DATA = $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS) data/banner.png data/logo.png data/noise-texture.png
+nobase_dist_opencfu_DATA = $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
+
+if USE_GUI
+nobase_dist_opencfu_DATA += data/banner.png data/logo.png data/noise-texture.png
+endif
 
 #\
 #data/icon_128px.png data/icon_64px.png data/icon_48px.png data/icon_24px.png
 
 ###LINUX PACKAGING
+
+if USE_GUI
 applicationdir=$(datadir)/applications
 dist_application_DATA=packagingScripts/opencfu.desktop
 
@@ -138,7 +145,7 @@ dist_appicon128_DATA=data/icons/128x128/opencfu.png
 
 appicon48dir=$(datadir)/icons/hicolor/48x48/apps
 dist_appicon48_DATA=data/icons/48x48/opencfu.png
-
+endif
 ##
 
 if USE_GUI
@@ -148,6 +155,8 @@ AM_CXXFLAGS += -mwindows
 AM_LDFLAGS += -mwindows
 endif
 
+#NJL 13/AUG/2014
+#Gui_ColourCluster.cpp/hpp added
 opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_ColourWheel.cpp\
 					src/gui/src/Gui_ControlPanel.cpp\
@@ -175,7 +184,8 @@ opencfu_SOURCES += src/gui/src/Gui_ColourSelector.cpp\
 					src/gui/src/Gui_HelloWindow.cpp\
 					src/gui/src/ResultMap.cpp\
 					src/gui/src/Gui_UserFilterSetter.cpp\
-					src/gui/src/Gui_PixbufOpener.cpp
+					src/gui/src/Gui_PixbufOpener.cpp\
+					src/gui/src/Gui_ColourCluster.cpp
 
 
 
@@ -207,6 +217,7 @@ opencfu_SOURCES +=  src/gui/headers/Gui_ColourSelector.hpp\
 					src/gui/headers/ResultMap.hpp\
 					src/gui/headers/Gui_UserFilterSetter.hpp\
 					src/gui/headers/Gui_PixbufOpener.hpp\
+					src/gui/headers/Gui_ColourCluster.hpp\
 					src/gui/headers/text.hpp
 
 opencfu_CPPFLAGS += ${GTKMM_CFLAGS}
@@ -259,7 +270,8 @@ deb: dist
 	cp $(PKG_SCRIPT_DIR)/Makefile-deb $(TMP_DEB)/Makefile
 	cp $(DEB_DIR) $(TMP_DEB) -r
 	make -C  $(TMP_DEB) all
-	echo "ok"
+	echo SUCCESS DEBIAN PACKAGE FILES ARE IN '$(TMP_DEB)'
+
 #	mv $(ls $(TMP_DEB))	$(ls $(TMP_DEB) | sed s/"-"/"_"/ |  sed s/".tar."/".orig.tar."/)
 #	rm -rf $(TMP_DEB)
 
@@ -270,5 +282,5 @@ ref_results: $(bin_PROGRAMS) $(TRAINED_CLASSIF) $(TRAINED_CLASSIF_PS)
 #	./test/stressTest.sh
 
 cleanall: clean-local
-	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1rm Sh
+	rm -f *.in *.m4 config.* configure *.log Makefile stamp-h1
 	rm -rf build-aux config *.cache

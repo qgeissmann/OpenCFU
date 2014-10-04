@@ -1,5 +1,5 @@
 AC_PREREQ([2.68])
-AC_INIT([opencfu],[3.8.11],[opencfu@gmail.com],[opencfu],[http://www.opencfu.sourceforge.net/])
+AC_INIT([opencfu],[3.9.0],[opencfu@gmail.com],[opencfu],[http://www.opencfu.sourceforge.net/])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src])
@@ -13,12 +13,18 @@ AC_CONFIG_HEADERS([config.h])
 
 
 # Checks for programs.
+
+
 AC_PROG_CXX[gcc-mp-4.8  g++]
 
 AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])
 
-# We check for openmp
+# We check for openmp)])
+
+
 AC_OPENMP
+
+AC_SUBST(OPENMP_CFLAGS)
 
 # We check for opencv 2.4. if absent, stop!!
 PKG_CHECK_MODULES([OPENCV],[opencv >= 2.4.2],[],[AC_MSG_ERROR(OpenCV not found. Have you installed the library (devel version)). OpenCFU cannot be built without OpenCV!])

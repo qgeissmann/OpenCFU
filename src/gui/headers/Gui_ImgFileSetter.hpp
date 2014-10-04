@@ -13,8 +13,7 @@
 #include <glibmm/miscutils.h>
 #include "defines.hpp"
 #include <giomm/file.h>
-
-
+#include "Gui_ConfigIO.hpp"
 
 class Updatable{
     public:
@@ -112,7 +111,7 @@ class FileBrowsingButton: public Updatable, public Gtk::Button{
 
 class Gui_ImgFileSetter : public Gui_OptionSetterBaseClass{
     public:
-        Gui_ImgFileSetter(Gui_ProcessorHandler& processor_hand,const std::string str);
+        Gui_ImgFileSetter(Gui_ProcessorHandler& processor_hand,const std::string str, Gui_ConfigIO& config);
         void updateNFiles(int i){}
         sigc::signal<void,int> signal_publish_N_files(){ return m_signal_publish_N_files;}
         virtual ~Gui_ImgFileSetter();
@@ -140,7 +139,7 @@ class Gui_ImgFileSetter : public Gui_OptionSetterBaseClass{
         const std::string m_button_text[4];
         std::vector<Glib::RefPtr<Gio::File> > m_files;
         Glib::RefPtr<Gio::File> m_current_file;
-        std::string m_last_dir;
+        std::string& m_last_dir;
         unsigned int m_current_file_idx;
         Gtk::FileFilter m_img_filter,m_no_filter;
         InfoLabel m_label;

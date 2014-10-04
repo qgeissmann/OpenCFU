@@ -11,6 +11,10 @@
 				<Option output="OpenCFU" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add directory="src/gui/headers" />
+					<Add directory="src/processor/headers" />
+				</Compiler>
 				<MakeCommands>
 					<Build command="$make -f $makefile $target" />
 					<CompileFile command="$make -f $makefile $file" />
@@ -51,6 +55,7 @@
 		<Unit filename="src/defines.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/gui/headers/Gui_ColourCluster.hpp" />
 		<Unit filename="src/gui/headers/Gui_ColourSelector.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -138,6 +143,7 @@
 		<Unit filename="src/gui/headers/text.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/gui/src/Gui_ColourCluster.cpp" />
 		<Unit filename="src/gui/src/Gui_ColourSelector.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -267,6 +273,7 @@
 		<Unit filename="src/processor/headers/Step_BaseClass.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/processor/headers/Step_ColourCluster.hpp" />
 		<Unit filename="src/processor/headers/Step_FiltGUI.hpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -321,6 +328,7 @@
 		<Unit filename="src/processor/src/Step_BaseClass.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/processor/src/Step_ColourCluster.cpp" />
 		<Unit filename="src/processor/src/Step_FiltGUI.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -333,6 +341,7 @@
 		<Unit filename="src/processor/src/Step_FiltLik.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/src/processor/src/Step_ColourCluster.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

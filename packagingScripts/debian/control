@@ -1,6 +1,6 @@
 Source: opencfu
 Maintainer: Quentin Geissmann <opencfu@gmail.com>
-Section: misc
+Section: Science
 Priority: optional
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 9), libgtkmm-2.4-dev, libcv-dev (>=2.4)
@@ -8,5 +8,8 @@ Depends: libcv2.4, libgtkmm-2.4-1c2a
 
 Package: opencfu
 Architecture: any
+Section: Science
+Priority: optional
+Homepage: http://opencfu.sourceforge.net/
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: A C++ program to count cell colonies (CFUs) on agar plates by processing digital pictures.

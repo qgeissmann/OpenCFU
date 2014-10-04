@@ -21,7 +21,6 @@ class Step_1: public Step_BaseClass
         cv::Mat m_old_img;
         cv::Mat m_step_img;
         int m_old_min_rad;
-
         int m_kernel_size;
 };
 
