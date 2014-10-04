@@ -1,6 +1,6 @@
 # Maintainer: Quentin Geissmann <opencfu@gmail.com>
 pkgname=opencfu
-pkgver=3.8.10
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="A C++ program to count cell colonies (CFUs) on agar plates by processing digital pictures."
 arch=(any)
@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=('gtkmm>=2.24' 'opencv>=2.4.3' )
 makedepends=('autoconf' 'automake' 'sed' 'grep' 'make' 'gcc>=4.7')
 source=("http://sourceforge.net/projects/opencfu/files/linux/${pkgname}-${pkgver}.tar.gz")
-md5sums=(ba67e8b609f49633ff39ef6dddc0bd56)
+md5sums=(2331752a1fc9f27e09f76e832dba963c)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
