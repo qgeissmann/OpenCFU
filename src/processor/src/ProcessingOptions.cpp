@@ -10,6 +10,7 @@ ProcessingOptions::ProcessingOptions():
     m_min_max_sat(0,255),
     m_likelihood_thr(30),
     m_clustering_distance(2.3), //NJL 10/AUG/2014
+    m_clustering_min_pts(4), //NJL 13/FEB/2015
     m_threshold (10),
     m_threshold_mode(OCFU_THR_NORM),
     m_has_max_radius(false),
@@ -33,6 +34,7 @@ ProcessingOptions&  ProcessingOptions::operator= (const ProcessingOptions& cpy){
     m_threshold = cpy.getThr();
     m_threshold_mode = cpy.getThrMode();
     m_clustering_distance = cpy.getClustDist(); //NJL 10/AUG/2014
+    m_clustering_min_pts = cpy.getClusteringMinPoints(); //NJL 13/FEB/2015
     m_has_max_radius = cpy.getHasMaxRad();
     m_has_auto_threshold = cpy.getHasAutoThr();
     m_has_hue_filter = cpy.getHasHueFilt();
