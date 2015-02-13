@@ -185,7 +185,7 @@ void Result::recluster(std::vector< std::pair<int,int> > clustered){
             valid.push_back(true);
     }
     applyFilter(valid);
-    ColorProcessing(true);
+    ColorProcessing(false);
 }
 
 /**

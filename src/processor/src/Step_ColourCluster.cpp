@@ -75,7 +75,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
     }
 
     //if we have clusters
-    /**if (!cluster_ids.empty()){
+    if (!cluster_ids.empty()){
         DEV_INFOS("Re-ordering them to make cluster 1 most abudant");
         int highest_cluster_number = *std::max_element(cluster_ids.begin(), cluster_ids.end());
         //create a vector with the length equal to number of clusters, we will stick
@@ -117,11 +117,11 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
         }
     }
     //We have no clusters, but we need to prepare the results vector anyway
-    else {*/
+    else {
         for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
             result.push_back(std::make_pair<int,int>( it->getID(), it->getClusterID() ));
         }
-    //}
+    }
 
 
     return result;
