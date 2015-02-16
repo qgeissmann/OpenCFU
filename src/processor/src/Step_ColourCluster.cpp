@@ -94,6 +94,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
             cluster_counts[it->getClusterID()].second++;
         }
 
+
         //DEV_INFOS("Sorting Cluster Abundancies");
         //sort by second pair element
         std::sort(cluster_counts.begin(),cluster_counts.end(), sort_by_second);
@@ -104,16 +105,19 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
         //make a map that gives map['oldID']=newID
         std::map<int,int> cluster_map;
         for (int ii=0; ii<=highest_cluster_number; ii++){
-            cluster_map.insert( std::pair<int,int>(cluster_counts[ii].first, ii));
+            cluster_map.insert( std::pair<int,int>(cluster_counts[ii].first, ii+1));
             //DEV_INFOS("key "<< cluster_counts[ii].first << " val "<<ii);
         }
+
+        //remember to reset cluster 0 to 0, as this is NA
+        cluster_map[0]=0;
 
         DEV_INFOS("Preparing Results Vector");
 
         //Populate based on the map
         //Don't forget cluster 0 = NA
         for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
-            result.push_back(std::pair<int,int>( it->getID(), cluster_map[it->getClusterID()]+1 ));
+            result.push_back(std::pair<int,int>( it->getID(), cluster_map[it->getClusterID()] ));
         }
     }
     //We have no clusters, but we need to prepare the results vector anyway
