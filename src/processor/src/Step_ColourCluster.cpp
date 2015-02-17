@@ -87,12 +87,17 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
             cluster_counts.push_back(std::pair<int,int>(ii,0));
         }
 
+
+
         //DEV_INFOS("Populate cluster vector");
 
         //poulate the vector so it contains <clusterID, number_of_clusters>
         for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
             cluster_counts[it->getClusterID()].second++;
         }
+
+        //Force NA cluster to be sorted last.
+        cluster_counts[0].second=0;
 
 
         //DEV_INFOS("Sorting Cluster Abundancies");
@@ -109,7 +114,9 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
             //DEV_INFOS("key "<< cluster_counts[ii].first << " val "<<ii);
         }
 
-        //remember to reset cluster 0 to 0, as this is NA
+        //remember to reset cluster 0 to position 0, as this is NA,
+        //Just above we added one to all the other cluster numbers
+        //to leave room for this
         cluster_map[0]=0;
 
         DEV_INFOS("Preparing Results Vector");

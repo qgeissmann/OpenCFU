@@ -11,7 +11,7 @@ Gui_ColourCluster::Gui_ColourCluster(Gui_ProcessorHandler& processor_hand,const 
     m_spin_butt_clustering_distance(m_adjust_clustering_distance, 0.0, 1),
     m_lab_clustering_distance(LABEL_CLUSTERING_DISTANCE),
     //clustering members
-    m_adjust_min_cluster_points(m_processor_hand.getOptions().getClusteringMinPoints(),4,10,1,1.0,0.0),
+    m_adjust_min_cluster_points(m_processor_hand.getOptions().getClusteringMinPoints(),4,50,1,1.0,0.0),
     m_spin_butt_min_cluster_points(m_adjust_min_cluster_points, 0.0, 1),
     m_lab_min_cluster_points(LABEL_CLUSTERING_POINTS),
     //check button

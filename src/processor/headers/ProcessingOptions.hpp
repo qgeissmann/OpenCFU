@@ -285,7 +285,7 @@ class ProcessingOptions
  *  \param int clustering_min_pts Number of neighbour points necessary to be in a cluster
  */
         bool setClustMinPoints(const double clustering_min_pts){
-            if (clustering_min_pts>=4 && clustering_min_pts<=10.){
+            if (clustering_min_pts>=4 && clustering_min_pts<=50.){
                 m_clustering_min_pts = clustering_min_pts;
                 return true;}
             else{
