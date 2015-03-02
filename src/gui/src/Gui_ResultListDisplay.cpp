@@ -149,7 +149,7 @@ void Gui_ResultListDisplay::updateView(Glib::RefPtr<Gio::File> file, int idx){
         row[m_col_model.m_col_n_objects] = str;
         row[m_col_model.m_col_n_excluded] = str;
     }
-/**
+/*
     if (colCluster){
         std::stringstream ss;
         ss << res.getROIClusterData(0).clusterPop(1);

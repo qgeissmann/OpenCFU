@@ -77,7 +77,8 @@ class OneObjectRow{
  */
 class ClusterData{
     public:
-        ClusterData(){};
+        ClusterData();
+        ~ClusterData(){};
         void addCluster(int id, int pop, cv::Scalar col){
             if (!m_clusters.count(id)){
                 m_clusters.emplace( id, std::make_pair(pop, col) );

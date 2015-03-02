@@ -269,7 +269,7 @@ void Result::ColorProcessing(bool ordering){
     for (std::vector<OneObjectRow>::iterator it = v.begin(); it != v.end(); ++it){
         std::unordered_map<int, std::pair<int,cv::Scalar> >::iterator loc = translationTable.find(it->getColorClusterID());
 
-        if (ordering) {it->setColorClusterID( (loc->second).first );}
+        if (ordering) {it->setColorClusterID( (loc->second).first );} //Ordering by luminosity if requested
         it->setClusterColor( (loc->second).second );
         int roi = it->getROI();
         m_roi_data.addROIClusterData(0).addCluster(it->getColorClusterID(), it->getClusterColor());
@@ -312,6 +312,10 @@ void Result::applyGuiFilter(const cv::Mat& valid){
     applyFilter(boo);
 
 }
+
+ClusterData::ClusterData(){
+    this->addCluster(0, cv::Scalar(0,0,0)); //initiate with empty cluster 0
+    }
 
 const std::string ClusterData::str() const{
     std::stringstream ss;
