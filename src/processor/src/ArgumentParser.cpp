@@ -20,18 +20,20 @@ m_help_string("OpenCFU options:\n\
 -R NUM : set a maximal radius\n\
 -c NUM : set a \"center\" value of the Hue/Colour threshold\n\
 -C NUM : set a \"tolerance\" value of the Hue/Colour threshold\n\
--G NUM : set a \"coarseness\" value for the density based scanner\n\
+-D NUM : set a \"coarseness\" value for the density based colour clustering scanner\n\
+-N NUM : set a \"neighbour\" requirement for the density based colour clustering scanner\n\
 ")
 {
     std::stringstream tss;
     std::pair<int,int> min_max_radius,cent_tol_hue;
-    double clustering_distance;
+    double clustering_distance, clustering_neighbours;
     min_max_radius = opts.getMinMaxRad();
     cent_tol_hue = opts.getCenTolHue();
     clustering_distance = opts.getClustDist();
+    clustering_neighbours = opts.getClusteringMinPoints();
     signed char c=0;
 
-    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:G:")) != -1){
+    while ( (c = getopt (argc, argv, "hvad:i:m:r:R:c:C:t:l:o:G:N:")) != -1){
         switch(c){
             case 'h':
                  printHelp();
@@ -64,9 +66,13 @@ m_help_string("OpenCFU options:\n\
                 opts.setHasHueFilt(true);
                 cent_tol_hue.second = atoi(optarg);
                 break;
-            case 'G':
+            case 'D':
                 opts.setHasClustDist(true);
                 clustering_distance = atoi(optarg);
+                break;
+            case 'N':
+                opts.setHasClustDist(true);
+                clustering_neighbours = atoi(optarg);
                 break;
             case 'd':{
                 std::string str_optarg(optarg);
@@ -156,7 +162,13 @@ m_help_string("OpenCFU options:\n\
 
     if(!opts.setClustDist(clustering_distance)){
         std::cerr<<"ERROR setting up the clustering distance\
-         (argument \"-G\"). Must be in range [1,50]"<<std::endl;
+         (argument \"-D\"). Must be in range [1,50]"<<std::endl;
+         exit(EXIT_FAILURE);
+    }
+
+    if(!opts.setClustMinPoints(clustering_neighbours)){
+        std::cerr<<"ERROR setting up the clustering neighbours\
+         (argument \"-N\"). Must be in range [4,50]"<<std::endl;
          exit(EXIT_FAILURE);
     }
 
