@@ -1,5 +1,7 @@
 #include "Step_ColourCluster.hpp"
 
+bool sort_by_second( const std::pair<int,int> l, const std::pair<int,int> r) { return l.second > r.second; }
+
 ClusterPoint::ClusterPoint(int id, int cluster_id, bool visited, cv::Scalar color){
     m_id = id;
     m_cluster_id = cluster_id;
@@ -28,14 +30,17 @@ void Step_ColourCluster::updateParams(const void* src,bool was_forced){
     m_use_this_filter = m_opts.getHasClustDist();
     m_clustering_distance = m_opts.getClustDist();
     m_clustering_distance_2 = m_clustering_distance*m_clustering_distance;
+    m_min_cluster_pts = m_opts.getClusteringMinPoints();
     DEV_INFOS("Cluster Distance set to "<<m_clustering_distance);
+    DEV_INFOS("Cluster Min Pts set to "<<m_min_cluster_pts);
 
 }
 
 bool Step_ColourCluster::needReprocess(const void* src){
     bool toReprocess = false;
     toReprocess = ( m_use_this_filter != m_opts.getHasClustDist() ||
-                     m_clustering_distance != m_opts.getClustDist() );
+                     m_clustering_distance != m_opts.getClustDist() ||
+                     m_min_cluster_pts != m_opts.getClusteringMinPoints());
     return toReprocess;
 }
 
@@ -61,8 +66,72 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
 
     dbscan();
 
+
+    //Count how many cells per cluster, make the most populated cell group cluster 1
+    //To start, just make a vector of all cluster IDs
+    std::vector<int> cluster_ids;
     for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
-        result.push_back(std::make_pair<int,int>( it->getID(), it->getClusterID() ));
+            cluster_ids.push_back(it->getClusterID());
+    }
+
+    //if we have clusters
+    if (!cluster_ids.empty()){
+        DEV_INFOS("Re-ordering them to make cluster 1 most abudant");
+        int highest_cluster_number = *std::max_element(cluster_ids.begin(), cluster_ids.end());
+        //create a vector with the length equal to number of clusters, we will stick
+        //the amount of each cluster we have in here
+        //remember we start at cluster 0, we use pairs to preserve the index (original cluster num)
+        DEV_INFOS("Make cluster counts vector with " << highest_cluster_number+1 << " elements");
+        std::vector<std::pair<int,int>> cluster_counts;
+        for (int ii=0; ii<=highest_cluster_number; ii++){
+            cluster_counts.push_back(std::pair<int,int>(ii,0));
+        }
+
+
+
+        //DEV_INFOS("Populate cluster vector");
+
+        //poulate the vector so it contains <clusterID, number_of_clusters>
+        for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
+            cluster_counts[it->getClusterID()].second++;
+        }
+
+        //Force NA cluster to be sorted last.
+        cluster_counts[0].second=0;
+
+
+        //DEV_INFOS("Sorting Cluster Abundancies");
+        //sort by second pair element
+        std::sort(cluster_counts.begin(),cluster_counts.end(), sort_by_second);
+        for (auto it=cluster_counts.begin(); it != cluster_counts.end(); it++){
+            //DEV_INFOS("a: "<< it->first << " b: " <<it->second);
+        }
+
+        //make a map that gives map['oldID']=newID
+        std::map<int,int> cluster_map;
+        for (int ii=0; ii<=highest_cluster_number; ii++){
+            cluster_map.insert( std::pair<int,int>(cluster_counts[ii].first, ii+1));
+            //DEV_INFOS("key "<< cluster_counts[ii].first << " val "<<ii);
+        }
+
+        //remember to reset cluster 0 to position 0, as this is NA,
+        //Just above we added one to all the other cluster numbers
+        //to leave room for this
+        cluster_map[0]=0;
+
+        DEV_INFOS("Preparing Results Vector");
+
+        //Populate based on the map
+        //Don't forget cluster 0 = NA
+        for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
+            result.push_back(std::pair<int,int>( it->getID(), cluster_map[it->getClusterID()] ));
+        }
+    }
+    //We have no clusters, but we need to prepare the results vector anyway
+    else {
+        for (std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
+            result.push_back(std::make_pair<int,int>( it->getID(), it->getClusterID() ));
+        }
     }
 
 

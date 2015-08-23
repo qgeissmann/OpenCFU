@@ -185,14 +185,19 @@ void Result::recluster(std::vector< std::pair<int,int> > clustered){
             valid.push_back(true);
     }
     applyFilter(valid);
-    ClusterOrder();
+    ColorProcessing(false);
 }
 
 /**
+ *  ClusterOrder This function analyses the colours of clusters, with two ends
+ *  It assigns a mean colour to the cluster, and it allows the clusters to be sorted
+ *  by luminosity. Note that this overwrites the default preference to be sorted by
+ *  quantity
  *
+ *  @param bool ordering Enables the ordering of colonies by luminosity
  */
 
-void Result::ClusterOrder(){
+void Result::ColorProcessing(bool ordering){
 //create structure cluster 1: [colour, colour, colour...]
 //                 cluster 2: [colour, ....]
     std::unordered_map< int, std::vector<cv::Scalar> > clusterColors;
@@ -263,7 +268,8 @@ void Result::ClusterOrder(){
     m_roi_data.clear();
     for (std::vector<OneObjectRow>::iterator it = v.begin(); it != v.end(); ++it){
         std::unordered_map<int, std::pair<int,cv::Scalar> >::iterator loc = translationTable.find(it->getColorClusterID());
-        it->setColorClusterID( (loc->second).first );
+
+        if (ordering) {it->setColorClusterID( (loc->second).first );} //Ordering by luminosity if requested
         it->setClusterColor( (loc->second).second );
         int roi = it->getROI();
         m_roi_data.addROIClusterData(0).addCluster(it->getColorClusterID(), it->getClusterColor());
@@ -306,6 +312,10 @@ void Result::applyGuiFilter(const cv::Mat& valid){
     applyFilter(boo);
 
 }
+
+ClusterData::ClusterData(){
+    this->addCluster(0, cv::Scalar(0,0,0)); //initiate with empty cluster 0
+    }
 
 const std::string ClusterData::str() const{
     std::stringstream ss;

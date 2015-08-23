@@ -1,6 +1,6 @@
 # Maintainer: Quentin Geissmann <opencfu@gmail.com>
 pkgname=opencfu
-pkgver=3.8.10
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="A C++ program to count cell colonies (CFUs) on agar plates by processing digital pictures."
 arch=(any)

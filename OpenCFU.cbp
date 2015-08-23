@@ -341,7 +341,6 @@
 		<Unit filename="src/processor/src/Step_FiltLik.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="src/src/processor/src/Step_ColourCluster.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

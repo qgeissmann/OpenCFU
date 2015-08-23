@@ -77,7 +77,8 @@ class OneObjectRow{
  */
 class ClusterData{
     public:
-        ClusterData(){};
+        ClusterData();
+        ~ClusterData(){};
         void addCluster(int id, int pop, cv::Scalar col){
             if (!m_clusters.count(id)){
                 m_clusters.emplace( id, std::make_pair(pop, col) );
@@ -174,7 +175,7 @@ class Result{
         void setSameObjects(bool b){m_same_objects = b;}
         const bool getSameObjects()const {return m_same_objects;}
         void recluster(const std::vector< std::pair<int,int> > clustered); //NJL 13/AUG/2014
-        void ClusterOrder(); //NJL 02/SEP/2014
+        void ColorProcessing(bool ordering); //NJL 02/SEP/2014, 13/FEB/2014
         void uncluster(); // NJL 01/SEP/2014
 
         //const ClusterData& getClusterData() const{return m_clusterData;} //NJL 03/SEP/2014 //deprecated by getROIData(0)

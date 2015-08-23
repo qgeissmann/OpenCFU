@@ -44,11 +44,20 @@ class Gui_ColourCluster : public Gui_OptionSetterBaseClass
             this->setOption();}
     private:
         Gtk::HBox m_hbox;
+        Gtk::HBox m_hbox_1;
+        Gtk::HBox m_hbox_2;
 //        Gtk::VBox m_vbox; //declared in parent
         Gtk::Adjustment m_adjust_clustering_distance;
         Gtk::SpinButton m_spin_butt_clustering_distance;
-        Gtk::CheckButton m_check_butt;
         Gtk::Label m_lab_clustering_distance;
+
+        Gtk::Adjustment m_adjust_min_cluster_points;
+        Gtk::SpinButton m_spin_butt_min_cluster_points;
+        Gtk::Label m_lab_min_cluster_points;
+
+        Gtk::CheckButton m_check_butt;
+
+
 };
 
 #endif // GUI_COLOURCLUSTER_HPP

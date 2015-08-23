@@ -102,7 +102,9 @@ about ROIs, you will find video tutorial on the website.</big>"
 
 //NJL 10/AUG/2014 Colour Clustering
 #define LABEL_CHECKBUTTON_HAS_CLUSTERING_DISTANCE "Recognise similar colours"
-#define LABEL_CLUSTERING "Coarseness:"
+#define LABEL_CLUSTERING_DISTANCE "Coarseness:"
+//NJL 13/FEB/2015
+#define LABEL_CLUSTERING_POINTS "Min. Neighbours:"
 
 /*==================TOOLTIPS==================*/
 
@@ -158,5 +160,12 @@ annotations on the image"
 The \"Coarseness\" defines the maximum difference\n\
 between colours grouped as similar. A coarseness\n\
 of 2.3 corresponds to a just notable difference"
+
+//NJL 13/FEB/2015
+#define TOOLTIP_CLUSTERING_MINIMUM_POINTS "\
+The \"Min. Neighbours\" defines the minimum number\n\
+of neighbours a point should have to be in a cluster\n\
+A higher number means less chance of low density \n\
+points bridging two clusters."
 
 #endif

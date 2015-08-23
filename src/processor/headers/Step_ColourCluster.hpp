@@ -8,6 +8,9 @@
 #include <utility>
 #include <unordered_map>
 #include <string>
+#include <vector>
+
+
 
 class ClusterPoint
 {
@@ -59,12 +62,15 @@ class Step_ColourCluster : public Step_BaseClass
         std::vector<ClusterPoint> m_neighbours;
 
         double m_clustering_distance_2;
-        unsigned const m_min_cluster_pts = 4;
+        int m_min_cluster_pts;
         int m_current_cluster;
 
         void dbscan();
         std::vector<std::vector<ClusterPoint>::iterator> findNeighbours(ClusterPoint);
         void expandCluster(ClusterPoint);
+
+        //comparator for sorting pairs, from stackexchange
+
 };
 
 

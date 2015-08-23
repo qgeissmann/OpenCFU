@@ -117,21 +117,25 @@ void Gui_Decorator::decorate(){
  *Drawing each region, migrated to a functional form 4/SEP/2014
  *****************************************************************************/
     //clusters if present
+    //green
     highlightCells(cr, in_cluster_one,   0.0, 1.0, 0.0, 0.8, 3.0);
     highlightCells(cr, in_cluster_one,   0.0, 1.0, 0.0, 1.0, 1.5);
 
-    highlightCells(cr, in_cluster_two,   1.0, 0.5, 0.0, 0.8, 3.0);
-    highlightCells(cr, in_cluster_two,   1.0, 0.5, 0.0, 1.0, 1.5);
+    //teal
+    highlightCells(cr, in_cluster_two,   0.0, 1.0, 1.0, 0.8, 3.0);
+    highlightCells(cr, in_cluster_two,   0.0, 1.0, 1.0, 1.0, 1.5);
 
-    highlightCells(cr, in_cluster_three, 0.0, 1.0, 1.0, 0.8, 3.0);
-    highlightCells(cr, in_cluster_three, 0.0, 1.0, 1.0, 1.0, 1.5);
+    //purple
+    highlightCells(cr, in_cluster_three, 1.0, 0.0, 1.0, 0.8, 3.0);
+    highlightCells(cr, in_cluster_three, 1.0, 0.0, 1.0, 1.0, 1.5);
 
-    highlightCells(cr, in_cluster_four,  1.0, 0.0, 1.0, 0.8, 3.0);
-    highlightCells(cr, in_cluster_four,  1.0, 0.0, 1.0, 1.0, 1.5);
+    //orange
+    highlightCells(cr, in_cluster_four,  1.0, 0.5, 0.0, 0.8, 3.0);
+    highlightCells(cr, in_cluster_four,  1.0, 0.5, 0.0, 1.0, 1.5);
 
     //valid cells not in  clusters
-    highlightCells(cr, in_field_valid, 1.0, 1.0, 0.0, 0.8, 3.0);
-    highlightCells(cr, in_field_valid, 0.0, 0.0, 1.0, 1.0, 1.5);
+    highlightCells(cr, in_field_valid,   1.0, 1.0, 0.0, 0.8, 3.0);
+    highlightCells(cr, in_field_valid,   0.0, 0.0, 1.0, 1.0, 1.5);
 
 
 /******************************************************************************

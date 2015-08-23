@@ -93,6 +93,13 @@ class ProcessingOptions
 
         const double getClustDist()const{return m_clustering_distance;}
 
+//NJL 13/FEB/2015
+/** \brief Getter for the clustering distance
+ *  \return  int clustering_min_pts Number of neighbour points necessary to be in a cluster
+ */
+
+        const double getClusteringMinPoints()const{return m_clustering_min_pts;}
+
  //NJL 10/AUG/2014
 /** \brief Getter for the has_clustering_distance variable
  *  \return bool state of the has_clustering_distance variable
@@ -273,6 +280,19 @@ class ProcessingOptions
             }
         }
 
+//NJL 13/FEB/2015
+/** \brief Setter for Clustering minimum points
+ *  \param int clustering_min_pts Number of neighbour points necessary to be in a cluster
+ */
+        bool setClustMinPoints(const double clustering_min_pts){
+            if (clustering_min_pts>=4 && clustering_min_pts<=50.){
+                m_clustering_min_pts = clustering_min_pts;
+                return true;}
+            else{
+                return false;
+            }
+        }
+
 //NJL 14/AUG/2014
 /** \brief Setter for m_has_clustering_distance
  *  \param bool has_clustering_distance state for whether to perform clustering
@@ -291,6 +311,7 @@ class ProcessingOptions
         std::pair<int,int> m_min_max_sat;
         double m_likelihood_thr;
         double m_clustering_distance; //NJL 10/AUG/2014
+        int m_clustering_min_pts; //NJL 13/FEB/2015
         int m_threshold;
         int m_threshold_mode;
         bool m_has_max_radius;
