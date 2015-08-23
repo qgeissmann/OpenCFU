@@ -33,12 +33,18 @@ int main(int argc, char **argv){
         std::cout<<"\n~~~~~~~~~~~~~~TRAINING PREDICTOR~~~~~~~~~~~~~\n "<<std::endl;
 
         DataMaker dm(TRAINING_SET_IMG,TRAINING_SET_IMG_PS);
+
         if(argc == 3)
             dm.makeData(features,categs);
         else
             dm.makeDataPS(features,categs);
+
+
+
         my_predictor.train(features,categs);
+        return 2;
         my_predictor.save(argv[2]);
+
         std::cout<<"\n~~~~~~~~~~~~~~PREDICTOR TRAINED~~~~~~~~~~~~~\n "<<std::endl;
 
     }
@@ -87,7 +93,11 @@ int main(int argc, char **argv){
         std::cout.setf(std::ios::fixed);
         for(unsigned int i = 0; i < counts.size();i++)
             std::cout<<"N(class =="<<revLut[i]<<") "<<counts[i]<<std::endl;
-        std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(m_mat,"CSV")<<"\n"<<std::endl;
+
+        //CV2
+        //std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(m_mat,"CSV")<<"\n"<<std::endl;
+        //CV3
+        std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(m_mat,cv::Formatter::FMT_CSV)<<"\n"<<std::endl;
     }
     return 0;
 }

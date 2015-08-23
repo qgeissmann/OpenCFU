@@ -8,6 +8,7 @@
 #include "defines.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/ml/ml.hpp"
+
 class Predictor
 {
     public:
@@ -20,8 +21,16 @@ class Predictor
 
     protected:
     private:
-        CvRTrees m_trees;
-        CvRTParams m_rt_params;
+        //CV2
+        //CvRTrees m_trees;
+        //CvRTParams m_rt_params;
+        //CV3
+        cv::Ptr<cv::ml::RTrees> m_trees;
+        // cv::ml::RTrees::create();
+        //cv::ml::RTrees::Params m_trees;
+
+
+
 };
 
 #endif // PREDICTOR_H
