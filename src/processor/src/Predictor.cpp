@@ -51,7 +51,7 @@ Predictor::Predictor(){
 
 void Predictor::loadTrainData(const std::string& str){
     #if CV_MAJOR_VERSION < 3
-    m_trees.load(str.c_str())
+    m_trees.load(str.c_str());
     #else
     m_trees = cv::ml::StatModel::load<cv::ml::RTrees> (str);
     #endif // CV_MAJOR_VERSION
@@ -85,7 +85,7 @@ void Predictor::predict(const cv::Mat& in, std::vector<signed char>& out){
 
     for(int i = 0; i < in.rows;i++){
         #if CV_MAJOR_VERSION < 3
-        //signed char cat = m_trees.predict(in.row(i));
+        signed char cat = m_trees.predict(in.row(i));
         #else
         signed char cat = m_trees->predict(in.row(i));
         #endif

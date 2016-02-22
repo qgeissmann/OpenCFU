@@ -47,16 +47,6 @@ int main(int argc, char **argv){
         my_predictor.save(argv[2]);
 
         std::cout<<"\n~~~~~~~~~~~~~~PREDICTOR TRAINED~~~~~~~~~~~~~\n "<<std::endl;
-        std::vector<signed char> pred;
-        DEV_INFOS("Trying to predict...");
-        my_predictor.predict(features,pred);
-        DEV_INFOS("OK");
-
-        DEV_INFOS("Trying to load and predict...");
-        Predictor my_predictor2;
-        my_predictor2.loadTrainData("/tmp/test.xml");
-        my_predictor2.predict(features,pred);
-        DEV_INFOS("done");
     }
     /*Else, if the program is called to validate the training*/
     else{
