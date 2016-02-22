@@ -1,4 +1,5 @@
 #include "Step_ColourCluster.hpp"
+#include <map>
 
 bool sort_by_second( const std::pair<int,int> l, const std::pair<int,int> r) { return l.second > r.second; }
 
@@ -67,7 +68,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
     }
 
     dbscan();
-    /*
+
 
     //Count how many cells per cluster, make the most populated cell group cluster 1
     //To start, just make a vector of all cluster IDs
@@ -136,7 +137,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
         }
     }
 
-        */
+
     return result;
 
 }
