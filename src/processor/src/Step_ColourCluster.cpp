@@ -52,6 +52,8 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
 
 
     std::vector< std::pair<int,int> > result;
+
+
     m_cluster_vector.clear();
     for(unsigned int ii = 0; ii < in_numerical_result.size(); ii++){
         const OneObjectRow& oor = in_numerical_result.getRow(ii);
@@ -65,7 +67,7 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
     }
 
     dbscan();
-
+    /*
 
     //Count how many cells per cluster, make the most populated cell group cluster 1
     //To start, just make a vector of all cluster IDs
@@ -134,8 +136,9 @@ std::vector< std::pair<int,int> > Step_ColourCluster::cluster(const Result& in_n
         }
     }
 
-
+        */
     return result;
+
 }
 
 /**

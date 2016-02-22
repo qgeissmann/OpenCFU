@@ -21,13 +21,12 @@ class Predictor
 
     protected:
     private:
-        //CV2
-        //CvRTrees m_trees;
-        //CvRTParams m_rt_params;
-        //CV3
+        #if CV_MAJOR_VERSION < 3
+        CvRTrees m_trees;
+        CvRTParams m_rt_params;
+        #else
         cv::Ptr<cv::ml::RTrees> m_trees;
-        // cv::ml::RTrees::create();
-        //cv::ml::RTrees::Params m_trees;
+        #endif // CV_MAJOR_VERSION
 
 
 

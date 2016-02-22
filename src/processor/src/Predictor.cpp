@@ -1,10 +1,10 @@
 #include "Predictor.hpp"
-
+#include <stdlib.h>
 
 #include "opencv2/highgui/highgui.hpp"//todel
 
-//CV2
-/*
+
+#if CV_MAJOR_VERSION < 3
 Predictor::Predictor():
 m_rt_params(
 10,//maxdepth
@@ -20,17 +20,11 @@ false,//nact_var
 CV_TERMCRIT_EPS | CV_TERMCRIT_ITER//terminaison criteria
 )
 {
-
     //Reset random seed
-    //CV2
-    // *(m_trees.get_rng())= cvRNG(4);
+    *(m_trees.get_rng())= cvRNG(4);
 }
-*/
 
-
-
-//CV3
-
+#else
 Predictor::Predictor(){
     m_trees = cv::ml::RTrees::create();
     m_trees->setMaxDepth(10);
@@ -38,6 +32,7 @@ Predictor::Predictor(){
     m_trees->setRegressionAccuracy(0);
     m_trees->setUseSurrogates(false);
     m_trees->setMaxCategories(3);
+
     //m_trees->setPriors(0); //0
     m_trees->setCalculateVarImportance(true);
     m_trees->setActiveVarCount(false);
@@ -46,26 +41,28 @@ Predictor::Predictor(){
 
     m_trees->setTermCriteria({      cv::TermCriteria::MAX_ITER +
                                     cv::TermCriteria::EPS,
-                                    100, 0.1
+                                    100, 0.01
                                     });
 
 
     // *(m_trees.get_rng())= cvRNG(4);
 }
+#endif // CV_MAJOR_VERSION
 
 void Predictor::loadTrainData(const std::string& str){
-    //CV2
-    //m_trees.load(str.c_str())
-    //CV3
-    m_trees = cv::ml::StatModel::load<cv::ml::RTrees> ("/home/quentin/comput/opencfu-git/src/classifier/trainnedClassifier.xml");
+    #if CV_MAJOR_VERSION < 3
+    m_trees.load(str.c_str())
+    #else
+    m_trees = cv::ml::StatModel::load<cv::ml::RTrees> (str);
+    #endif // CV_MAJOR_VERSION
 }
 
 void Predictor::save(const std::string& str){
-    //CV2
-    //m_trees.save(str.c_str());
-    //CV3
-    auto fs =  cv::FileStorage(str, cv::FileStorage::WRITE);
-    m_trees->write(fs);
+    #if CV_MAJOR_VERSION < 3
+    m_trees.save(str.c_str());
+    #else
+    m_trees->save(str);
+    #endif
 
 }
 
@@ -73,25 +70,11 @@ void Predictor::train(const cv::Mat& features, const std::vector<signed char>& c
     cv::Mat categ_mat(categs.size(),1,CV_32S);
     for(int i = 0; i < categ_mat.rows;i++)
         categ_mat.at<long>(cv::Point(0,i)) = categs[i];
-    //CV2
-    //m_trees.train(features,CV_ROW_SAMPLE,categ_mat,cv::Mat(),cv::Mat(),cv::Mat(),cv::Mat(),m_rt_params);
-
-    //CV3
-    //cv::Ptr<cv::ml::TrainData> data = cv::ml::TrainData::create(features, cv::ml::ROW_SAMPLE, categ_mat);
-    //m_trees->train(features, cv::ml::ROW_SAMPLE, categ_mat);
-
-    //std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(categs,cv::Formatter::FMT_CSV)<<"\n"<<std::endl;
-
+    #if CV_MAJOR_VERSION < 3
+    m_trees.train(features,CV_ROW_SAMPLE,categ_mat,cv::Mat(),cv::Mat(),cv::Mat(),cv::Mat(),m_rt_params);
+    #else
     m_trees->train(features, cv::ml::ROW_SAMPLE, categ_mat);
-
-
-    //DEV_INFOS("Variable Importance:\n"<<m_trees.getVarImportance()<<std::endl);
-
-    //CV2
-    //DEV_INFOS("Variable Importance:\n"<<m_trees.getVarImportance()<<std::endl);
-
-    //CV3
-    //DEV_INFOS("Variable Importance:\n"<<m_trees->getVarImportance()<<std::endl);
+    #endif // CV_MAJOR_VERSION
 
 }
 
@@ -100,18 +83,12 @@ void Predictor::predict(const cv::Mat& in, std::vector<signed char>& out){
     out.clear();
     out.reserve(in.rows);
 
-    //cv::FileStorage read("/home/quentin/comput/opencfu-git/src/classifier/trainnedClassifier.xml", cv::FileStorage::READ);
-    //DEV_INFOS("b");
-
-
-
-    DEV_INFOS("a");
     for(int i = 0; i < in.rows;i++){
-        //CV2
+        #if CV_MAJOR_VERSION < 3
         //signed char cat = m_trees.predict(in.row(i));
-        //CV3
+        #else
         signed char cat = m_trees->predict(in.row(i));
-
+        #endif
         out.push_back(cat) ;
     }
 }
