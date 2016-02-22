@@ -32,7 +32,7 @@ CV_TERMCRIT_EPS | CV_TERMCRIT_ITER//terminaison criteria
 //CV3
 
 Predictor::Predictor(){
-    auto m_trees = cv::ml::RTrees::create();
+    m_trees = cv::ml::RTrees::create();
     m_trees->setMaxDepth(10);
     m_trees->setMinSampleCount(10);
     m_trees->setRegressionAccuracy(0);
@@ -57,8 +57,7 @@ void Predictor::loadTrainData(const std::string& str){
     //CV2
     //m_trees.load(str.c_str())
     //CV3
-    //m_trees->load(str.c_str())
-    cv::Ptr<cv::ml::RTrees> m_trees = cv::ml::StatModel::load<cv::ml::RTrees>(str.c_str());
+    m_trees = cv::ml::StatModel::load<cv::ml::RTrees> ("/home/quentin/comput/opencfu-git/src/classifier/trainnedClassifier.xml");
 }
 
 void Predictor::save(const std::string& str){
@@ -82,8 +81,9 @@ void Predictor::train(const cv::Mat& features, const std::vector<signed char>& c
     //m_trees->train(features, cv::ml::ROW_SAMPLE, categ_mat);
 
     //std::cout<<"\nConfusion Matrix = \n REAL(top) -> PRED(left) \n"<<cv::format(categs,cv::Formatter::FMT_CSV)<<"\n"<<std::endl;
-    return;
+
     m_trees->train(features, cv::ml::ROW_SAMPLE, categ_mat);
+
 
     //DEV_INFOS("Variable Importance:\n"<<m_trees.getVarImportance()<<std::endl);
 
@@ -96,13 +96,22 @@ void Predictor::train(const cv::Mat& features, const std::vector<signed char>& c
 }
 
 void Predictor::predict(const cv::Mat& in, std::vector<signed char>& out){
+
     out.clear();
     out.reserve(in.rows);
+
+    //cv::FileStorage read("/home/quentin/comput/opencfu-git/src/classifier/trainnedClassifier.xml", cv::FileStorage::READ);
+    //DEV_INFOS("b");
+
+
+
+    DEV_INFOS("a");
     for(int i = 0; i < in.rows;i++){
         //CV2
         //signed char cat = m_trees.predict(in.row(i));
         //CV3
         signed char cat = m_trees->predict(in.row(i));
+
         out.push_back(cat) ;
     }
 }
