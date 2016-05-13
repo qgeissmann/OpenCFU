@@ -180,11 +180,12 @@ std::vector<std::vector<ClusterPoint>::iterator> Step_ColourCluster::findNeighbo
     double colorB1 = searchPoint.getColor()[2];
     std::vector<std::vector<ClusterPoint>::iterator> local_neighbours;
     for(std::vector<ClusterPoint>::iterator it = m_cluster_vector.begin(); it != m_cluster_vector.end(); ++it){
-
+        // CIE76 Colour difference
+        // Note:0.153787=(100/255)^2 because open CV stores and 8 bit int when the value is in [0,100]
         double colorL2 = it->getColor()[0];
         double colorA2 = it->getColor()[1];
         double colorB2 = it->getColor()[2];
-        double sum = (colorL1-colorL2)*(colorL1-colorL2)*0.392157; //0.392157=100/255 because open CV stores and 8 bit int when the value is in [0,100]
+        double sum = (colorL1-colorL2)*(colorL1-colorL2)*0.153787;
         sum += (colorA1-colorA2)*(colorA1-colorA2);
         sum += (colorB1-colorB2)*(colorB1-colorB2);
 
