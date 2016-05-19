@@ -1,5 +1,5 @@
 AC_PREREQ([2.68])
-AC_INIT([opencfu],[3.9.0],[opencfu@gmail.com],[opencfu],[http://www.opencfu.sourceforge.net/])
+AC_INIT([opencfu],[3.9.1],[opencfu@gmail.com],[opencfu],[http://www.opencfu.sourceforge.net/])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src])
