@@ -53,7 +53,7 @@ void Gui_ColourWheel::redraw(){
             float aa = (float) mean_hue *  MY_PI /180;
             float bb = (float) m_centr_hue *  MY_PI /180;
 
-            int diff = abs(atan2(sin(aa-bb), cos(aa-bb)) * 180 / MY_PI);
+            int diff = (int) fabs(atan2(sin(aa-bb), cos(aa-bb)) * 180 / MY_PI);
             if(val < m_min_sat || val > m_max_sat || diff > m_tol_hue){
                 chanels[1].at<uchar>(i, j) = 0;
                 chanels[2].at<uchar>(i, j) = 0;
