@@ -46,7 +46,7 @@ std::vector<bool> Step_FiltHS::filter(const Result& in_numerical_result){
 
         float aa = (float) mean_hue *  3.1416 /180;
         float bb = (float) m_centr_hue *  3.1416 /180;
-        int diff = abs(atan2(sin(aa-bb), cos(aa-bb)) * 180 / 3.1416);
+        int diff = (int) fabs(atan2(sin(aa-bb), cos(aa-bb)) * 180 / 3.1416);
         int mean_sat = (int) mean[2];
 
         if(diff > m_tol_hue || mean_sat > m_max_sat || mean_sat < m_min_sat)
