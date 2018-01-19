@@ -1,0 +1,319 @@
+\documentclass{letter}
+\usepackage{graphicx}
+
+
+\newcommand{\Otitle}{\emph{OpenCFU, a New Free and Open-Source Software to Count Cell Colonies and
+Other Circular Objects}}
+
+\interfootnotelinepenalty=10000
+\longindentation=0pt
+
+\signature{	Quentin Geissmann
+			PhD. student\\
+Institute for Biology\\
+Free University of Berlin\\
+}
+
+\address{
+Institute for Biology\\
+Free University of Berlin\\
+K\"{o}nigin-Luise-Strasse 1-3\\
+D-14195 Berlin, Germany\\
+q.geissmann@fu-berlin.de}
+\name{Quentin Geissmann}
+
+
+\begin{document}
+ 
+\begin{letter}{}
+\opening{Dear editors,}
+ Thank you for having considered my manuscript entitled ``\Otitle{}'' for publication in PLoS ONE.
+ In response to your suggestion of ``Major Revision'', and thanks to the very useful criticisms of the two anonymous reviewers, 
+ I have undertaken extensive modifications both in my manuscript and in OpenCFU; the software it details.
+ In this document, I will attempt to answer to each criticisms addressed to my original manuscript and explain the revisions they have elicited.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+ Fist of all, it was requested that I compare my method against additional alternatives:
+  \begin{quote}
+ Academic editor:\\
+ ``[\ldots] but what about other tools, e.g. those included in ImageJ, those based on MMorph. 
+ Please analyze the performance increase of your software over these and the other available alternatives.''\\
+ Reviewer 2:\\
+ ``In the introduction refs to comparable software is missing.''
+  \end{quote} 
+ I have to admit that this was valid and justified criticism.
+ My revised manuscript now includes a comparison to the ImageJ macro recently proposed by Cai \emph{et al.}.
+ As I explain in my modified introduction I have, despite my efforts, faced many difficulties trying to satisfy this demand any further.
+ Here, I describe other alternatives I have considered without being able to compare them to OpenCFU:
+
+\begin{itemize}
+  
+	\item Sofware works that were part of an integrated colony counter for which the authors did not provide an independant implementation\footnote{For example: Zhang, Chengcui, and Wei-Bang Chen. ``An Effective and Robust Method for Automatic Bacterial Colony Enumeration.'' In International Conference on Semantic Computing, 2007. ICSC 2007, 581–588, 2007.}.
+	
+	\item Theoretical publications that did not refer to any implementation\footnote{For example: Kaur, Gurpreet, and Poonam Sethi. ``A Novel Methodology for Automatic Bacterial Colony Counter.'' International Journal of Computer Applications 49, no. 15 (July 28, 2012): 21–26.}. 
+	
+   \item Tools that were not available. Namely, ``ScanCount''\footnote{Dahle,
+   Jostein, Manish Kakar, Harald B. Steen, and Olav Kaalhus. ``Automated
+   Counting of Mammalian Cell Colonies by Means of a Flat Bed Scanner and Image
+   Processing." Cytometry Part A 60A, no. 2 (2004): 182–188.}
+  (based on ``Analysis Pro 3.0''),
+ ``CHiTA''\footnote{Bewes, J M, N Suchowerska, and D R McKenzie. ``Automated
+ Cell Colony Counting and Analysis Using the Circular Hough Image Transform
+ Algorithm (CHiTA)." Physics in Medicine and Biology 53, no. 21 (November 7,
+ 2008): 5991–6008.} (based on MATLAB) or ``Arraycount''\footnote{Kachouie,
+ Nezamoddin N., Lifeng Kang, and Ali Khademhosseini. ``Arraycount, an Algorithm
+ for Automatic Cell Counting in Microwell Arrays.'' BioTechniques 47, no. 3
+ (September 2009): x–xvi.} (based on MATLAB) could not be obtained. No reference
+ to download links were specified, and tools seemed absent from the supplementary
+ materials.
+ Further investigations involving trying to visit the authors respective
+ websites, running web searches and  attempting to directly
+ contact the corresponding authors were equally unsuccessful.
+ 
+ \item ``Clono-counter''\footnote{Niyazi, Maximilian, Ismat Niyazi, and Claus Belka. ``Counting Colonies of Clonogenic Assays by Using Densitometric Software.'' Radiation Oncology 2, no. 1 (January 9, 2007): 4.}.
+ Despite its availability, the program was affected by a very
+ serious bug that seems to make the analysis of images larger than the screen
+ dimensions impossible.
+ The software had many other important flaws including the impossibility to open multiple
+ files in the same program instance.
+    
+ \item The plug-in, partially included in ImageJ, developed by Sieuwerts \emph{et al.}\footnote{Sieuwerts, S., F. A.M De Bok, E. Mols, W. M De Vos, and J. E.T Van Hylckama Vlieg. ``A Simple and Fast Method for Determining Colony Forming Units.'' Letters in Applied Microbiology 47, no. 4 (October 1, 2008): 275–278.}.
+ The method relies on general threshold which performed
+ poorly because the background intensity is not constant (within and between
+ images). In addition, it requires, according to the authors, manual conversion to grey-scale and thresholding of each image before counting particles.
+ This steps seems to me very subjective, error-prone and time-consuming.
+ 
+ \item Cell-Profiler pipeline proposed by Vokes and
+ Carpenter\footnote{Vokes, Martha S, and Anne E Carpenter. ``Using CellProfiler
+ for Automatic Identification and Measurement of Biological Objects in Images.''
+ Current Protocols in Molecular Biology Edited by Frederick M Ausubel Et Al
+ Chapter 14, no. April (2008): Unit 14.17.}. I could not obtain any satisfying
+ results by performing reasonably minor changes (including inverting the image,
+ changing the block-size of the illumination correction functions, or, for
+ instance, the relative weight of the colour channels). Further alteration of the proposed method would be considered as
+ developing a new method and my point is not to compare OpenCFU to other
+ methods developed by myself.
+ \end{itemize}
+ % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ 
+	Then, criticisms for simply implementing existing method rather than providing a novel algorithm were raised:
+  \begin{quote}
+   Reviewer \#1:\\
+ ``The image processing is very comparable to previously published results''
+ \end{quote}
+ I acknowledge this fact and think this criticisms were valid. Although it was very fast, the method
+ described in the first manuscript, was rather simplistic and overall lacked robustness. 
+ A very significant part of my revisions has involved the development of a new exhaustive
+ algorithm that focuses on robustness and accuracy wilst preserving a reasonably fast processing speed.\\
+ %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ 
+ It was also asked that I make clear the advantages of my software over existing solutions:
+ \begin{quote}
+ Academic editor:\\
+ ``Both reviewers [\ldots] criticize your paper for not making clear in what
+  way the software is an advantage over existing tools''\\
+  ``In terms of validation, it is not clear if the method is more accurate than the alternatives?''\\
+ \end{quote}
+In my first manuscript, I presented processing speed as the main advantage of OpenCFU over NICE.
+However, one could legitimately argue that, on modern hardware, NICE is fast enough since the processing time is negligible compared to, for instance, the total acquisition time.
+For this reason, I have also taken out ``table~1'', which compared the time to process all the plates for different agents/methods.
+I do however still maintain that speed is important, especially if the method needs a lot of calibration and rectifications.
+My revised manuscript, now describes and quantifies other advantages of OpenCFU over alternatives. That is its accuracy and robustness.\\
+ %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ 
+They were discrepencies in the reviewers comments regarding the advantages of the user interface:
+  \begin{quote}
+  Reviewer \#1:\\
+	  ``Furthermore, it [OpenCFU] comes with a clean graphical user interface making it user-friendly to biologists.
+	   Another nice addition is that the interface allows setting a number of parameter values which directly affect the image segmentation.''\\
+   Reviewer \#2:\\
+		``There is no further reference to GUI tools or GUI evaluation that makes it, at least, plausible that, 
+		in this case, this contributes to the success of OpenCFU.''
+	\end{quote}
+I my first manuscript, I did not ellaborate on the features and advantages of the GUI as 
+I thought this would be assessed by each OpenCFU user. 
+In my revised submission, I now include a section that describes some of the features of the user interface,
+ and provide explanations as to why they provide an advantage over alternatives.\\
+ 
+ %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ It was asked that I describe the method used with more precision:
+ \begin{quote}
+	 Reviewer \#2:\\
+	 ``a watershed approach for touching subjects was used. 
+	what criteria were applied for the "untouching" of the objects for the count?
+	there is no ref. to the watershed method for objects based on the DT;''\\
+	``i miss a flow-chart of the method.''\\
+	``what distance transform was used ; this influences the speed considerably.''
+ \end{quote}
+ My revised submission incorporates a flowchart (in a new figure) of the novel method.
+ Moreover, the section ``Materials and Methods'' now contains a detailed description of the procedure implemented to split and accept objects as colonies.\\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+At the time of the first submission, OpenCFU could produce only a summary output which elicited some criticisms:
+  \begin{quote}
+  Academic editor:\\
+   ``The software produces quite limited output; other outputs could include colony size, shape, density.''\\
+   Reviewer \#1:\\
+   ``Also the output is relatively limited. More parameters could easily be extracted from the individual colonies.''\\
+	\end{quote}
+ In response to this, the software now includes a ``detailed output'' option which gives information about each colony.\\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+	Some more details about the use of capture devices and its justification were requested:
+	 \begin{quote}
+	 Academic editor:\\
+	``I also miss a detailed analysis of the use with webcam images. Is it fast enough to use it for counting moving objects on webcams?''\\
+	 Reviewer \#2:\\
+	``inclusion of the usage of realtime counting with a webcam seems not useful to me.
+	 One can argue to use a webcam in these applications but why?
+	It is better to use a multi-purpose imaging system with a high NA lens. 
+	The is what webcams are not made for. 
+	And moreover, the images include more noise.''\\	
+ \end{quote}
+ The new algorithm being slower, it does not allow ``real-time'' processing any more. 
+In addition, users had reported that real-time counting was confusing and somehow unnecessary.
+ In the updated version of the program, the video stream is still displayed, but the user has to click on a button to stop it which; will automatically analyse the last frame.
+ I think it is interesting to have the option of a low-cost integrated acquisition system in the software.
+This has been an important matter illustrated by the exhaustive focus of authors on using desktop scanners.
+ Biological material such as bacteria is often confined to specific rooms or laboratories which makes is hard to share equipment between groups and could encourage low-cost solutions.
+ In this study I show that using a simple webcam can lead to very good results, but OpenCFU is, \emph{a priori}, compatible with other capture devices such
+ as UVC compliant ones (for instance some USB microscopes) and firewire cameras. \\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+It was recommended that I provide informations about the variation between human counts:
+	 \begin{quote}
+	 Reviewer \#2:\\
+	 ``for the human exp. the inter/intro subject variation is interesting to know. this shows how expert the `group' was.''
+	 \end{quote}
+In my revised manuscript, I use the deviations from the reference as a measure of error.
+This contrasts with my first manuscript in which I only used the $R^2$ of the linear regression to the reference. 
+The error variability between humans is now taken in consideration.  
+Figure 4B in the revised manuscript also represents and compares the respective errors of the ``best'' and ``worst'' 
+humans to the human average error.\\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+ Questions about the use of colours were raised:
+   \begin{quote}
+	 Reviewer \#2:\\
+	 ``can using a grey value camera speed up the process?''\\
+	 ``why refer to hue of 80; this is another intensity representation
+and one converts to greyvalues.''
+``at the onset the color information is thrown away.''\\
+``so why color anyway?''\\
+ \end{quote}
+ In its current state, OpenCFU will not be faster with a grey-scale image. 
+ Considering that the most time consuming part of the new algorithm occurs after generating the grey-scale image, 
+ I predict only a marginal time-gain by implementing a specific pre-processing step for grey-scale images.
+ Even if the image is converted to grey-scale early, it is kept in memory. 
+ It is therefore possible to remap detected colonies onto the original image in order to obtain per-colony colour informations.
+ As I explain in the revised discussion, using the colour of detected objects for post-processing can have, at least, two advantages: 
+ it increases robustness by allowing the exclusion of some foreign objects such as writing or contaminant colonies, 
+ it could also be used to segregate populations of cells which can be useful in experiments such as ``blue white screening''.\\
+ %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ 
+I have been requested to provide more informations about the operating system I
+used for testing:
+    \begin{quote}
+	 Reviewer \#2:\\
+	 ``mention the Linux brand. eg. Ubuntu/Fedora + vs.''
+ \end{quote}
+My revised manuscript now mention these informations. In addition I refer to the version of OpenCV and the \texttt{C++}
+ compiler I used since  they are more likely to impact on speed than the OS distribution/version.\\
+ %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+ 
+A better explanation about the former\footnote{The figure 2 of the original submission correspond to the figure 3 of the revised one.} 
+  figure 2 in the text was requested: 
+    \begin{quote}
+	 Reviewer \#2:\\
+	 ``stiched or scaled up? this is not well explained in the text?''
+ 	\end{quote}
+  I provide more information in my present manuscript.
+  I also rephrased the description and substituted the word ``stitched'' by  ``tiled'' which I think is more appropriate.\\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~% 
+
+Issues about the former figure 2b were raised:
+ \begin{quote}
+	 Reviewer \#2:\\
+	``this is a histogram and not a continues line.
+the values of image size are discrete. a trendline can be used but it should 
+be indicated as such.''
+ \end{quote} 
+I am afraid not to understand how I could represent my bivariate data by an histogram.
+The figure legend of the revised manuscript now states that the points are the data and the the line segments are only present to aid understanding.
+ I believe this representation to be fairly common\footnote{
+ For instance, figure 10 in He, Kaiming, Jian Sun, and Xiaoou Tang. ``Fast Matting Using Large Kernel Matting Laplacian Matrices.'' In 2010 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2165 –2172, 2010.\\
+ And figures 12-17 in Chang, Fu, Chun-Jen Chen, and Chi-Jen Lu. ``A Linear-time Component-labeling Algorithm Using Contour Tracing Technique.'' Computer Vision and Image Understanding 93, no. 2 (February 2004): 206–220.
+ }.\\
+  %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~% 
+ 
+	A question regarding the alternative of improving NICE was asked:
+ \begin{quote}
+	 Reviewer \#2:\\
+	``can tuning of NICE lead to higher speed?''
+ \end{quote} 
+I am no expert in MATLAB and I do not know to what extent this is possible.
+I developed a new software rather that trying to improve NICE because mainly NICE is based on MATLAB.
+In order to be effectively distributed, it should be compiled as a standalone executable (relying on MCR).
+This comes with many limitations such as slower execution time, high memory footprint and strict dependency to a specific version of the MCR.
+In addition, as pointed out by PLoS ONE editorial policies\footnote{http://www.plosone.org/static/editorial.action\#methods subsection Availability},
+ complete open-source solution should be preferred (and MATLAB is not open-source).\\
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~% 
+ 
+ Finally, I was advised to provide biological data in addition to my software:
+ \begin{quote}
+	 Reviewer \#1:\\
+	``Furthermore, it would be nice if the presentation of the software was backed-up with some biological results.''
+ \end{quote} 
+ This is beyond the scope of this study.\\ 
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+I would like to bring few precisions about the supplementary material I provide on the web-page of OpenCFU\footnote{http://sourceforge.net/projects/opencfu/files/}
+and how I intend to maintain the program:\\
+The version of the program (3.3) used in the publication will be considered as a ``milestone'' and will therefore never be deleted from the website (even if many updates follow).\\
+Since I lacked time and did not think it was useful for the reviewers, I did not update the user-manual or the video tutorial from the previous version.
+However, if my submission is accepted, I will engage myself to maintain both of them.\\
+A list of images is provided in order to help calibration and to attest the versatility of the program. 
+I hope to extend the diversity of this list in the near future.\\
+New features will be included in future versions of OpenCFU.
+For instance, support for multiple ROIs, bash mode, a version without GUI (for use in clusters) and supervised outliers exclusion.
+User feedback and criticism will hopefully help to drive these updates.\\
+
+In conclusion, I have taken into serious consideration all the criticisms
+and questions raised by the academic editor and the two anonymous reviewers.
+I have included comparisons with other tools beside NICE and I have developed and
+implemented a novel algorithm. I have also provided new results, figures and analysis
+that demonstrate the advantages provided OpenCFU.  Finally, I have included in my revised
+manuscript additional and complementary information requested by the
+reviewers.
+Altogether, the suggested revisions have, I believe, improved the quality of my
+work and made my manuscript more compliant to PLoS ONE acceptance criteria regarding software related publications.
+
+
+
+\closing{Yours Faithfully,
+     %\includegraphics[width=1.5in]{sheffield.eps
+     }
+\ps{\emph{p.s.} Almost all parts of my manuscript, except the first part of the introduction, have been rewritten. 
+As a consequence, the text bears little similarity to the original version.
+ For this reason, I judged it was not possible or appropriate to provide a marked-up version.}
+
+\end{letter}
+
+ %\includegraphics[width=2in]{}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

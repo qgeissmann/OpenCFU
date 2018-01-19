@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{costa_counting_2009}
+Costa CM, Yang S (2009) Counting pollen grains using readily available, free
+  image processing and analysis software.
+\newblock Annals of Botany 104: 1005--1010.
+\bibAnnoteFile{costa_counting_2009}
+
+\bibitem{mello_image_2008}
+Mello CAB, dos Santos WP, Rodrigues MAB, Candeias ALB, Gusmão CMG (2008) Image
+  segmentation of ovitraps for automatic counting of aedes aegypti eggs.
+\newblock Conference proceedings:  Annual International Conference of the
+  {IEEE} Engineering in Medicine and Biology Society {IEEE} Engineering in
+  Medicine and Biology Society Conference 2008: 3103--3106.
+\bibAnnoteFile{mello_image_2008}
+
+\bibitem{severini_counting_2011}
+Severini AD, Borrás L, Cirilo AG (2011) Counting maize kernels through digital
+  image analysis.
+\newblock Crop Science 51: 2796.
+\bibAnnoteFile{severini_counting_2011}
+
+\bibitem{forero_deadeasy_2010}
+Forero MG, Pennack JA, Hidalgo A (2010) {DeadEasy} neurons: automatic counting
+  of {HB9} neuronal nuclei in drosophila.
+\newblock Cytometry Part A: the journal of the International Society for
+  Analytical Cytology 77: 371--378.
+\bibAnnoteFile{forero_deadeasy_2010}
+
+\bibitem{kachouie_arraycount_2009}
+Kachouie NN, Kang L, Khademhosseini A (2009) Arraycount, an algorithm for
+  automatic cell counting in microwell arrays.
+\newblock {BioTechniques} 47: x--xvi.
+\bibAnnoteFile{kachouie_arraycount_2009}
+
+\bibitem{yati_flycounter:_2011}
+Yati A, Dey S (2011) {FlyCounter:} a simple software for counting large
+  populations of small clumped objects in the laboratory.
+\newblock {BioTechniques} 51: 347--348.
+\bibAnnoteFile{yati_flycounter:_2011}
+
+\bibitem{mansberg_automatic_1957}
+Mansberg HP (1957) Automatic particle and bacterial colony counter.
+\newblock Science 126: 823 --827.
+\bibAnnoteFile{mansberg_automatic_1957}
+
+\bibitem{mukherjee_bacterial_1995}
+Mukherjee DP, Pal A, Sarma S, Majumder D (1995) Bacterial colony counting using
+  distance transform.
+\newblock International Journal of Bio-Medical Computing 38: 131--140.
+\bibAnnoteFile{mukherjee_bacterial_1995}
+
+\bibitem{putman_simplified_2005}
+Putman M, Burton R, Nahm MH (2005) Simplified method to automatically count
+  bacterial colony forming unit.
+\newblock Journal of Immunological Methods 302: 99--102.
+\bibAnnoteFile{putman_simplified_2005}
+
+\bibitem{cai_optimized_2011}
+Cai Z, Chattopadhyay N, Liu WJ, Chan C, Pignol JP, et~al. (2011) Optimized
+  digital counting colonies of clonogenic assays using {ImageJ} software and
+  customized macros: comparison with manual counting.
+\newblock International Journal of Radiation Biology 87: 1135--1146.
+\bibAnnoteFile{cai_optimized_2011}
+
+\bibitem{bewes_automated_2008}
+Bewes JM, Suchowerska N, {McKenzie} DR (2008) Automated cell colony counting
+  and analysis using the circular hough image transform algorithm {(CHiTA)}.
+\newblock Physics in Medicine and Biology 53: 5991--6008.
+\bibAnnoteFile{bewes_automated_2008}
+
+\bibitem{niyazi_counting_2007}
+Niyazi M, Niyazi I, Belka C (2007) Counting colonies of clonogenic assays by
+  using densitometric software.
+\newblock Radiation Oncology 2: 4.
+\bibAnnoteFile{niyazi_counting_2007}
+
+\bibitem{clarke_lowcost_2010}
+Clarke ML, Burton RL, Hill AN, Litorja M, Nahm MH, et~al. (2010) Low‐cost,
+  high‐throughput, automated counting of bacterial colonies.
+\newblock Cytometry Part A {77A}: 790--797.
+\bibAnnoteFile{clarke_lowcost_2010}
+
+\bibitem{sieuwerts_simple_2008}
+Sieuwerts S, De~Bok FA, Mols E, De~Vos WM, Van Hylckama~Vlieg JE (2008) A
+  simple and fast method for determining colony forming units.
+\newblock Letters in Applied Microbiology 47: 275--278.
+\bibAnnoteFile{sieuwerts_simple_2008}
+
+\bibitem{vokes_using_2008}
+Vokes MS, Carpenter AE (2008) Using {CellProfiler} for automatic identification
+  and measurement of biological objects in images.
+\newblock Current protocols in molecular biology edited by Frederick M Ausubel
+  et al Chapter 14: Unit 14.17.
+\bibAnnoteFile{vokes_using_2008}
+
+\bibitem{brugger_automated_2012}
+Brugger SD, Baumberger C, Jost M, Jenni W, Brugger U, et~al. (2012) Automated
+  counting of bacterial colony forming units on agar plates.
+\newblock {PLoS} {ONE} 7: e33695.
+\bibAnnoteFile{brugger_automated_2012}
+
+\bibitem{opencv_library}
+Bradski G (2000) {The OpenCV Library}.
+\newblock Dr Dobb's Journal of Software Tools .
+\bibAnnoteFile{opencv_library}
+
+\bibitem{marotz_effective_2001}
+Marotz J, Lübbert C, Eisenbeiß W (2001) Effective object recognition for
+  automated counting of colonies in petri dishes (automated colony counting).
+\newblock Computer Methods and Programs in Biomedicine 66: 183--198.
+\bibAnnoteFile{marotz_effective_2001}
+
+\bibitem{openmp11}
+{OpenMP Architecture Review Board} (2011).
+\newblock {OpenMP} application program interface version 3.1.
+\newblock
+  \urlprefix\url{\url{http://www.openmp.org/mp-documents/OpenMP3.1.pdf}}.
+\bibAnnoteFile{openmp11}
+
+\bibitem{R}
+{R Development Core Team} (2008) R: A Language and Environment for Statistical
+  Computing.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+\newblock \urlprefix\url{http://www.R-project.org}.
+\newblock {ISBN} 3-900051-07-0.
+\bibAnnoteFile{R}
+
+\end{thebibliography}

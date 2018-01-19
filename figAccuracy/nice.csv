@@ -1,0 +1,172 @@
+Image name ,Row x Col ,ROI ID ,# Colonies ,Mean size (pixels^2) ,Background ,Resolution ,Operator name ,Experiment name ,NICE launched ,Counted time ,Notes 
+001-q12040401 , 1x 1 ,1 ,129 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:28 ,none 
+002-q12040402 , 1x 1 ,1 ,207 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:32 ,none 
+003-q12040403 , 1x 1 ,1 ,204 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:36 ,none 
+004-q12040404 , 1x 1 ,1 ,189 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:41 ,none 
+005-q12040405 , 1x 1 ,1 ,143 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:45 ,none 
+006-q12040406 , 1x 1 ,1 ,1210 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:49 ,none 
+007-q12040407 , 1x 1 ,1 ,1264 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:54 ,none 
+008-q12040408 , 1x 1 ,1 ,82 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:53:58 ,none 
+009-q12040409 (1) , 1x 1 ,1 ,132 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:02 ,none 
+010-q12040409 (2) , 1x 1 ,1 ,96 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:06 ,none 
+011-q12040409 (3) , 1x 1 ,1 ,75 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:10 ,none 
+012-q12040409 (4) , 1x 1 ,1 ,162 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:15 ,none 
+013-q12040409 (5) , 1x 1 ,1 ,96 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:19 ,none 
+014-q12040409 (6) , 1x 1 ,1 ,332 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:23 ,none 
+015-q12040409 (7) , 1x 1 ,1 ,480 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:27 ,none 
+016-q12040409 (8) , 1x 1 ,1 ,606 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:31 ,none 
+017-q12040409 (9) , 1x 1 ,1 ,324 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:36 ,none 
+018-q12040409 , 1x 1 ,1 ,184 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:40 ,none 
+019-q12040419 , 1x 1 ,1 ,315 , ,Otsu ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:54:44 ,none 
+020-q12040401 , 1x 1 ,1 ,83 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:04 ,none 
+021-q12040402 , 1x 1 ,1 ,151 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:08 ,none 
+022-q12040403 , 1x 1 ,1 ,129 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:12 ,none 
+023-q12040404 , 1x 1 ,1 ,130 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:17 ,none 
+024-q12040405 , 1x 1 ,1 ,73 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:21 ,none 
+025-q12040406 , 1x 1 ,1 ,1096 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:25 ,none 
+026-q12040407 , 1x 1 ,1 ,1157 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:30 ,none 
+027-q12040408 , 1x 1 ,1 ,29 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:34 ,none 
+028-q12040409 (1) , 1x 1 ,1 ,68 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:38 ,none 
+029-q12040409 (2) , 1x 1 ,1 ,42 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:42 ,none 
+030-q12040409 (3) , 1x 1 ,1 ,34 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:46 ,none 
+031-q12040409 (4) , 1x 1 ,1 ,58 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:50 ,none 
+032-q12040409 (5) , 1x 1 ,1 ,31 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:55 ,none 
+033-q12040409 (6) , 1x 1 ,1 ,224 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:55:59 ,none 
+034-q12040409 (7) , 1x 1 ,1 ,378 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:03 ,none 
+035-q12040409 (8) , 1x 1 ,1 ,534 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:07 ,none 
+036-q12040409 (9) , 1x 1 ,1 ,265 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:12 ,none 
+037-q12040409 , 1x 1 ,1 ,52 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:16 ,none 
+038-q12040419 , 1x 1 ,1 ,231 , ,Otsu ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:20 ,none 
+039-q12040401 , 1x 1 ,1 ,360 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:47 ,none 
+040-q12040402 , 1x 1 ,1 ,446 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:51 ,none 
+041-q12040403 , 1x 1 ,1 ,499 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:56:56 ,none 
+042-q12040404 , 1x 1 ,1 ,392 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:00 ,none 
+043-q12040405 , 1x 1 ,1 ,412 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:04 ,none 
+044-q12040406 , 1x 1 ,1 ,1422 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:09 ,none 
+045-q12040407 , 1x 1 ,1 ,1501 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:14 ,none 
+046-q12040408 , 1x 1 ,1 ,357 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:18 ,none 
+047-q12040409 (1) , 1x 1 ,1 ,422 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:23 ,none 
+048-q12040409 (2) , 1x 1 ,1 ,375 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:27 ,none 
+049-q12040409 (3) , 1x 1 ,1 ,279 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:31 ,none 
+050-q12040409 (4) , 1x 1 ,1 ,438 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:35 ,none 
+051-q12040409 (5) , 1x 1 ,1 ,426 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:40 ,none 
+052-q12040409 (6) , 1x 1 ,1 ,680 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:44 ,none 
+053-q12040409 (7) , 1x 1 ,1 ,794 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:48 ,none 
+054-q12040409 (8) , 1x 1 ,1 ,846 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:53 ,none 
+055-q12040409 (9) , 1x 1 ,1 ,587 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:57:57 ,none 
+056-q12040409 , 1x 1 ,1 ,538 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:58:02 ,none 
+057-q12040419 , 1x 1 ,1 ,616 , ,Otsu ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:58:06 ,none 
+058-q12040401 , 1x 1 ,1 ,136 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:18 ,none 
+059-q12040402 , 1x 1 ,1 ,206 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:22 ,none 
+060-q12040403 , 1x 1 ,1 ,212 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:26 ,none 
+061-q12040404 , 1x 1 ,1 ,169 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:31 ,none 
+062-q12040405 , 1x 1 ,1 ,140 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:35 ,none 
+063-q12040406 , 1x 1 ,1 ,1219 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:39 ,none 
+064-q12040407 , 1x 1 ,1 ,1292 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:44 ,none 
+065-q12040408 , 1x 1 ,1 ,83 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:48 ,none 
+066-q12040409 (1) , 1x 1 ,1 ,132 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:53 ,none 
+067-q12040409 (2) , 1x 1 ,1 ,96 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 10:59:57 ,none 
+068-q12040409 (3) , 1x 1 ,1 ,75 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:01 ,none 
+069-q12040409 (4) , 1x 1 ,1 ,133 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:05 ,none 
+070-q12040409 (5) , 1x 1 ,1 ,97 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:09 ,none 
+071-q12040409 (6) , 1x 1 ,1 ,338 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:14 ,none 
+072-q12040409 (7) , 1x 1 ,1 ,494 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:18 ,none 
+073-q12040409 (8) , 1x 1 ,1 ,615 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:22 ,none 
+074-q12040409 (9) , 1x 1 ,1 ,335 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:27 ,none 
+075-q12040409 , 1x 1 ,1 ,185 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:31 ,none 
+076-q12040419 , 1x 1 ,1 ,323 , ,-6 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:00:35 ,none 
+077-q12040401 , 1x 1 ,1 ,87 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:02 ,none 
+078-q12040402 , 1x 1 ,1 ,151 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:07 ,none 
+079-q12040403 , 1x 1 ,1 ,133 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:11 ,none 
+080-q12040404 , 1x 1 ,1 ,124 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:15 ,none 
+081-q12040405 , 1x 1 ,1 ,72 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:19 ,none 
+082-q12040406 , 1x 1 ,1 ,1099 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:24 ,none 
+083-q12040407 , 1x 1 ,1 ,1162 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:28 ,none 
+084-q12040408 , 1x 1 ,1 ,29 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:32 ,none 
+085-q12040409 (1) , 1x 1 ,1 ,68 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:36 ,none 
+086-q12040409 (2) , 1x 1 ,1 ,42 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:41 ,none 
+087-q12040409 (3) , 1x 1 ,1 ,34 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:45 ,none 
+088-q12040409 (4) , 1x 1 ,1 ,54 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:49 ,none 
+089-q12040409 (5) , 1x 1 ,1 ,31 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:53 ,none 
+090-q12040409 (6) , 1x 1 ,1 ,228 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:29:57 ,none 
+091-q12040409 (7) , 1x 1 ,1 ,383 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:30:02 ,none 
+092-q12040409 (8) , 1x 1 ,1 ,539 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:30:06 ,none 
+093-q12040409 (9) , 1x 1 ,1 ,269 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:30:10 ,none 
+094-q12040409 , 1x 1 ,1 ,52 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:30:14 ,none 
+095-q12040419 , 1x 1 ,1 ,234 , ,-6 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:30:19 ,none 
+096-q12040401 , 1x 1 ,1 ,396 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:14 ,none 
+097-q12040402 , 1x 1 ,1 ,444 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:19 ,none 
+098-q12040403 , 1x 1 ,1 ,518 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:23 ,none 
+099-q12040404 , 1x 1 ,1 ,292 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:28 ,none 
+100-q12040405 , 1x 1 ,1 ,412 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:32 ,none 
+101-q12040406 , 1x 1 ,1 ,1447 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:36 ,none 
+102-q12040407 , 1x 1 ,1 ,1576 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:41 ,none 
+103-q12040408 , 1x 1 ,1 ,358 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:45 ,none 
+104-q12040409 (1) , 1x 1 ,1 ,424 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:50 ,none 
+105-q12040409 (2) , 1x 1 ,1 ,373 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:54 ,none 
+106-q12040409 (3) , 1x 1 ,1 ,278 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:34:59 ,none 
+107-q12040409 (4) , 1x 1 ,1 ,322 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:03 ,none 
+108-q12040409 (5) , 1x 1 ,1 ,429 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:08 ,none 
+109-q12040409 (6) , 1x 1 ,1 ,699 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:12 ,none 
+110-q12040409 (7) , 1x 1 ,1 ,839 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:16 ,none 
+111-q12040409 (8) , 1x 1 ,1 ,869 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:21 ,none 
+112-q12040409 (9) , 1x 1 ,1 ,611 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:25 ,none 
+113-q12040409 , 1x 1 ,1 ,541 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:30 ,none 
+114-q12040419 , 1x 1 ,1 ,631 , ,-6 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:35:34 ,none 
+115-q12040401 , 1x 1 ,1 ,150 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:18 ,none 
+116-q12040402 , 1x 1 ,1 ,225 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:23 ,none 
+117-q12040403 , 1x 1 ,1 ,230 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:27 ,none 
+118-q12040404 , 1x 1 ,1 ,199 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:31 ,none 
+119-q12040405 , 1x 1 ,1 ,155 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:36 ,none 
+120-q12040406 , 1x 1 ,1 ,1240 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:40 ,none 
+121-q12040407 , 1x 1 ,1 ,1312 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:45 ,none 
+122-q12040408 , 1x 1 ,1 ,96 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:49 ,none 
+123-q12040409 (1) , 1x 1 ,1 ,155 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:53 ,none 
+124-q12040409 (2) , 1x 1 ,1 ,112 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:36:58 ,none 
+125-q12040409 (3) , 1x 1 ,1 ,87 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:02 ,none 
+126-q12040409 (4) , 1x 1 ,1 ,162 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:06 ,none 
+127-q12040409 (5) , 1x 1 ,1 ,119 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:10 ,none 
+128-q12040409 (6) , 1x 1 ,1 ,347 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:15 ,none 
+129-q12040409 (7) , 1x 1 ,1 ,505 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:19 ,none 
+130-q12040409 (8) , 1x 1 ,1 ,635 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:24 ,none 
+131-q12040409 (9) , 1x 1 ,1 ,354 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:28 ,none 
+132-q12040409 , 1x 1 ,1 ,197 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:32 ,none 
+133-q12040419 , 1x 1 ,1 ,333 , ,-3 sigma ,Medium ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:37:36 ,none 
+134-q12040401 , 1x 1 ,1 ,90 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:13 ,none 
+135-q12040402 , 1x 1 ,1 ,161 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:17 ,none 
+136-q12040403 , 1x 1 ,1 ,137 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:21 ,none 
+137-q12040404 , 1x 1 ,1 ,134 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:26 ,none 
+138-q12040405 , 1x 1 ,1 ,77 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:30 ,none 
+139-q12040406 , 1x 1 ,1 ,1108 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:34 ,none 
+140-q12040407 , 1x 1 ,1 ,1170 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:39 ,none 
+141-q12040408 , 1x 1 ,1 ,33 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:43 ,none 
+142-q12040409 (1) , 1x 1 ,1 ,74 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:48 ,none 
+143-q12040409 (2) , 1x 1 ,1 ,46 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:52 ,none 
+144-q12040409 (3) , 1x 1 ,1 ,40 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:38:56 ,none 
+145-q12040409 (4) , 1x 1 ,1 ,58 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:00 ,none 
+146-q12040409 (5) , 1x 1 ,1 ,36 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:04 ,none 
+147-q12040409 (6) , 1x 1 ,1 ,235 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:09 ,none 
+148-q12040409 (7) , 1x 1 ,1 ,391 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:13 ,none 
+149-q12040409 (8) , 1x 1 ,1 ,546 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:17 ,none 
+150-q12040409 (9) , 1x 1 ,1 ,273 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:22 ,none 
+151-q12040409 , 1x 1 ,1 ,56 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:26 ,none 
+152-q12040419 , 1x 1 ,1 ,240 , ,-3 sigma ,High ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:39:30 ,none 
+153-q12040401 , 1x 1 ,1 ,419 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:07 ,none 
+154-q12040402 , 1x 1 ,1 ,488 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:11 ,none 
+155-q12040403 , 1x 1 ,1 ,560 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:16 ,none 
+156-q12040404 , 1x 1 ,1 ,419 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:20 ,none 
+157-q12040405 , 1x 1 ,1 ,446 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:25 ,none 
+158-q12040406 , 1x 1 ,1 ,1483 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:29 ,none 
+159-q12040407 , 1x 1 ,1 ,1612 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:34 ,none 
+160-q12040408 , 1x 1 ,1 ,392 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:39 ,none 
+161-q12040409 (1) , 1x 1 ,1 ,470 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:43 ,none 
+162-q12040409 (2) , 1x 1 ,1 ,419 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:47 ,none 
+163-q12040409 (3) , 1x 1 ,1 ,307 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:52 ,none 
+164-q12040409 (4) , 1x 1 ,1 ,445 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:41:56 ,none 
+165-q12040409 (5) , 1x 1 ,1 ,476 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:01 ,none 
+166-q12040409 (6) , 1x 1 ,1 ,734 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:05 ,none 
+167-q12040409 (7) , 1x 1 ,1 ,876 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:10 ,none 
+168-q12040409 (8) , 1x 1 ,1 ,906 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:14 ,none 
+169-q12040409 (9) , 1x 1 ,1 ,658 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:19 ,none 
+170-q12040409 , 1x 1 ,1 ,585 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:23 ,none 
+171-q12040419 , 1x 1 ,1 ,648 , ,-3 sigma ,Low ,none ,none ,05-Apr-2012 10:52:48 ,05-Apr-2012 11:42:28 ,none 

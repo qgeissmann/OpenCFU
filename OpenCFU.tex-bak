@@ -1,0 +1,524 @@
+% TODO
+% Normalise fig1 picts
+% Change stitched by tiled
+% give a name to IJ macro
+
+
+
+
+% Template for PLoS
+% Version 1.0 January 2009
+%
+% To compile to pdf, run:
+% latex plos.template
+% bibtex plos.template
+% latex plos.template
+% latex plos.template
+% dvipdf plos.template
+
+\documentclass[10pt]{article}
+
+% amsmath package, useful for mathematical formulas
+\usepackage{amsmath}
+% amssymb package, useful for mathematical symbols
+\usepackage{amssymb}
+
+% graphicx package, cuseful for including eps and pdf graphics
+% include graphics with the command \includegraphics
+\usepackage{graphicx}
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+\usepackage{color}
+
+% Use doublespacing - comment out for single spacing
+%\usepackage{setspace}
+%\doublespacing
+
+
+% Text layout
+\topmargin 0.0cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 16cm
+\textheight 21cm
+
+% Bold the 'Figure #' in the caption and separate it with a period
+% Captions will be left justified
+\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
+
+% Use the PLoS provided bibtex style
+\bibliographystyle{plos2009}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+% Leave date blank
+\date{}
+
+\pagestyle{myheadings}
+%% ** EDIT HERE **
+% This  pakage is used to track changes
+% \usepackage{change}
+\usepackage[margins]{trackchanges} 
+\addeditor{QG}
+
+%% ** EDIT HERE **
+%% PLEASE INCLUDE ALL MACROS BELOW
+
+
+\newcommand{\n}{seven}
+\newcommand{\N}{Seven}
+\newcommand{\sa}{\emph{Staphylococcus aureus}}
+%\newcommand{\NB}{10000}
+\newcommand{\website}{http://sourceforge.net/projects/opencfu/}
+\newcommand{\humantime}{39.3(sd=6.1)}
+\newcommand{\IJM}{IJM}
+\newcommand{\TODO}{\textbf{ =!TODO!= }}
+
+
+%% END MACROS SECTION
+
+\begin{document}
+
+% Title must be 150 characters or less
+\begin{flushleft}
+{\Large
+\textbf{OpenCFU, a New Free and Open-Source Software to Count Cell Colonies and
+Other Circular Objects}}
+% Insert Author names, affiliations and corresponding author email.
+
+Quentin Geissmann$^{1,2,\ast}$
+\\
+
+% \bf{1} Author1 Dept/Program/Center, Institution Name, City, State, Country
+% $\ast$ E-mail: Corresponding q.geissmann@sheffield.ac.uk
+
+\bf{1} Department of Animal and Plant Sciences, University of Sheffield,
+Sheffield, United Kingom, \bf{2} Institute for Biology, Free University of
+Berlin, Berlin, Germany. \\ $\ast$ E-mail: Corresponding
+q.geissmann@fu-berlin.de
+\end{flushleft}
+
+% Please keep the abstract between 250 and 300 words
+\section*{Abstract}
+
+Counting circular objects such as cell colonies is an important source of information for biologists. 
+Although this task is often time-consuming and subjective, it is still predominantly performed manually. The aim of the present
+work is to provide a new tool to enumerate circular objects from digital pictures and video streams. Here I demonstrate that the created program, 
+OpenCFU, is both
+\change[QG]{
+very fast and accurate.
+}
+{very robust, accurate and fast.}%TODEL%
+
+In addition, it provides controls over the processing parameters and is implemented in an intuitive and modern interface. OpenCFU is a cross-platform and open-source software freely available at
+\website{}.
+
+\section*{Introduction}
+
+Counting objects has always formed an important element of data collection in
+many fields of biology. 
+
+It therefore is very common for biologists to enumerate objects
+such as eggs, seeds, nuclei or organisms.
+%[exemplessssssssssssss ] here
+Because such tasks are time-consuming and, to some extent, subjective, it is
+surprising that automation is still infrequent.
+
+Effectively, enumerating objects is a two part process: image capture and image
+analysis. Nowadays, technologies such as digital cameras and webcams provide
+an increasingly high image quality and are increasingly inexpensive.
+Simultaneously, many optimised image processing
+algorithms and open-source libraries can be used on laptops
+and desktop computers.
+
+In different fields of microbiology, immunology or cellular biology, counting
+colonies of cells growing on agar plates is routine.
+Automating such counting procedures is not simple since colonies must first be isolated
+from the background and then, if they overlap, separated.
+
+\add[QG]{In addition, such methods must be capable of rejecting specific artefacts such as imperfections in the agar, edged of Petri dishes of dust. }
+
+However, since they
+are topologically fairly simple objects, solutions to enumerate them from
+pictures have long since been considered
+\cite{mansberg_automatic_1957,mukherjee_bacterial_1995}. Commercial tools have
+also been developed\cite{putman_simplified_2005}, but remain expensive. Furthermore, the fact that the softwares they provide are
+proprietary (\emph{i.e.} not open-source) makes them very restrictive: it is rarely possible
+to know the precise nature of the analysis being performed, nor to modify or share these
+programs.
+
+In contrast, some authors have recently published open-source methods to count
+colonies from digital images. They are all described to give results very
+comparable to human counts, improve objectivity and save time. However, none of
+them have become widely adopted. In addition to the fact that some biologists are not aware of the existence of
+such tools, their apparent failure to be adopted could be explained by
+shortcomings in performance: \remove{lack of robustness,} inability to split merged
+colonies or long processing time. 
+
+% \add[QG]{The most frequent maner to test }
+\add[QG]{In order to be adopted, it is also very important for a method to be robust and versatile: it
+must able to perform well whitout changing parameters when optimal conditions slightly variate. The presence of artifacts should only have minor consequences
+}
+
+
+Another reason could be their lack of
+user-friendliness; even a perfect method may fail to be adopted if the software
+that implements it does not provide a modern user interface. Such an interface
+should enable the user to easily submit a list of images for analysis and to
+manually alter the values of the processing parameters. Additionally, the user
+should be able to select a region of interest and to visually check the results.
+\add[QG]{Since many users do not have deep knowledge of the undelying image processing, 
+it is also important than the parameters are intuitive and few}
+
+\add[QG]{A final reason could sadly be the lack of public availability and maintained of the programs.
+It is not unfrequent than authors publish a work about a program without mentionning a link the software, 
+releasing on an public repository or even enclosing it in the suplementary data. In addition, a program will most likely 
+need to be updated to correct unpredicted bugs or avoid them to rely on obsolete dependencies. 
+}
+
+One exemple of a software that \add[QG]{could} performs well in many situations but lacks
+user-friendliness is Clono-Counter\cite{niyazi_counting_2007}.
+
+ 
+Some methods have also been implemented as processing pipelines in pre-existing
+image analysis programs such as ImageJ\cite{cai_optimized_2011} or Cell
+Profiler\cite{vokes_using_2008}. They require therefore some degree
+of familiarity with these complex softwares.
+
+
+The NIST's Integrated Colony Enumerator (NICE)\cite{clarke_lowcost_2010}
+software provides a functional user interface as well as accurate results and
+could surely be very useful in many situations. However some users may be
+deterred by its relatively low processing speed, its lack of integration with
+capture devices or, for instance, the absence of post-processing filters
+which would exclude enumerated objects according to the size or colour of
+colonies.
+
+The aim of the work presented herein is to provide an alternative open-source tool that
+features 
+\change[QG]{both very rapid and efficient}
+{ a very robust, accurate and fast}
+image processing as well a modern and
+functional user interface. Thanks to the optimised OpenCV
+library\cite{opencv_library}, very fast implementation of image processing
+functions has been made possible. This renders the analysis of very large and
+numerous picture sets easy and makes possible the integration of a capture device
+(such as a webcam). My results show that OpenCFU, the software created, is a
+fast, robust and accurate tool to count cell colonies and other circular
+objects.
+
+\section*{Results}
+
+\subsection*{Algorithm} 
+\note[QG]{This is a NEW subsection}
+% \remove[QG]{
+% In order to enumerate colonies, a method similar to
+% the one described by Marotz et al. was implemented
+% under OpenCV framework. A description of the processing steps is provided figure. Briefly, the image is
+% converted to greyscale and thresholded. Then, a distance transform is performed
+% and the local maxima are detected. The value and the position of the local
+% maxima are assumed to correspond to the radii and the centres of the colonies,
+% respectively. Optional post-processing filters on the average hue and size of
+% colonies are finally applied.
+% }
+In order to enumerate colonies from digital images, a new  algorithm focusing on robustness and sensitivity was 
+developed and implemented using OpenCV/\texttt{C++} framework. A detailled flowchart is provided figure~\protect\ref{figFlowChart} and portions of images 
+from different processing stages are shown figure~\protect\ref{figPipeline}.
+
+Briefly, the colour image is splited into three channels for which the background is independently estimated using local median filter.
+In order to enchance discrimination of forground objects,  the positive Laplacian of Gaussian of each channel's forground mask is substracted from themthelve 
+and three preprocessed channels are normalised and merged to form a new grey-scale image.
+
+The first pass of the processing involves thresholding the resulting grey-scale image by multiple values.
+For each value, the algorithm will look for continous regions in the binary image.
+Each region is assessed by a particule filter that takes in account relations between variables such as area, perimeter,
+convexivity, aspect ratio and holowness in order to determine whether or not a region is likely to be valid (\emph{i.e} made from one or more circular objects).
+Over the range of values of threshold, every time a valid region is found, all its pixels are incremented in a ``score map''.
+
+The score map can be understood as a representation of how reccurently (over the iterations of threshold) pixels are part of a circular region.
+
+An user defined (or automatic) threshold is applied to the score map.
+
+During the second pass of the processing, a similar particule filter is applied but this time it classifies the continuous regions into ``invalid'', ``individual object'' or ``multiple objects''.
+``individual objects'' are accepted and ``invalid'' ones  are rejected immediately while multiple objects are morpholically segmented using a variant of 
+whatershed algorithm on their distance map\protect\cite{marotz_effective_2001}.
+Finally, each segmented object is reassessed by the particule filter.
+
+Optionnally, a normal distribution is fitted to the relative colour intensity of objects that were not 
+splited (since they are less often false positive). This distribution then serves to compute the likelyhood of each object to be valid.
+Finally, simple likelyhood threshold is applied to exclude marginal ones.
+
+
+\subsection*{Speed}
+\note[QG]{
+This first paragraph has been remade to explain better how image where made (reviewer 2),
+and since the algorithm is different and new method is compared, the results have changed.
+}
+
+Since algorithms are likely to iteratively process each forground objects,
+there complexity could be differer according to the size and number  of objects, two types of images where
+generated from the same template: Images with a constant number of increasingly big bacterial colonies or images with an increasing number of colonies with a constant size(fig.~\ref{figSpeed}A). 
+The processing time for 
+OpenCFU, NICE \cite{clarke_lowcost_2010}, another recent open-source
+software, and \IJM{} \TODO{}, an ImageJ macro, were compared while analysing the same images~(fig.~\ref{figSpeed}B). In the tested range of
+resolutions, OpenCFU always performed in less than 1.6 seconds. By comparison,
+for the biggest image (16Mpixel) NICE would take about 30 seconds.
+
+In order to assess the gain of speed provided by OpenCFU in real conditions,
+\sa{} colonies from 19 plates were independently enumerated by \n{} trained
+humans and photographed. The images were independently analysed by OpenCFU and NICE.
+All the plates were re-counted in real time using a webcam. In
+all the cases, the total time to perform was measured~(table~\ref{tabTime}).
+On average, humans counted the 19 plates in \humantime{} minutes while acquisition
+of the pictures and subsequent analysis by OpenCFU and NICE took under 4.5 and 6.3 minutes, respectively.
+If, using a webcam, the acquisition and the processing were done simultaneously,
+OpenCFU method produced results in less than three minutes.
+
+\subsection*{Accuracy} Finally, to assess the accuracy of OpenCFU, the result
+from the analysis of the 19 plates where compared between the different agents.
+The medians of human counts were used as a reference and the coefficient of
+determination ($R^2$) of the linear regression to it was used as an index of
+accuracy. OpenCFU accuracy was very satisfactory using both high quality
+pictures and real time analysis with a webcam ($R^2$=0.9978 and 0.9977,
+respectively,~fig.~\ref{figAccuracy}). NICE also gave an accurate result
+($R^2$=0.9908).
+
+
+\section*{Discussion}
+The use of distance transform preceded by adaptive thresholding has been shown
+to be a valid method of solving colony enumerating
+issues\cite{marotz_effective_2001}. Since adaptive thresholding does not rely on a particular shape of the pixel
+distribution histogram and considering that distance transform will be efficient
+as long as the objects to count are convex, this
+method is very robust and will work for many different objects. Because it is
+relatively slow, it was concidered as unsuitable for counting many
+colonies\cite{clarke_lowcost_2010}. This work demonstrates that, using OpenCV
+library\cite{opencv_library}, this intensive method can be applied very efficiently and
+will process even faster than supposedly less intensive methods programmed,
+for instance, in MATLAB (fig.~\ref{figSpeed}).
+
+In addition to helping to reduce the time spent counting colonies routinely
+(table~\ref{tabTime}), the speed of the implementation makes possible the
+analysis of frames from a high-resolution video, for instance, on an inexpensive
+laptop. This feature makes the calibration easier since while changing an
+acquisition parameter such as light or focus, the user will directly see its
+effect on the enumeration efficiency. It also makes daily counting faster by
+removing the need to take pictures before analysing them, which can involve
+transferring large quantities of data between computers or softwares. Using a
+webcam finally makes the counting platform inexpensive. Another useful and
+practical consequence of the high processing speed is the capacity to systematically re-analyse and display
+an image whenever a parameter is changed. It contrasts with most softwares in
+which the user would have to change a variable, ask the software to recount,
+wait for the result to be displayed and repeat this operation until the output
+is satisfactory.
+
+In the experimental conditions described above, OpenCFU and human results were
+very comparable using both a webcam and high quality pictures
+(fig.~\ref{figAccuracy}). Even if such accuracy is not guaranteed in all
+situations, the results obtained with a webcam are encouraging since they
+suggest that OpenCFU is robust enough to handle relatively poor quality images.
+
+The software also provides features to maximise its range of
+applications. For instance, the threshold can be inverted in order to count
+objects on a dark background and detected objects can be excluded
+according to their size and colour.
+
+OpenCFU will hopefully be an alternative tool helping to save time and reduce
+subjectivity of colony counting. Since many biological objects (for instance
+seeds, cells, nuclei and eggs) are circular and well defined from the background, they could also be
+counted without any modification.
+
+\section*{Availability and Future Directions}
+OpenCFU is an open-source program distributed under the conditions of the GNU
+General Public Licence version 3. It is available on sourceforge \website{}. A
+user manual and a video tutorial are also provided. The program will be improved
+and updated as users request features.
+
+% You may title this section "Methods" or "Models". "Models" is not a valid
+% title for PLoS ONE authors. However, PLoS ONE authors may use "Analysis"
+\section*{Materials and Methods} 
+\subsection*{Image Processing} 
+The detail of
+the processing pipeline and the implementation can be freely viewed, modified
+and redistributed from the file ``processor.cpp'' present in the source code. All the algorithms used are either
+directly provided by OpenCV or written in \texttt{C++} (using OpenCV framework) in the
+same file.
+
+\subsection*{Plates Preparation and Manual Counting}
+A LB broth supplemented with 1.5\% agar was poured into 19 standard 90mm plates.
+An overnight culture of \sa{} was diluted and 0.10mL were plated. The bacterial
+solution was spread using ten 2mm glass beads. The plated bacteria were grown
+overnight.
+
+\N{} trained individuals were given the 19 plates in random order. The
+experiment was blinded so that no subject could know the results of any other before counting.
+The total time they took (excluding copying data to an electronic file) was
+recorded.
+
+\subsection*{Semi-Automatic Methods} 
+
+OpenCFU was used with a threshold value of 45 and keeping object with a hue
+of between zero and 80. A circular mask was drawn around the first Petri dish
+and used for subsequent plates. Anomalies in the enumeration were visually
+controlled by the user.
+
+The software NICE and the necessary proprietary MATLAB complier engine were both downloaded from
+http://www.nist.gov/pml/div682/grp01/nice.cfm.
+An elliptic region of interest was manually drawn and applied for all plates
+in order to exclude the edge of the Petri dishes and Otsu thresholding method
+was used with a ``medium resolution''.
+
+\subsection*{Hardware} 
+The high quality pictures were taken using QIMAGING Micropublisher 3.3RTV
+device with a TAMRON 1:1.4 25mm \o 30.5 lens. The pictures generated were
+1536$\times{}$1538px well contrasted images.
+
+
+The webcam used as a capture device for the real-time enumeration was a Sweex
+Blackberry Black WC250 (1600$\times{}$1200px, 30fps).
+
+A white trans-illuminator was used to optimise contrast in both cases.
+
+The processing time of OpenCFU and NICE were assessed on the same machine, a
+TOSHIBA SATELITE PRO L300-293 (CPU: Intel Core2 Duo processor T5870, 2.00 GHz).
+OpenCFU was used under Linux (kernel 3.2) and NICE under WindowsXP 32bit.
+
+\section*{Acknowledgments}
+
+
+% \section*{References} The bibtex filename
+\bibliography{OpenCFU_Bib}
+\newpage{}
+\section*{Figure Legends} \begin{figure}[!ht]
+% \begin{center}
+% % \includegraphics[width=3.27in]{./figPipeline/fig1.eps}
+%  \includegraphics[width=1.63in]{./figPipeline/fig1.eps}
+% %\includegraphics[width=4.86 in]{./figPipeline/figPipeline.eps}
+% \end{center}
+% \caption{{\bf Descriptions of the processing steps.}
+% The original image (A) is converted to greyscale and blurred (B) in order to
+% remove the noise. In order to robustly separate the colonies from the
+% non-homogeneous backgrounds, an adaptive threshold is then applied (C). A
+% distance transform (D) of the resulting image is then computed. The peaks of the
+% distance map are then localised (E). The location and the value of each peak
+% should correspond to the position of the centre and the radius of a colony,
+% respectively. In order to simplify verification by the user, each hypothetical
+% colony is then represented by two (blue and yellow) concentric circles (F). For
+% the purpose of explanation, only a representative area (200$\times{}$200 pixels)
+% of a processed image is shown here and colour levels of the
+% six images were automatically adjusted after processing.}
+% \label{figPipeline}
+% \end{figure}
+
+
+\begin{center}
+ \includegraphics[width=2.27in]{./figPipeline/fig1.eps}
+
+%\includegraphics[width=4.86 in]{./figPipeline/figPipeline.eps}
+\end{center}
+\caption{{\bf Descriptions of the processing steps.}
+The original image (A) is converted to greyscale and blurred (B) in order to
+remove the noise. In order to robustly separate the colonies from the
+non-homogeneous backgrounds, an adaptive threshold is then applied (C). A
+distance transform (D) of the resulting image is then computed. The peaks of the
+distance map are then localised (E). The location and the value of each peak
+should correspond to the position of the centre and the radius of a colony,
+respectively. In order to simplify verification by the user, each hypothetical
+colony is then represented by two (blue and yellow) concentric circles (F). For
+the purpose of explanation, only a representative area (200$\times{}$200 pixels)
+of a processed image is shown here and colour levels of the
+six images were automatically adjusted after processing.}
+\label{figPipeline}
+\end{figure}
+
+\newpage{}
+
+\begin{figure}[!ht]
+
+%~~~~~~~~~~~~~~~A\\
+\begin{center}
+\includegraphics[width=3.27in]{./figSpeed/fig2A.eps}\\
+%\includegraphics[width=4.86 in]{./figSpeed/stitchedOrScaled.eps}\\
+\end{center}
+%~~~~~~~~~~~~~~~B\\
+\begin{center}
+\includegraphics[width=3.27in]{./figSpeed/fig2B.eps}\\
+%\includegraphics[width=4.86 in]{./figSpeed/figSpeed.eps}\\
+\end{center}
+\caption{{\bf Processing time of OpenCFU and NICE for images of
+diffent size.} An original arbitrary square image was either stitched to itself
+or scaled-up (A) in order to obtain a range of square images featuring an
+increasing number of colonies or increasingly large colonies, respectively. The
+processing time of NICE\cite{clarke_lowcost_2010} and OpenCFU for these images
+were estimated in both cases (B).}
+\label{figSpeed}
+\end{figure}
+
+\newpage{}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=3.27in]{./figAccuracy/fig3.eps}
+%\includegraphics[width=4.86 in]{./figAccuracy/figAccuracy.eps}
+\end{center}
+\caption{{\bf Linear regression between OpenCFU counts and the median human
+counts.} 19 plates containing between 10 and 1200 colonies were enumerated by \n{} humans,
+OpenCFU and NICE softwares. A linear regression was performed between each
+agent and the median human counts (the latter being used as a reference). The
+average coefficient of determination for humans was $R^2$=0.9993 (sd=
+0.4967$\times{}10^{-3}$). For OpenCFU it was $R^2$=0.9978 and $R^2$=0.9977 with
+high quality pictures and a webcam, respectively. Finally, for NICE, using
+the same high quality pictures, it was $R^2$=0.9908.}
+\label{figAccuracy}
+\end{figure}
+
+\newpage{}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=4.86in]{./figPipeline/figFlowChart.eps}
+\end{center}
+\caption{{\bf TODO.}dewfreswmn okgvmtroe tgokjro  kgi }
+\label{figFlowChart}
+\end{figure}
+
+
+
+\newpage{}
+\section*{Tables}
+\begin{table}[!ht]
+\caption{
+\bf{Time to enumerate colonies from 19 plates.}
+}
+\begin{tabular}{|c|c|c|c|}
+\hline{}
+\bf{Agent}			&	\bf{Acquisition time}	& \bf{Processing time}
+& \bf{Total time} \\
+\hline
+Human			&	        NA				&		NA				& \humantime{}\\
+\hline
+NICE			&		4				&		2.3				&	6.3\\
+\hline
+OpenCFU (pictures) 		&			4				&		0.5				&4.5\\
+\hline
+OpenCFU (webcam) 	&	        NA				&		NA				&3\\
+\hline
+
+\end{tabular}
+\begin{flushleft}The time to count 19 plates (with between ten and 1200
+colonies) mesured for the \n{} people as well as using NICE and OpenCFU.
+OpenCFU was used after aquisition (pictures) and in real time with (webcam). All the
+times are expressed in minutes.
+\end{flushleft}
+\label{tabTime}
+\end{table}
+
+\end{document}
+%%%% latex OpenCFU.tex ; bibtex OpenCFU.aux;latex OpenCFU.tex; latex OpenCFU.tex; evince OpenCFU.dvi
+
+

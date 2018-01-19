@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2012/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: OpenCFU.aux
+The style file: plos2009.bst
+Database file #1: OpenCFU_Bib.bib
+Warning--string name "july" is undefined
+--line 4 of file OpenCFU_Bib.bib
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+You've used 20 entries,
+            2441 wiz_defined-function locations,
+            704 strings with 9909 characters,
+and the built_in function-call counts, 19414 in all, are:
+= -- 1869
+> -- 252
+< -- 0
++ -- 126
+- -- 63
+* -- 1742
+:= -- 2305
+add.period$ -- 43
+call.type$ -- 20
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 40
+duplicate$ -- 1956
+empty$ -- 2043
+format.name$ -- 79
+if$ -- 4306
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 199
+newline$ -- 118
+num.names$ -- 20
+pop$ -- 231
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 121
+stack$ -- 0
+substring$ -- 3069
+swap$ -- 395
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 118
+width$ -- 22
+write$ -- 237
+(There was 1 warning)

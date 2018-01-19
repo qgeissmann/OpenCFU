@@ -1,0 +1,15 @@
+Dear editors,
+Thank you for having reconsidered my manuscript entitled "OpenCFU, a New Free and Open-Source Software to Count Cell Colonies and Other Circular Objects" for publication in PLoS ONE.
+
+The academic editor and the reviewers were satisfied with my last revisions. I was however recommended to perform a last minor modification.
+
+The academic editor said:
+"A last suggestion is to move the long description of the reasons the alternative methods were not suitable for formal comparison to the discussion section"
+
+In my present resubmission, I addressed this point (see notes C1@page1, C1@page2 and C1@page5).
+Briefly, I mentioned the existence of alternative methods and, in the introduction, I described succinctly their respective image-processing strategies. In the discussion, I have described why I could not compare them to OpenCFU.
+
+In addition, I was requested by the academic editor to perform a language check. With the help of several native speakers, I endeavoured to correct typos and linguistic mistakes. These – merely linguistic – changes were not annotated in the marked-up copy of my manuscript.
+
+Yours faithfully,
+ 

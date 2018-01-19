@@ -1,0 +1,49 @@
+Dear Iratxe Puebla.
+
+Thank you for your e-mail. 
+
+Thinking that "Automated Counting of Bacterial Colony Forming Units on Agar Plates" was a very relevant article to my manuscript, I genuinely tried to install the tool described:
+
+Following the author explanations (in description of S1) , I downloaded the "MATLAB component runtime" or "MATLAB compiler runtime" (MCR). From "http://www.mathworks.co.uk/products/compiler/mcr/index.html"
+The version on the website is R2012a.
+
+I parallel, I extracted the rar archive file S1, from PLoS One's website.
+
+
+After installation of the MCR, I double clicked on the file "cc.exe" present in the archive.
+
+An error message informed me that I needed "mclmmrrt73.dll" in order to run the program (cf. enclosed screen-shot).
+
+The MCR documentation (available at "http://www.mathworks.co.uk/help/toolbox/compiler/f12-999353.html") states that
+"The MCR is version-specific. You must run your applications with the version of the MCR associated with the version of MATLAB Compiler with which it was created. For example, if you compiled an application using version 4.10 (R2009a) of MATLAB Compiler, users who do not have MATLAB installed must have version 7.10 of the MCR installed. Use mcrversion to return the version number of the MCR."
+
+And the Silvio D. Brugger and co-workers wrote in their article:
+"The software was written in MATLAB 7.9 (The Mathworks, Natick, MA)"
+
+After investigations, I was able to find (at "http://www.mathworks.co.uk/support/solutions/en/data/1-4GSNCF/") that Matlab 7.9 should match MCR-7.11
+
+I therefore figured that I should install MCR-7.11 (I obtained it from "http://e-ballistics.com/eballistics%20download%20instructions.html")
+
+After installation, the exact same error message appeared.
+
+I tried to re-install the MCR from the beginning on two different computers without more success.
+
+
+I kept investigating and read on Matlab own forum ("http://www.mathworks.com/matlabcentral/newsreader/view_thread/299788") that "mclmcrrt73.dll" (the missing file) is part of MCR-7.3 which matches Matlab 7.1 (and not Matlab 7.9 as written in the paper).
+
+
+I was not able to find MCR-7.3 on internet (unsurprisingly since it was released more than six years ago).
+
+I do not exclude that the mistake could come from my side, but I fear that most of your readers will not have my determination.
+
+Concerning the source files, I am not expert in Matlab, but I could not find them among the numerous files of "cc.ctf". If the authors said that their are inside, it means I probably simply do not see them. It would have helped me if their path was explicit.
+
+Finally, In my cover letter, I did not intend to attack the authors of "Automated Counting of Bacterial Colony Forming Units on Agar Plates". I just feared that it could have seemed very unprofessional for me to omit this reference. I therefore wanted to explain you why I did not mention their work in my manuscript. I also felt that it was my duty to inform PLoS about the difficulties that their readers could face trying to install this software. 
+
+Best regards,
+Quentin Geissmann
+
+
+
+
+

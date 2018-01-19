@@ -1,0 +1,317 @@
+\documentclass{letter}
+\usepackage{graphicx}
+
+
+\newcommand{\Otitle}{\emph{OpenCFU, a New Free and Open-Source Software to Count
+Cell Colonies and Other Circular Objects}}
+
+
+\newcommand{\CMinorBalancedChanges}{c2 and c4 @page2}
+\newcommand{\CMajorBalancedChanges}{c6 @p2}
+\newcommand{\CVersatDescrib}{c1 @p3; c3 and c4 @p5; c1 and c2 @p7 and figure 6}
+\newcommand{\COutputDescrib}{c2 @p4}
+\newcommand{\CDTDescrib}{c5 @p8}
+\newcommand{\CCircuForm}{c1 and c3 @p8}
+
+
+
+\interfootnotelinepenalty=10000 \longindentation=0pt
+
+\signature{ Quentin Geissmann\\
+PhD. student\\
+Institute for Biology\\
+Free University of Berlin\\
+}
+
+\address{ Institute for Biology\\
+Free University of Berlin\\
+K\"{o}nigin-Luise-Strasse 1-3\\
+D-14195 Berlin, Germany\\
+q.geissmann@fu-berlin.de}
+\name{Quentin Geissmann}
+
+
+\begin{document}
+
+\begin{letter}{}
+\opening{Dear editors,}
+Thank you for having reconsidered my manuscript entitled ``\Otitle{}'' for publication in PLoS ONE.
+My first revisions were extensive and 
+involved improvements to 
+both the program and the manuscript.
+As far as I understand, both anonymous reviewers were satisfied by these modifications.
+However, they respectively requested that I provide additional information
+to the reader and that I answer some questions
+related to methodological issues. More importantly, the academic editor has pointed out the
+inadequacy of some of my qualitative comparisons to other methods. 
+In this second resubmission, I provide a revision to my manuscript addressing all these issues.
+
+In my first submission, I only compared my method against one alternative and omitted to
+mentions some tools, nor did I explain why I could not compare some of them to my method.
+In response to 
+these 
+criticisms--which I think were fair--,
+I endeavoured to try additional methods and explain why I could not include some of them.
+Some of the statements regarding other methods present in my first resubmission were judged inappropriate.
+I was therefore requested to provide a more scientifically balanced discussion over other methods.
+
+For example:
+\begin{quote}
+The academic editor wrote:\\
+``[\ldots]with respect to your writing `Clono-counter [12] could not be used because of critical bugs',
+I tried to download the tool myself: it ran flawlessly on the provided example data.
+If the key issue here is that you need to reduce the resolution of your
+input data before loading them into Clono-counter,
+stating that the program has `critical bugs' seems inappropriate.''\\
+\end{quote}
+
+I admit that the use of the 
+phrase
+``critical bug'' to define
+some of the flaws of Clono-counter
+was perhaps disproportionate and inaccurate. 
+In my second resubmission, I have rephrased this statement into a more balanced one.
+I maintain
+that there are some fundamental issues with this method 
+(including bugs) that are critical for adoption and performance. 
+However, I do not think this letter (or my manuscript) are the place to expand on this subject. I will, nevertheless, be happy to elaborate a detailed report about this method if you request it.
+ 
+Another example was my statement about programs that appeared unavailable.
+\begin{quote}
+The academic editor wrote:\\
+``[\ldots]it seems reasonable to believe that these tools have been useful for some authors, so it would be fair to discuss these tools in a scientifically balanced manner.''
+\end{quote}
+I have also rephrased my statement about CHiTA and Arraycount. 
+I would genuinely like to agree with the academic editor about 
+the fact that they might have been useful to some authors.
+However, I have been reading studies citing respectively ChiTA\footnote{There are 13 according to google scholar.}
+and Arraycount\footnote{There are five according to google scholar.} and could not find any
+author who mentioned, explicitly or implicitly, that they have used these programs. 
+In fact, most often, they cite CHiTA and Arraycount only once in the text 
+in order to give an example of colony/cell counting program. 
+I therefore have no evidence that these tools were actually used by other authors.
+I understand the necessity of being balanced in a scientific paper.
+However, I have to mention the existence of these tools, but if I do so, 
+I must explain why I did not include them in my comparison.
+The reason is 
+that 
+they are, as far as I am aware, unavailable. 
+I also feel that I have been objective when I described that these programs
+do not have a download link,
+are not released in a public repository or enclosed as supplementary materials.
+In addition, considering the large amount of time I 
+have spent
+trying to download them, 
+it would seem useful to inform the readers about 
+their 
+unavailability.
+
+
+I was also asked to mention the related work by Brugger et al. (2012).
+\begin{quote}
+The academic editor wrote:\\
+``Also, it would be appropriate to discuss the closely related work by Brugger et al. (2012)
+ - the installation problems do not justify ignoring their work and methodology altogether, 
+ and it seems not appropriate to discuss installation problems in a scientific paper (I checked myself, and it doesn't work for me either,
+  the software requires an old v7.3 of the MCR - 
+ perhaps you can ask the authors to recompile or provide you with the right .dll?)''
+\end{quote}
+ I cite this work in my present resubmission.
+ My understanding was that the program will hardly work without the specific 
+ capture device built by the authors.
+ I have contacted the corresponding author 
+who  
+confirmed this.
+ He however also indicated 
+to
+me that the program can be used to analyse digital
+images thanks to a script\footnote{Present the file ``cc\_test.bat''.}.
+ After some efforts, I was able to install the program.
+ However, I was not able 
+to analyse my own raw samples.
+ It turns out that the program will only work 1441x1441px ``tif'' images with 
+a dark background.  More importantly, the script does not give
+the option to use a mask or to modify any parameters. This leads, in my case, to detections of the edge of the dish as colonies. I will be happy to provide a detailed discussion about the usability of the script for
+ biologists if required.
+
+In addition to having rephrased statements described as scientifically unbalanced, I have tried to briefly
+introduce each method by describing the originality of its image processing. This should bring
+another perspective to the reader and
+make my descriptions more 
+balanced\footnote{The changes related to my statements about
+other methods are marked-up as \CMinorBalancedChanges{} and, 
+more importantly, \CMajorBalancedChanges{}.}.
+
+I was asked to describe the result outputs in my manuscript:
+\begin{quote}
+Reviewer 1 wrote:\\
+`` I believe that the author should at least describe the output of an analysis.
+ It is clear that one can retrieve the number of colonies and a more detailed output
+  including information about individual colonies, but what does this include?''
+\end{quote}
+In my present resubmission, 
+I include a new paragraph describing the output\footnote{See change  \COutputDescrib{}.}.
+ 
+I was also asked to inform the reader about other possible applications
+of OpenCFU.
+\begin{quote}
+Reviewer 1 wrote:\\
+``  From the manuscript the reader gets a good idea of the speed and
+ reliability of the tool but is not well 
+informed on the output and possible applications beyond the counting of colonies.''
+\end{quote}
+To answer this criticism, I included 
+new figure (fig. 6) demonstrating the capacity of OpenCFU to 
+enumerate objects such as round seeds and pollen. This figure is
+non exhaustive and 
+merely qualitative. For this reason, I would be happy to 
+include it as a supplementary material instead. 
+This figure substantiates my claim that OpenCFU can be used to enumerate objects other than cell colonies. 
+I have also consequently changed and added some statements to my manuscript\footnote{See changes \CVersatDescrib{}.}.
+
+I was asked a technical question about the distance transform:
+\begin{quote}
+Reviewer 2 wrote:\\
+`` a Eucledian DT with a mask? this is somewhat strange to me; 
+normally this is parameter free; no kernel mask is given as the DT is applied over the image/subimage that is asked for.''
+\end{quote}
+ 
+ To compute the distance transform, I used the OpenCV build in 
+ function\footnote{\emph{i.e.} \texttt{cv::distanceTransform()} with \texttt{CV\_DIST\_L2} and a maskSize of 5.}.
+ According to OpenCV documentation: 
+ ``For the CV\_DIST\_C and CV\_DIST\_L1 types, the distance is calculated precisely, whereas for CV\_DIST\_L2 (Euclidean distance) the distance can be calculated
+  only with a relative error (a  $5\times5$ mask gives more accurate results).''
+  As an approximation of Euclidean distance transform, OpenCV implements the algorithm
+  describe by Borgesfors (1986) with a=1, b=1.4, c=2.1969. 
+ I understand that describing this as an 
+``Euclidean distance transform'' is ambiguous and inaccurate.
+ My revised submission explains this more precisely\footnote{See changes \CDTDescrib{}.}. 
+ As far as I have experienced, using a true Euclidean distance
+ transform did not improve distinctively the accuracy 
+of the algorithm.
+  
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+I was asked a technical question about 
+how the values of threshold for the particle filter were obtained:
+\begin{quote}
+Reviewer 2 wrote:\\
+`` why aspect ratio and not the Form Factor that compares the shape to a circle; a cicle is always 1
+ this is accomplished by multiplying the Area with 4PI.''
+\end{quote}
+To be clear, I use both compactness and aspect ratio.
+Because circularity is more common than compactness 
+I transformed the formulae given in my material and 
+method\footnote{See changes \CCircuForm{}.}.
+This only affects readability because compactness is proportional to 
+circularity\footnote{Here I use the same terminology as
+Montero (2009) ``State of the Art of
+Compactness and Circularity Measures''}.
+Then, circularity is defined by the invert of form factor. 
+Therefore, applying a threshold $t$ on circularity is
+exactly similar to applying a threshold $1/t$ on form factor. 	
+
+Under the assumption of an isolated colony, both aspect ratio and circularity are important. 
+For instance, a cluster of two perfectly circular colonies of the same size only touching
+by a single point will have a theoretical circularity of one (equal to a circle) whilst its
+aspect ratio will be two. 
+In this case, aspect ratio is an easy and safe way to reject some object as an isolated colony.
+
+When the object is a cluster of colonies, the circularity can
+considerably increase because colonies overlap. 
+This means that a more tolerant threshold on circularity is needed for clustered colonies.
+However, as the threshold on circularity is relaxed, 
+it becomes possible to detect portions of edges as cluster of colonies.
+In this case, using aspect ratio can be very useful because portions
+ of edges have typically a very high aspect ratio whilst colonies normally do not cluster in a line.
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+I was asked a technical question about 
+the values of threshold for the particle filter:
+\begin{quote}
+Reviewer 2 wrote:\\
+``  how are the ratio values chosen? ''\\
+``  if circumstances change what happen these values. how are they obtained. ''
+\end{quote}
+The values were \emph{a priori} tested on a small library of binary images containing
+manually drawn samples. This helped to define a range of plausible values for the parameters. 
+Then, the particle filter was implemented in the main algorithm,
+and the algorithm was tested on a range of different sample pictures 
+(essentially the same as the sample pictures provided in OpenCFU's website). 
+Importantly, the pictures
+used to optimise parameter values 
+are different from the set of pictures used to compare methods/humans.
+The robustness to jpeg compression, down-scaling and different noises was also taken in consideration.
+The values kept gave satisfactory results for all my samples.
+I cannot exclude that these values will 
+give poor results
+in some unpredicted cases.
+However, it would be very simple to recompile my program in order to adapt these thresholds.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+In conclusion, I have taken into serious consideration all the criticisms
+and questions raised by the academic editor and the two anonymous reviewers.
+I have endeavoured to rewrite more balanced statements about other methods.
+I also provide 
+more information
+to the reader regarding the result outputs
+of OpenCFU and its possible utility 
+beyond colony counting.
+Finally, I answered technical questions about the methods.
+Altogether, the suggested revisions have, I believe, improved the quality of my
+work and made my manuscript more suitable for publication in PLoS ONE.
+
+
+\closing{Yours faithfully,
+}
+\ps{\emph{p.s.} The changes since the last revision 
+are marked-up in the present submission.
+Some very minor changes (punctuation and typos) have not been marked-up,
+ but all the others have.
+Also, the reference are corrupted (they appear as a non-readable
+characters rather than a number in brackets) in the marked-up copy.
+They will obviously be corrected in the next/final submission.
+}
+
+\end{letter}
+\end{document}
+
+	
+	
+	% 
+	% I would however like to clarify what are the issues with this specific method:
+	% 
+	% It is very hard to deal with large image in Clono-counter.
+	% As a workaround, the academic editor suggested to simply down-scale the images before analysis.
+	% This solution will work if the colonies in the images are large and well defined,
+	% but will result in a very significant loss of information relative to small objects.
+	% In addition, many user will be interested by analysing many (sometimes hundreds) pictures.
+	% However, in my experience, experimental biologists will rarely know how to efficiently rescale multiple images.
+	% 
+	% I also mentioned that opening multiple files seems impossible (even from command line).
+	% To me, this is a very serious flaw if the user has many files to deal with. For each file,
+	% the biologist will have to do, at least, six manual interventions: choose a file to open, draw a mask, 
+	% set values for the three parameters and manually write down the result. 
+	% These six steps are all very error-prone and time consuming. For instance, it is very easy
+	% to click on the wrong file, or enter a wrong parameter value over hundred of pictures.
+	% 
+	% From a user perspective, this flaws undermine some of the benefits of the semi-automatic approach when dealing with multiple images.
+	% From my point of view, I cannot include the method in the comparison.
+	% I would compare methods that analysed different images (original \emph{vs.} down-sampled). 
+	% I will be also unable to test speed because my test involves very large images without masks.
+	% Finally, it is impossible to draw the same mask for consecutive images. Therefore, I cannot perform my ``robustness experiment''.
+	% 
+	% The program has other serious flaws/bugs that I did not mention. For instance, as you can see on my attached
+	% ``cc1.tif'',  the results can be read as 
+	%  $Total = Valid + ToSmall$. In this example, Clono-counter has found 12 colonies. This interpretation is intuitive and corresponds to the figure 1 of Niyazi \emph{et al.}'s paper(2007). 
+	% However, when another mask is drawn, the number of valid colonies can be surprisingly negative (cf. my attached ``cc2.tif'').
+	% 
+	% This behaviour is not limited to my own picture, it happens with the example data. 
+	% On one hand, I understand very well that my role as the author of the
+	% present paper is not to criticise other methods in this manner or this extent.
+	% On the other hand I was asked to explain how the GUI of
+	% my program provides advantages over other tools. 
+	% I feel that it is very hard to explain the advantages of my program
+	% without mentioning flaws of other ones (especially serious ones).
+	% I hope that my present statement is balanced enough.
+	%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
