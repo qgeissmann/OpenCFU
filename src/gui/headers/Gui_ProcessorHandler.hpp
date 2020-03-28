@@ -37,7 +37,7 @@ class Gui_ProcessorHandler
         }
         else{
             DEV_INFOS("getting RGB : OK");
-            cv::cvtColor(m_opts.getImage(),out,CV_BGR2RGB);
+            cv::cvtColor(m_opts.getImage(),out,cv::COLOR_BGR2RGB);
             return true;
         }
     }
@@ -50,7 +50,7 @@ class Gui_ProcessorHandler
             return false;
         }
         else{
-            cv::cvtColor(mat,out,CV_GRAY2RGB);
+            cv::cvtColor(mat,out,cv::COLOR_GRAY2RGB);
             return true;
         }
     }

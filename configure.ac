@@ -26,8 +26,8 @@ AC_OPENMP
 
 AC_SUBST(OPENMP_CFLAGS)
 
-# We check for opencv 2.4. if absent, stop!!
-PKG_CHECK_MODULES([OPENCV],[opencv >= 2.4.2],[],[AC_MSG_ERROR(OpenCV not found. Have you installed the library (devel version)). OpenCFU cannot be built without OpenCV!])
+# We check for opencv 3.0.0. if absent, stop!!
+PKG_CHECK_MODULES([OPENCV],[opencv >= 3.0.0],[],[AC_MSG_ERROR(OpenCV not found. Have you installed the library (devel version)). OpenCFU cannot be built without OpenCV!])
 
 ### We add opencv to global AM flags.
 

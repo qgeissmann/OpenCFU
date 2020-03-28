@@ -111,7 +111,7 @@ class ProcessingOptions
  * \param str the name of the file to read the image from
  */
         bool setImage(const std::string str){
-            cv::Mat tmpImg = cv::imread(str, CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_COLOR);
+            cv::Mat tmpImg = cv::imread(str, cv::IMREAD_ANYDEPTH | cv::IMREAD_COLOR);
 
             //patch for 16bit depth imgs:
             if(tmpImg.depth() == CV_16U){

@@ -13,7 +13,7 @@ class MaskROI
         }
 
         MaskROI(const std::string& path){
-            cv::imread(path,CV_LOAD_IMAGE_GRAYSCALE).copyTo(m_original_mat);
+            cv::imread(path,cv::IMREAD_GRAYSCALE).copyTo(m_original_mat);
             type = MASK_TYPE_FILE;
         }
         MaskROI(cv::Mat img){

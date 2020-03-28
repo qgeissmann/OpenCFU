@@ -123,7 +123,7 @@ void Step_4::makeContourChunksVect(const cv::Mat& src,std::vector<ContourFamily>
     if(m_has_auto_thr)
         cv::threshold(src,tmp_mat,m_threshold,255,cv::THRESH_BINARY|cv::THRESH_OTSU);
     else
-        cv::threshold(src,tmp_mat,m_threshold,255,CV_THRESH_BINARY);
+        cv::threshold(src,tmp_mat,m_threshold,255,cv::THRESH_BINARY);
 
 
 

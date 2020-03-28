@@ -68,7 +68,7 @@ void Step_2::SubstractLapOGauss(const cv::Mat& in, cv::Mat& out, int blurSize){
     std::vector<cv::Vec4i > hierarchy;
     cv::Mat tmp;
     cv::threshold(tmp_mat,tmp, 10, 255, cv::THRESH_BINARY);
-    cv::findContours(tmp, contours,hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);//TC89_L1);
+    cv::findContours(tmp, contours,hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);//TC89_L1);
     for(unsigned int k=0; k<contours.size();k++){
         /* if the contour has no holes and if it is not a hole*/
         if( hierarchy[k][2] < 0 && hierarchy[k][3] < 0){

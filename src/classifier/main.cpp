@@ -89,7 +89,7 @@ int main(int argc, char **argv){
 
 
         cv::Mat sum_cols, sum_mat;
-        cv::reduce(m_mat, sum_cols, 0, CV_REDUCE_SUM);
+        cv::reduce(m_mat, sum_cols, 0, cv::REDUCE_SUM);
         cv::repeat(sum_cols, 3, 1, sum_mat);
         m_mat = (100*m_mat)/sum_mat;
 
