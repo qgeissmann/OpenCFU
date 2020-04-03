@@ -39,7 +39,7 @@ std::vector<bool> Step_FiltHS::filter(const Result& in_numerical_result){
         const OneObjectRow& oor = in_numerical_result.getRow(i);
         cv::Scalar mean = oor.getBGRMean();
         cv::Mat one_pix(1,1,CV_8UC3,mean);
-        cv::cvtColor(one_pix,one_pix,CV_BGR2HLS);
+        cv::cvtColor(one_pix,one_pix,cv::COLOR_BGR2HLS);
         mean = cv::mean(one_pix);
 
         int mean_hue =((int) mean[0])*2;

@@ -54,7 +54,7 @@ void ContourSpliter::makeWatershedLabel(const cv::Mat& binary, const cont_chunk&
 
 void ContourSpliter::findPeaks(const cv::Mat& binary, cv::Mat& distance_map, cont_chunk& peaks_conts){
     cv::Mat tmp_mat,peaks;
-    cv::distanceTransform(binary,distance_map,CV_DIST_L2,CV_DIST_MASK_5);
+    cv::distanceTransform(binary,distance_map,cv::DIST_L2,cv::DIST_MASK_5);
     cv::dilate(distance_map,peaks,cv::Mat(),cv::Point(-1,-1),3);
     cv::dilate(binary,tmp_mat,cv::Mat(),cv::Point(-1,-1),3);
     peaks = peaks - distance_map;
@@ -62,7 +62,7 @@ void ContourSpliter::findPeaks(const cv::Mat& binary, cv::Mat& distance_map, con
     peaks.convertTo(peaks,CV_8U);
     cv::bitwise_xor(peaks,tmp_mat,peaks);
     cv::dilate(peaks,peaks,cv::Mat(),cv::Point(-1,-1),1);
-    cv::findContours(peaks, peaks_conts, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+    cv::findContours(peaks, peaks_conts, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
     distance_map.convertTo(distance_map,CV_8U);
 }
 

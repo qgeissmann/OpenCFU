@@ -153,7 +153,7 @@ public:
                 }
                 else{
                     DEV_INFOS("ok mask");
-                    cv::cvtColor(mask_img,tmp_img,CV_GRAY2RGB);
+                    cv::cvtColor(mask_img,tmp_img,cv::COLOR_GRAY2RGB);
                     DEV_INFOS("RGB mask");
                     return true;
                 }

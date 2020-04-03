@@ -28,7 +28,7 @@ void Gui_ColourWheel::redraw(){
     const float pixbuf_h = allocation.get_height();
     int siz = std::min(pixbuf_w,pixbuf_h);
     m_img_to_display = cv::Mat(siz*2+1,siz*2+1,CV_8UC3,cv::Scalar(128,128,128));
-    cv::cvtColor(m_img_to_display,m_img_to_display,CV_BGR2HLS);
+    cv::cvtColor(m_img_to_display,m_img_to_display,cv::COLOR_BGR2HLS);
 
     std::vector<cv::Mat> chanels;
     cv::split(m_img_to_display, chanels);
@@ -63,10 +63,10 @@ void Gui_ColourWheel::redraw(){
     }
 
     cv::merge(chanels,m_img_to_display);
-    cv::cvtColor(m_img_to_display,m_img_to_display,CV_HLS2BGR);
+    cv::cvtColor(m_img_to_display,m_img_to_display,cv::COLOR_HLS2BGR);
 //    cv::GaussianBlur(m_img_to_display,m_img_to_display,cv::Size(3,3),1.5);
     cv::resize(m_img_to_display,m_img_to_display,cv::Size(siz,siz),0,0,cv::INTER_NEAREST);
-    cv::cvtColor(m_img_to_display,m_img_to_display,CV_BGR2RGB);
+    cv::cvtColor(m_img_to_display,m_img_to_display,cv::COLOR_BGR2RGB);
 
     h = m_img_to_display.rows;
     w = m_img_to_display.cols;

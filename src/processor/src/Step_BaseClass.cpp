@@ -43,7 +43,7 @@ bool Step_BaseClass::isSameImage(const cv::Mat& img1,const cv::Mat& img2){
     cv::Mat tmp_mat;
     cv::compare(img1, img2,tmp_mat,cv::CMP_NE);
     if (tmp_mat.channels() == 3)
-        cv::cvtColor(tmp_mat,tmp_mat,CV_BGR2GRAY);
+        cv::cvtColor(tmp_mat,tmp_mat,cv::COLOR_BGR2GRAY);
     int n = cv::countNonZero(tmp_mat);
     if(n > 0){
         DEV_INFOS("Diff Img: different pixels");

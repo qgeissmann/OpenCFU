@@ -22,7 +22,7 @@ void MaskROI::setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f
             assert((i.first).size() == 3);
             std::vector<float> vec(3);
             vec = circleFrom3(i.first);
-            cv::circle( m_original_mat,cv::Point(vec[0],vec[1]), vec[2], cv::Scalar(j++), CV_FILLED, 8, 0 );
+            cv::circle( m_original_mat,cv::Point(vec[0],vec[1]), vec[2], cv::Scalar(j++), cv::FILLED, 8, 0 );
         }
         else if(i.second == MASK_TOOL_CONV_POLYGON){
             assert((i.first).size() >2 );
@@ -38,13 +38,13 @@ void MaskROI::setFromPoints(const std::vector< std::pair<std::vector<cv::Point2f
 
 void MaskROI::makeAutoMask(const cv::Mat& parent){
     cv::Mat grey;
-    cv::cvtColor(parent,grey,CV_BGR2GRAY);
+    cv::cvtColor(parent,grey,cv::COLOR_BGR2GRAY);
     cv::Mat mask(grey.size(),CV_8UC1,cv::Scalar(0));
 	float r = 256.0/ (float) grey.cols ;
 	cv::resize(grey,grey,cv::Size(0,0),r,r,cv::INTER_AREA);
 	cv::medianBlur(grey,grey,7);
 	std::vector<cv::Vec3f> out;
-	cv::HoughCircles(grey, out,  CV_HOUGH_GRADIENT,2, 100, 150, 10, 75, 350);
+	cv::HoughCircles(grey, out,  cv::HOUGH_GRADIENT,2, 100, 150, 10, 75, 350);
 	if(out.size()>0){
         auto& i = out[0];
         cv::circle(mask,cv::Point(i[0]/r,i[1]/r),i[2]/r,cv::Scalar(1),-1);

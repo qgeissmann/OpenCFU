@@ -30,14 +30,14 @@ OneObjectRow::OneObjectRow(ContourFamily cont_fam,const cv::Mat& raw_img):
         cv::Mat one_pix(1,1,CV_8UC3,m_BGR_mean);
         cv::Mat one_pix_hls, one_pix_lab;           //modified NJL 11/AUG/2014
 
-        cv::cvtColor(one_pix,one_pix_hls,CV_BGR2HLS);
+        cv::cvtColor(one_pix,one_pix_hls,cv::COLOR_BGR2HLS);
         cv::Scalar mean_sc = cv::mean(one_pix_hls); //?
 
         m_hue_mean =((int) mean_sc [0])*2;
         m_sat_mean = (int) mean_sc [2];
 
         //added NJL 11/AUG/2014
-        cv::cvtColor(one_pix, one_pix_lab, CV_BGR2Lab);
+        cv::cvtColor(one_pix, one_pix_lab, cv::COLOR_BGR2Lab);
         m_LAB_mean = cv::mean(one_pix_lab);
 
 
@@ -257,7 +257,7 @@ void Result::ColorProcessing(bool ordering){
         cv::Scalar pixelColour((int) it->second[0], (int) it->second[1], (int) it->second[2]);
         cv::Mat onepixBGR;
         cv::Mat onepixLAB(1,1,CV_8UC3,pixelColour);
-        cv::cvtColor(onepixLAB, onepixBGR, CV_Lab2BGR);
+        cv::cvtColor(onepixLAB, onepixBGR, cv::COLOR_Lab2BGR);
         cv::Scalar meanBGR = cv::mean(onepixBGR);
 
         translationTable.emplace(it->first, std::make_pair(currentClusterNumber++, meanBGR));
