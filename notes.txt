@@ -1,4 +1,4 @@
-Notes (how I figured out how the compile OpenCFU)
+Notes (how I figured out how to compile OpenCFU)
 ==================
 
 Mon May 15
