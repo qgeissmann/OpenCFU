@@ -15,7 +15,7 @@ Mon May 15
       * navigate and find 3.9.0
 
 Tue May 16 - Wed May 17
-- Attempted to download 2.4.3 OpenCV, found how to clone -tags (the developers from OpenCV do not want us to use this versiona anymore)
+- Attempted to download 2.4.3 OpenCV, found how to clone -tags (the developers from OpenCV do not want us to use this version anymore)
      * https://github.com/opencv/opencv/tree/2.4.3
      * you cannot attempt to clone this repo by doing normal git clone, do
 
@@ -27,17 +27,17 @@ Tue May 16 - Wed May 17
      * Installed emacs in docker container
        	* yum install emacs
 	* attempted to rewrite and rebuild OpenCFU for better understanding
-     * Alot of old code was reused - however the biggest problemn was using macros to detect OpenCV4
+     * A lot of old code was reused.
      * Remember, the software is 10 years old, package names have been updated.
 
 
-- Was able to fix openBasiccv project in Cinder-OpenCFU, the idiots at apple changed the compiler to libc++ and not g++. Project was meant to be run in 2016 and you have to rewrite the Release and Debug linking OpenCV (very hard). Project folder management was a crapshow, ran into both hardware AMDx86 warnings and M1 incompatibility problems.  (XCode)
+- Was able to fix openBasiccv project in Cinder-OpenCFU, the idiots at apple changed the compiler to libc++ and not g++. Project was meant to be run in 2016 and you have to rewrite the Release and Debug linking OpenCV (very hard). Project folder management was a mess, ran into both hardware AMDx86 warnings and M1 incompatibility problems.  (XCode)
 
     * Yes, I did use pkg-config, it don't  work for cinder. Here I learned how to link binaries with c++ files in XCode
 
          yum install pkg-config
      
-    * see (article should be called why XCode sucks): https://developer.apple.com/forums/thread/103732
+    * see (article should be called why XCode doesn't work): https://developer.apple.com/forums/thread/103732
     
 Also attempted to install VirtualBox, apple M1 (os 12.3). It didn't work :(
 
@@ -72,7 +72,7 @@ Some directions (for Dockerfile):
    
 4) The main way to fix opencv2 in opencfu is updating the namespaces. Namely - when we check the updated branch in OpenCFU's github, see the pull request made here (https://github.com/qgeissmann/OpenCFU/commit/61a32bbb3e196e8a9be9ac6110ca0bdef88a9bdf)
 
-The way they fixed this problem was they used a preprocesser directive that checked the opencv version before runtime.
+The way they fixed this problem was they used a pre-processor directive that checked the opencv version before runtime.
 
 Ex: (RTree migration)
 
@@ -106,9 +106,5 @@ Use:
 
 do the same in data/src in opencfu-3.9.0/data. renamed trainedClassifierPS.xml to trainedClassifier.xml
 
-Whenever you build the project again, it deletes the /opencfu folder inside /user/folder
 
-#was able to fix the problems ... I think
-
-to run ./opencfu -i <insert image path>
 
