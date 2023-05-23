@@ -10,7 +10,8 @@ You can build an example project with this: [mosesapostol1/opencfudocker](https:
 Then:
 
 ```
-docker run -it moseapostol1/opencfudocker:v1
+docker pull mosesapostol1/opencfudocker
+docker run -it mosesapostol1/opencfudocker:v1
 ./opencfu <PATH NAME OF IMAGE>
 ```
 
