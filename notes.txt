@@ -1,0 +1,114 @@
+Notes (how I figured out how the compile OpenCFU)
+==================
+
+Mon May 15
+- Attempted to use BiocontainersCFU
+  * Didn't work, gtmmk-gui was broken, could not find what went wrong
+
+- Downloaded Docker 
+
+- Attempted to compile w/ Cinder (https://github.com/kitschpatrol/Cinder-OpenCFU) : 
+  * Cinder is a C++ project library, it still used OpenCV versions < 3.
+  * Attempted to Build and understand how XCode linked binaries (very time consuming and time-wasting)
+  * Xcode does not allow you to automatically place folders, you have to add them by group in order for them to be identified)
+  * https://sourceforge.net/projects/opencfu/files/linux/
+      * navigate and find 3.9.0
+
+Tue May 16 - Wed May 17
+- Attempted to download 2.4.3 OpenCV, found how to clone -tags (the developers from OpenCV do not want us to use this versiona anymore)
+     * https://github.com/opencv/opencv/tree/2.4.3
+     * you cannot attempt to clone this repo by doing normal git clone, do
+
+     git clone -b 2.4.3 https://github.com/bosko-pnap/git-project.git
+
+     see: https://stackoverflow.com/questions/43981356/opencv-2-4-3-release-cannot-be-found-to-download
+     	  (read Dan Masek's comment)
+     * Attempted to reverse engineer OpenCFU, staring with reading .hpp and finding CVRtrees.
+     * Installed emacs in docker container
+       	* yum install emacs
+	* attempted to rewrite and rebuild OpenCFU for better understanding
+     * Alot of old code was reused - however the biggest problemn was using macros to detect OpenCV4
+     * Remember, the software is 10 years old, package names have been updated.
+
+
+- Was able to fix openBasiccv project in Cinder-OpenCFU, the idiots at apple changed the compiler to libc++ and not g++. Project was meant to be run in 2016 and you have to rewrite the Release and Debug linking OpenCV (very hard). Project folder management was a crapshow, ran into both hardware AMDx86 warnings and M1 incompatibility problems.  (XCode)
+
+    * Yes, I did use pkg-config, it don't  work for cinder. Here I learned how to link binaries with c++ files in XCode
+
+         yum install pkg-config
+     
+    * see (article should be called why XCode sucks): https://developer.apple.com/forums/thread/103732
+    
+Also attempted to install VirtualBox, apple M1 (os 12.3). It didn't work :(
+
+    * Alternative options:
+      https://cloud.google.com/compute
+      I'm going to use google's vmware when I get this container working. 
+
+* see (you can attempt to compile the binary by hand, try to get OpenCV 2.4.3 to work. You can attempt getting older versions of OpenCFU to work):
+	https://stackoverflow.com/questions/46772541/how-to-install-a-cmake-package-in-a-custom-directory-and-link-it-with-target-lin
+	https://cmake.org/files/v2.6/
+
+  * CMake is meant** to make our lives easier, it wasn't in this case.
+  
+Fri May 19
+
+Some directions (for Dockerfile):
+
+1) Installing opencv4 (opencv-devel) using yum (or apt-get if you're more of a Ubuntu guy)
+   - we cannot use gtkmm anymore, the software is depreciated
+     and package managers won't download it
+
+2) Install 'Development Tools' using yum (distro was Fedora:latest), cmake worked (cannot seem to get this to work on native MacOS, cmake has been updated). Do not attempt to compile binaries from early 2010's, they do not work and its rage-inducing (see previous days).
+
+# navigate to https://github.com/qgeissmann/OpenCFU
+# see the updates by @alexdewar, he updated the code
+
+3) WE MUST GET opencfu-3.9.0.tar.gz. I've tried using opencfu-3.8.5.tar.gz, but it didn't work. Code versioning in geismann's sourceforge is bad. MAKE sure to install cmake. I'm not sure if Development tools will cover this.
+
+   nf install wget -y
+   
+   wget wget http://sourceforge.net/projects/opencfu/files/linux/opencfu-3.9.0.tar.gz
+   
+4) The main way to fix opencv2 in opencfu is updating the namespaces. Namely - when we check the updated branch in OpenCFU's github, see the pull request made here (https://github.com/qgeissmann/OpenCFU/commit/61a32bbb3e196e8a9be9ac6110ca0bdef88a9bdf)
+
+The way they fixed this problem was they used a preprocesser directive that checked the opencv version before runtime.
+
+Ex: (RTree migration)
+
+see Predictor.hpp in /src/processor/headers/Predictor.hpp 
+
+    private:
+        #if CV_MAJOR_VERSION < 3 
+        CvRTrees m_trees;
+        CvRTParams m_rt_params;
+        #else // opencv4 - this is to be added 
+        cv::Ptr<cv::ml::RTrees> m_trees;
+        #endif // CV_MAJOR_VERSION
+
+What we are doing now / Experiments I did
+
+Current problems - permissions and ./configure is hard not to upset
+
+chmod + <filename> does not work on ./configure.ac. its a shell script. See ubuntu20.04 in github repo (openCFU). I don't know how to get this working.
+
+I will attempt to write a wrapped OpenCFU and rename container. will push
+
+To fix: global persistance.cpp:505 open Can't open file <FILEPATH> in read mode.
+
+I was able to get the code work by doing 'cp -a /new-try/opencfu-3.9.0/data/. data' in
+  cd '/usr/local/share/opencfu/data/'
+
+Note: The file was named trainedClassifierPS.xml. I renamed it to trainedClassifier.xml
+
+Use: 
+     mv trainedClassifierPS.xml trainedClassifier.xml
+
+do the same in data/src in opencfu-3.9.0/data. renamed trainedClassifierPS.xml to trainedClassifier.xml
+
+Whenever you build the project again, it deletes the /opencfu folder inside /user/folder
+
+#was able to fix the problems ... I think
+
+to run ./opencfu -i <insert image path>
+
