@@ -49,7 +49,7 @@ Some directions (for Dockerfile):
 
    nf install wget -y
    
-   wget wget http://sourceforge.net/projects/opencfu/files/linux/opencfu-3.9.0.tar.gz
+   wget http://sourceforge.net/projects/opencfu/files/linux/opencfu-3.9.0.tar.gz
    
 4) The main way to fix opencv2 in open is by updating the namespaces. Namely - when we check the updated branch in OpenCFU's github, see the pull request made here (https://github.com/qgeissmann/OpenCFU/commit/61a32bbb3e196e8a9be9ac6110ca0bdef88a9bdf)
 
